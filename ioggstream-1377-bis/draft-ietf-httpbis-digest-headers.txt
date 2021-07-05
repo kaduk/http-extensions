@@ -6,7 +6,7 @@ HTTP                                                            R. Polli
 Internet-Draft                         Team Digitale, Italian Government
 Obsoletes: 3230 (if approved)                                  L. Pardue
 Intended status: Standards Track                              Cloudflare
-Expires: 5 January 2022                                      4 July 2021
+Expires: 6 January 2022                                      5 July 2021
 
 
                              Digest Headers
@@ -49,7 +49,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 5 January 2022.
+   This Internet-Draft will expire on 6 January 2022.
 
 Copyright Notice
 
@@ -449,22 +449,34 @@ Table of Contents
    The "HTTP Digest Algorithm Values Registry", maintained by IANA at
    https://www.iana.org/assignments/http-dig-alg/
    (https://www.iana.org/assignments/http-dig-alg/) registers digest-
-   algorithm values.  Registrations MUST include the following fields: -
-   Digest algorithm name: the token value.  The registry can be used to
-   reserve token values - Status: the status of the algorithm.  Use
-   "standard" for standardized algorithms without known problems;
-   "experimental", "obsoleted" or some other appropriate value - e.g.
-   according to the type and status of the primary document in which the
-   algorithm is defined; "deprecated" when the algorithm is insecure or
-   otherwise undesirable - Description: the description of the digest-
-   algorithm and its encoding - Reference: a set of pointers to the
-   primary documents defining the digest-algorithm
+   algorithm values.  Registrations MUST include the following fields:
+
+   *  Digest algorithm: the token value.  The registry can be used to
+      reserve token values
+
+   *  Status: the status of the algorithm.  Use "standard" for
+      standardized algorithms without known problems; "experimental",
+      "obsoleted", or some other appropriate value
+
+      -  e.g. according to the type and status of the primary document
+         in which the algorithm is defined; "deprecated" when the
+         algorithm is insecure or otherwise undesirable; "reserved" when
+         Digest algorithm references a reserved token value
+
+   *  Description: the description of the digest-algorithm and its
+      encoding
+
+   *  Reference: a set of pointers to the primary documents defining the
+      digest-algorithm
 
    Values to be added to this registry require IETF Review (see
-   Section 4.8 of [RFC8126]).
+   Section 4.8 of [RFC8126]).  The associated encoding for new digest-
+   algorithms MUST either be represented as a quoted string or MUST NOT
+   include ";" or "," in the character sets used for the encoding.
 
-   The registry is initialized with the tokens listed below.  Deprecated
-   digest algorithms MUST NOT be used.
+   Deprecated digest algorithms MUST NOT be used.
+
+   The registry is initialized with the tokens listed below.
 
    sha-512
       *  Digest Algorithm: sha-512
@@ -586,10 +598,6 @@ Table of Contents
       *  Reference: [RFC6234], [RFC4648], this document.
 
       *  Status: standard
-
-   If other digest-algorithm values are defined, the associated encoding
-   MUST either be represented as a quoted string or MUST NOT include ";"
-   or "," in the character sets used for the encoding.
 
 8.  Use of Digest when acting on resources
 
