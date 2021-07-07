@@ -4,8 +4,8 @@
 
 HTTP                                                       M. Nottingham
 Internet-Draft                                                    Fastly
-Intended status: Standards Track                             2 July 2021
-Expires: 3 January 2022
+Intended status: Standards Track                             7 July 2021
+Expires: 8 January 2022
 
 
               The Cache-Status HTTP Response Header Field
@@ -48,7 +48,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 3 January 2022.
+   This Internet-Draft will expire on 8 January 2022.
 
 Copyright Notice
 
@@ -354,6 +354,17 @@ Table of Contents
    (https://iana.org/assignments/http-cache-status) and populate it with
    the types defined in Section 2; see Section 4 for its associated
    procedures.
+
+   Also, please create the following entry in the Hypertext Transfer
+   Protocol (HTTP) Field Name Registry:
+
+   *  Field name: Cache-Status
+
+   *  Status: permanent
+
+   *  Specification document: [this document]
+
+   *  Comments:
 
 6.  Security Considerations
 

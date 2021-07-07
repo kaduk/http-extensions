@@ -5,8 +5,8 @@
 HTTP                                                              K. Oku
 Internet-Draft                                                    Fastly
 Intended status: Standards Track                               L. Pardue
-Expires: 3 January 2022                                       Cloudflare
-                                                             2 July 2021
+Expires: 8 January 2022                                       Cloudflare
+                                                             7 July 2021
 
 
                Extensible Prioritization Scheme for HTTP
@@ -55,7 +55,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 3 January 2022.
+   This Internet-Draft will expire on 8 January 2022.
 
 Copyright Notice
 
@@ -982,7 +982,7 @@ Table of Contents
               (HTTP/3)", Work in Progress, Internet-Draft, draft-ietf-
               quic-http-34, 2 February 2021,
               <https://datatracker.ietf.org/doc/html/draft-ietf-quic-
-              http-34.txt>.
+              http-34>.
 
    [QUIC]     Iyengar, J., Ed. and M. Thomson, Ed., "QUIC: A UDP-Based
               Multiplexed and Secure Transport", RFC 9000,
@@ -1021,7 +1021,7 @@ Table of Contents
               Priorities", Work in Progress, Internet-Draft, draft-
               lassey-priority-setting-00, 25 July 2019,
               <https://datatracker.ietf.org/doc/html/draft-lassey-
-              priority-setting-00.txt>.
+              priority-setting-00>.
 
    [QUIC-RECOVERY]
               Iyengar, J., Ed. and I. Swett, Ed., "QUIC Loss Detection

@@ -11,15 +11,15 @@
 <meta content="
        This document describes a mechanism for creating, encoding, and verifying digital signatures or message authentication codes over content within an HTTP message.  This mechanism supports use cases where the full HTTP message may not be known to the signer, and where the message may be transformed (e.g., by intermediaries) before reaching the verifier. 
     " name="description">
-<meta content="xml2rfc 3.8.0" name="generator">
+<meta content="xml2rfc 3.9.1" name="generator">
 <meta content="PKI" name="keyword">
 <meta content="draft-ietf-httpbis-message-signatures" name="ietf.draft">
 <!-- Generator version information:
-  xml2rfc 3.8.0
+  xml2rfc 3.9.1
     Python 3.9.5
     appdirs 1.4.4
     ConfigArgParse 1.3
-    google-i18n-address 2.4.0
+    google-i18n-address 2.5.0
     html5lib 1.1
     intervaltree 3.1.0
     Jinja2 2.11.3
@@ -1012,7 +1012,7 @@ address div.right {
 </tr></thead>
 <tfoot><tr>
 <td class="left">Backman, et al.</td>
-<td class="center">Expires 3 January 2022</td>
+<td class="center">Expires 8 January 2022</td>
 <td class="right">[Page]</td>
 </tr></tfoot>
 </table>
@@ -1025,12 +1025,12 @@ address div.right {
 <dd class="internet-draft">draft-ietf-httpbis-message-signatures</dd>
 <dt class="label-published">Published:</dt>
 <dd class="published">
-<time datetime="2021-07-02" class="published">2 July 2021</time>
+<time datetime="2021-07-07" class="published">7 July 2021</time>
     </dd>
 <dt class="label-intended-status">Intended Status:</dt>
 <dd class="intended-status">Standards Track</dd>
 <dt class="label-expires">Expires:</dt>
-<dd class="expires"><time datetime="2022-01-03">3 January 2022</time></dd>
+<dd class="expires"><time datetime="2022-01-08">8 January 2022</time></dd>
 <dt class="label-authors">Authors:</dt>
 <dd class="authors">
 <div class="author">
@@ -1081,7 +1081,7 @@ address div.right {
         time. It is inappropriate to use Internet-Drafts as reference
         material or to cite them other than as "work in progress."<a href="#section-boilerplate.1-3" class="pilcrow">¶</a></p>
 <p id="section-boilerplate.1-4">
-        This Internet-Draft will expire on 3 January 2022.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
+        This Internet-Draft will expire on 8 January 2022.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="copyright">
@@ -1109,220 +1109,220 @@ address div.right {
         <a href="#" onclick="scroll(0,0)" class="toplink">▲</a><h2 id="name-table-of-contents">
 <a href="#name-table-of-contents" class="section-name selfRef">Table of Contents</a>
         </h2>
-<nav class="toc"><ul class="ulEmpty toc compact">
-<li class="ulEmpty toc compact" id="section-toc.1-1.1">
+<nav class="toc"><ul class="toc compact ulBare ulEmpty">
+<li class="toc compact ulBare ulEmpty" id="section-toc.1-1.1">
             <p id="section-toc.1-1.1.1"><a href="#section-1" class="xref">1</a>.  <a href="#name-introduction" class="xref">Introduction</a></p>
-<ul class="ulEmpty toc compact">
-<li class="ulEmpty toc compact" id="section-toc.1-1.1.2.1">
+<ul class="ulEmpty toc ulBare compact">
+<li class="ulEmpty toc ulBare compact" id="section-toc.1-1.1.2.1">
                 <p id="section-toc.1-1.1.2.1.1" class="keepWithNext"><a href="#section-1.1" class="xref">1.1</a>.  <a href="#name-requirements-discussion" class="xref">Requirements Discussion</a></p>
 </li>
-              <li class="ulEmpty toc compact" id="section-toc.1-1.1.2.2">
+              <li class="ulEmpty toc ulBare compact" id="section-toc.1-1.1.2.2">
                 <p id="section-toc.1-1.1.2.2.1" class="keepWithNext"><a href="#section-1.2" class="xref">1.2</a>.  <a href="#name-http-message-transformation" class="xref">HTTP Message Transformations</a></p>
 </li>
-              <li class="ulEmpty toc compact" id="section-toc.1-1.1.2.3">
+              <li class="ulEmpty toc ulBare compact" id="section-toc.1-1.1.2.3">
                 <p id="section-toc.1-1.1.2.3.1" class="keepWithNext"><a href="#section-1.3" class="xref">1.3</a>.  <a href="#name-safe-transformations" class="xref">Safe Transformations</a></p>
 </li>
-              <li class="ulEmpty toc compact" id="section-toc.1-1.1.2.4">
+              <li class="ulEmpty toc ulBare compact" id="section-toc.1-1.1.2.4">
                 <p id="section-toc.1-1.1.2.4.1"><a href="#section-1.4" class="xref">1.4</a>.  <a href="#name-conventions-and-terminology" class="xref">Conventions and Terminology</a></p>
 </li>
-              <li class="ulEmpty toc compact" id="section-toc.1-1.1.2.5">
+              <li class="ulEmpty toc ulBare compact" id="section-toc.1-1.1.2.5">
                 <p id="section-toc.1-1.1.2.5.1"><a href="#section-1.5" class="xref">1.5</a>.  <a href="#name-application-of-http-message" class="xref">Application of HTTP Message Signatures</a></p>
 </li>
             </ul>
 </li>
-          <li class="ulEmpty toc compact" id="section-toc.1-1.2">
+          <li class="toc compact ulBare ulEmpty" id="section-toc.1-1.2">
             <p id="section-toc.1-1.2.1"><a href="#section-2" class="xref">2</a>.  <a href="#name-http-message-signature-cove" class="xref">HTTP Message Signature Covered Content</a></p>
-<ul class="ulEmpty toc compact">
-<li class="ulEmpty toc compact" id="section-toc.1-1.2.2.1">
+<ul class="ulEmpty toc ulBare compact">
+<li class="ulEmpty toc ulBare compact" id="section-toc.1-1.2.2.1">
                 <p id="section-toc.1-1.2.2.1.1"><a href="#section-2.1" class="xref">2.1</a>.  <a href="#name-http-headers" class="xref">HTTP Headers</a></p>
-<ul class="ulEmpty toc compact">
-<li class="ulEmpty toc compact" id="section-toc.1-1.2.2.1.2.1">
+<ul class="ulEmpty toc ulBare compact">
+<li class="ulEmpty toc ulBare compact" id="section-toc.1-1.2.2.1.2.1">
                     <p id="section-toc.1-1.2.2.1.2.1.1"><a href="#section-2.1.1" class="xref">2.1.1</a>.  <a href="#name-canonicalized-structured-ht" class="xref">Canonicalized Structured HTTP Headers</a></p>
 </li>
-                  <li class="ulEmpty toc compact" id="section-toc.1-1.2.2.1.2.2">
+                  <li class="ulEmpty toc ulBare compact" id="section-toc.1-1.2.2.1.2.2">
                     <p id="section-toc.1-1.2.2.1.2.2.1"><a href="#section-2.1.2" class="xref">2.1.2</a>.  <a href="#name-canonicalization-examples" class="xref">Canonicalization Examples</a></p>
 </li>
                 </ul>
 </li>
-              <li class="ulEmpty toc compact" id="section-toc.1-1.2.2.2">
+              <li class="ulEmpty toc ulBare compact" id="section-toc.1-1.2.2.2">
                 <p id="section-toc.1-1.2.2.2.1"><a href="#section-2.2" class="xref">2.2</a>.  <a href="#name-dictionary-structured-field" class="xref">Dictionary Structured Field Members</a></p>
-<ul class="ulEmpty toc compact">
-<li class="ulEmpty toc compact" id="section-toc.1-1.2.2.2.2.1">
+<ul class="ulEmpty toc ulBare compact">
+<li class="ulEmpty toc ulBare compact" id="section-toc.1-1.2.2.2.2.1">
                     <p id="section-toc.1-1.2.2.2.2.1.1"><a href="#section-2.2.1" class="xref">2.2.1</a>.  <a href="#name-canonicalization-examples-2" class="xref">Canonicalization Examples</a></p>
 </li>
                 </ul>
 </li>
-              <li class="ulEmpty toc compact" id="section-toc.1-1.2.2.3">
+              <li class="ulEmpty toc ulBare compact" id="section-toc.1-1.2.2.3">
                 <p id="section-toc.1-1.2.2.3.1"><a href="#section-2.3" class="xref">2.3</a>.  <a href="#name-specialty-content-fields" class="xref">Specialty Content Fields</a></p>
-<ul class="ulEmpty toc compact">
-<li class="ulEmpty toc compact" id="section-toc.1-1.2.2.3.2.1">
+<ul class="ulEmpty toc ulBare compact">
+<li class="ulEmpty toc ulBare compact" id="section-toc.1-1.2.2.3.2.1">
                     <p id="section-toc.1-1.2.2.3.2.1.1"><a href="#section-2.3.1" class="xref">2.3.1</a>.  <a href="#name-request-target" class="xref">Request Target</a></p>
 </li>
-                  <li class="ulEmpty toc compact" id="section-toc.1-1.2.2.3.2.2">
+                  <li class="ulEmpty toc ulBare compact" id="section-toc.1-1.2.2.3.2.2">
                     <p id="section-toc.1-1.2.2.3.2.2.1"><a href="#section-2.3.2" class="xref">2.3.2</a>.  <a href="#name-signature-parameters" class="xref">Signature Parameters</a></p>
 </li>
                 </ul>
 </li>
-              <li class="ulEmpty toc compact" id="section-toc.1-1.2.2.4">
+              <li class="ulEmpty toc ulBare compact" id="section-toc.1-1.2.2.4">
                 <p id="section-toc.1-1.2.2.4.1"><a href="#section-2.4" class="xref">2.4</a>.  <a href="#name-creating-the-signature-inpu" class="xref">Creating the Signature Input String</a></p>
 </li>
             </ul>
 </li>
-          <li class="ulEmpty toc compact" id="section-toc.1-1.3">
+          <li class="toc compact ulBare ulEmpty" id="section-toc.1-1.3">
             <p id="section-toc.1-1.3.1"><a href="#section-3" class="xref">3</a>.  <a href="#name-http-message-signatures" class="xref">HTTP Message Signatures</a></p>
-<ul class="ulEmpty toc compact">
-<li class="ulEmpty toc compact" id="section-toc.1-1.3.2.1">
+<ul class="ulEmpty toc ulBare compact">
+<li class="ulEmpty toc ulBare compact" id="section-toc.1-1.3.2.1">
                 <p id="section-toc.1-1.3.2.1.1"><a href="#section-3.1" class="xref">3.1</a>.  <a href="#name-creating-a-signature" class="xref">Creating a Signature</a></p>
 </li>
-              <li class="ulEmpty toc compact" id="section-toc.1-1.3.2.2">
+              <li class="ulEmpty toc ulBare compact" id="section-toc.1-1.3.2.2">
                 <p id="section-toc.1-1.3.2.2.1"><a href="#section-3.2" class="xref">3.2</a>.  <a href="#name-verifying-a-signature" class="xref">Verifying a Signature</a></p>
-<ul class="ulEmpty toc compact">
-<li class="ulEmpty toc compact" id="section-toc.1-1.3.2.2.2.1">
+<ul class="ulEmpty toc ulBare compact">
+<li class="ulEmpty toc ulBare compact" id="section-toc.1-1.3.2.2.2.1">
                     <p id="section-toc.1-1.3.2.2.2.1.1"><a href="#section-3.2.1" class="xref">3.2.1</a>.  <a href="#name-enforcing-application-requi" class="xref">Enforcing Application Requirements</a></p>
 </li>
                 </ul>
 </li>
-              <li class="ulEmpty toc compact" id="section-toc.1-1.3.2.3">
+              <li class="ulEmpty toc ulBare compact" id="section-toc.1-1.3.2.3">
                 <p id="section-toc.1-1.3.2.3.1"><a href="#section-3.3" class="xref">3.3</a>.  <a href="#name-signature-algorithm-methods" class="xref">Signature Algorithm Methods</a></p>
-<ul class="ulEmpty toc compact">
-<li class="ulEmpty toc compact" id="section-toc.1-1.3.2.3.2.1">
+<ul class="ulEmpty toc ulBare compact">
+<li class="ulEmpty toc ulBare compact" id="section-toc.1-1.3.2.3.2.1">
                     <p id="section-toc.1-1.3.2.3.2.1.1"><a href="#section-3.3.1" class="xref">3.3.1</a>.  <a href="#name-rsassa-pss-using-sha-512" class="xref">RSASSA-PSS using SHA-512</a></p>
 </li>
-                  <li class="ulEmpty toc compact" id="section-toc.1-1.3.2.3.2.2">
+                  <li class="ulEmpty toc ulBare compact" id="section-toc.1-1.3.2.3.2.2">
                     <p id="section-toc.1-1.3.2.3.2.2.1"><a href="#section-3.3.2" class="xref">3.3.2</a>.  <a href="#name-rsassa-pkcs1-v1_5-using-sha" class="xref">RSASSA-PKCS1-v1_5 using SHA-256</a></p>
 </li>
-                  <li class="ulEmpty toc compact" id="section-toc.1-1.3.2.3.2.3">
+                  <li class="ulEmpty toc ulBare compact" id="section-toc.1-1.3.2.3.2.3">
                     <p id="section-toc.1-1.3.2.3.2.3.1"><a href="#section-3.3.3" class="xref">3.3.3</a>.  <a href="#name-hmac-using-sha-256" class="xref">HMAC using SHA-256</a></p>
 </li>
-                  <li class="ulEmpty toc compact" id="section-toc.1-1.3.2.3.2.4">
+                  <li class="ulEmpty toc ulBare compact" id="section-toc.1-1.3.2.3.2.4">
                     <p id="section-toc.1-1.3.2.3.2.4.1"><a href="#section-3.3.4" class="xref">3.3.4</a>.  <a href="#name-ecdsa-using-curve-p-256-dss" class="xref">ECDSA using curve P-256 DSS and SHA-256</a></p>
 </li>
-                  <li class="ulEmpty toc compact" id="section-toc.1-1.3.2.3.2.5">
+                  <li class="ulEmpty toc ulBare compact" id="section-toc.1-1.3.2.3.2.5">
                     <p id="section-toc.1-1.3.2.3.2.5.1"><a href="#section-3.3.5" class="xref">3.3.5</a>.  <a href="#name-json-web-signature-jws-algo" class="xref">JSON Web Signature (JWS) algorithms</a></p>
 </li>
                 </ul>
 </li>
             </ul>
 </li>
-          <li class="ulEmpty toc compact" id="section-toc.1-1.4">
+          <li class="toc compact ulBare ulEmpty" id="section-toc.1-1.4">
             <p id="section-toc.1-1.4.1"><a href="#section-4" class="xref">4</a>.  <a href="#name-including-a-message-signatu" class="xref">Including a Message Signature in a Message</a></p>
-<ul class="ulEmpty toc compact">
-<li class="ulEmpty toc compact" id="section-toc.1-1.4.2.1">
+<ul class="ulEmpty toc ulBare compact">
+<li class="ulEmpty toc ulBare compact" id="section-toc.1-1.4.2.1">
                 <p id="section-toc.1-1.4.2.1.1"><a href="#section-4.1" class="xref">4.1</a>.  <a href="#name-the-signature-input-http-he" class="xref">The 'Signature-Input' HTTP Header</a></p>
 </li>
-              <li class="ulEmpty toc compact" id="section-toc.1-1.4.2.2">
+              <li class="ulEmpty toc ulBare compact" id="section-toc.1-1.4.2.2">
                 <p id="section-toc.1-1.4.2.2.1"><a href="#section-4.2" class="xref">4.2</a>.  <a href="#name-the-signature-http-header" class="xref">The 'Signature' HTTP Header</a></p>
 </li>
-              <li class="ulEmpty toc compact" id="section-toc.1-1.4.2.3">
+              <li class="ulEmpty toc ulBare compact" id="section-toc.1-1.4.2.3">
                 <p id="section-toc.1-1.4.2.3.1"><a href="#section-4.3" class="xref">4.3</a>.  <a href="#name-multiple-signatures" class="xref">Multiple Signatures</a></p>
 </li>
             </ul>
 </li>
-          <li class="ulEmpty toc compact" id="section-toc.1-1.5">
+          <li class="toc compact ulBare ulEmpty" id="section-toc.1-1.5">
             <p id="section-toc.1-1.5.1"><a href="#section-5" class="xref">5</a>.  <a href="#name-iana-considerations" class="xref">IANA Considerations</a></p>
-<ul class="ulEmpty toc compact">
-<li class="ulEmpty toc compact" id="section-toc.1-1.5.2.1">
+<ul class="ulEmpty toc ulBare compact">
+<li class="ulEmpty toc ulBare compact" id="section-toc.1-1.5.2.1">
                 <p id="section-toc.1-1.5.2.1.1"><a href="#section-5.1" class="xref">5.1</a>.  <a href="#name-http-signature-algorithms-r" class="xref">HTTP Signature Algorithms Registry</a></p>
-<ul class="ulEmpty toc compact">
-<li class="ulEmpty toc compact" id="section-toc.1-1.5.2.1.2.1">
+<ul class="ulEmpty toc ulBare compact">
+<li class="ulEmpty toc ulBare compact" id="section-toc.1-1.5.2.1.2.1">
                     <p id="section-toc.1-1.5.2.1.2.1.1"><a href="#section-5.1.1" class="xref">5.1.1</a>.  <a href="#name-registration-template" class="xref">Registration Template</a></p>
 </li>
-                  <li class="ulEmpty toc compact" id="section-toc.1-1.5.2.1.2.2">
+                  <li class="ulEmpty toc ulBare compact" id="section-toc.1-1.5.2.1.2.2">
                     <p id="section-toc.1-1.5.2.1.2.2.1"><a href="#section-5.1.2" class="xref">5.1.2</a>.  <a href="#name-initial-contents" class="xref">Initial Contents</a></p>
 </li>
                 </ul>
 </li>
-              <li class="ulEmpty toc compact" id="section-toc.1-1.5.2.2">
+              <li class="ulEmpty toc ulBare compact" id="section-toc.1-1.5.2.2">
                 <p id="section-toc.1-1.5.2.2.1"><a href="#section-5.2" class="xref">5.2</a>.  <a href="#name-http-signature-metadata-par" class="xref">HTTP Signature Metadata Parameters Registry</a></p>
-<ul class="ulEmpty toc compact">
-<li class="ulEmpty toc compact" id="section-toc.1-1.5.2.2.2.1">
+<ul class="ulEmpty toc ulBare compact">
+<li class="ulEmpty toc ulBare compact" id="section-toc.1-1.5.2.2.2.1">
                     <p id="section-toc.1-1.5.2.2.2.1.1"><a href="#section-5.2.1" class="xref">5.2.1</a>.  <a href="#name-registration-template-2" class="xref">Registration Template</a></p>
 </li>
-                  <li class="ulEmpty toc compact" id="section-toc.1-1.5.2.2.2.2">
+                  <li class="ulEmpty toc ulBare compact" id="section-toc.1-1.5.2.2.2.2">
                     <p id="section-toc.1-1.5.2.2.2.2.1"><a href="#section-5.2.2" class="xref">5.2.2</a>.  <a href="#name-initial-contents-2" class="xref">Initial Contents</a></p>
 </li>
                 </ul>
 </li>
-              <li class="ulEmpty toc compact" id="section-toc.1-1.5.2.3">
+              <li class="ulEmpty toc ulBare compact" id="section-toc.1-1.5.2.3">
                 <p id="section-toc.1-1.5.2.3.1"><a href="#section-5.3" class="xref">5.3</a>.  <a href="#name-http-signature-specialty-co" class="xref">HTTP Signature Specialty Content Identifiers Registry</a></p>
-<ul class="ulEmpty toc compact">
-<li class="ulEmpty toc compact" id="section-toc.1-1.5.2.3.2.1">
+<ul class="ulEmpty toc ulBare compact">
+<li class="ulEmpty toc ulBare compact" id="section-toc.1-1.5.2.3.2.1">
                     <p id="section-toc.1-1.5.2.3.2.1.1"><a href="#section-5.3.1" class="xref">5.3.1</a>.  <a href="#name-registration-template-3" class="xref">Registration Template</a></p>
 </li>
-                  <li class="ulEmpty toc compact" id="section-toc.1-1.5.2.3.2.2">
+                  <li class="ulEmpty toc ulBare compact" id="section-toc.1-1.5.2.3.2.2">
                     <p id="section-toc.1-1.5.2.3.2.2.1"><a href="#section-5.3.2" class="xref">5.3.2</a>.  <a href="#name-initial-contents-3" class="xref">Initial Contents</a></p>
 </li>
                 </ul>
 </li>
             </ul>
 </li>
-          <li class="ulEmpty toc compact" id="section-toc.1-1.6">
+          <li class="toc compact ulBare ulEmpty" id="section-toc.1-1.6">
             <p id="section-toc.1-1.6.1"><a href="#section-6" class="xref">6</a>.  <a href="#name-security-considerations" class="xref">Security Considerations</a></p>
 </li>
-          <li class="ulEmpty toc compact" id="section-toc.1-1.7">
+          <li class="toc compact ulBare ulEmpty" id="section-toc.1-1.7">
             <p id="section-toc.1-1.7.1"><a href="#section-7" class="xref">7</a>.  <a href="#name-references" class="xref">References</a></p>
-<ul class="ulEmpty toc compact">
-<li class="ulEmpty toc compact" id="section-toc.1-1.7.2.1">
+<ul class="ulEmpty toc ulBare compact">
+<li class="ulEmpty toc ulBare compact" id="section-toc.1-1.7.2.1">
                 <p id="section-toc.1-1.7.2.1.1"><a href="#section-7.1" class="xref">7.1</a>.  <a href="#name-normative-references" class="xref">Normative References</a></p>
 </li>
-              <li class="ulEmpty toc compact" id="section-toc.1-1.7.2.2">
+              <li class="ulEmpty toc ulBare compact" id="section-toc.1-1.7.2.2">
                 <p id="section-toc.1-1.7.2.2.1"><a href="#section-7.2" class="xref">7.2</a>.  <a href="#name-informative-references" class="xref">Informative References</a></p>
 </li>
             </ul>
 </li>
-          <li class="ulEmpty toc compact" id="section-toc.1-1.8">
-            <p id="section-toc.1-1.8.1"><a href="#section-appendix.a" class="xref">Appendix A</a>.  <a href="#name-detecting-http-message-sign" class="xref">Detecting HTTP Message Signatures</a></p>
+          <li class="toc compact ulBare ulEmpty" id="section-toc.1-1.8">
+            <p id="section-toc.1-1.8.1"><a href="#appendix-A" class="xref">Appendix A</a>.  <a href="#name-detecting-http-message-sign" class="xref">Detecting HTTP Message Signatures</a></p>
 </li>
-          <li class="ulEmpty toc compact" id="section-toc.1-1.9">
-            <p id="section-toc.1-1.9.1"><a href="#section-appendix.b" class="xref">Appendix B</a>.  <a href="#name-examples" class="xref">Examples</a></p>
-<ul class="ulEmpty toc compact">
-<li class="ulEmpty toc compact" id="section-toc.1-1.9.2.1">
-                <p id="section-toc.1-1.9.2.1.1"><a href="#section-b.1" class="xref">B.1</a>.  <a href="#name-example-keys" class="xref">Example Keys</a></p>
-<ul class="ulEmpty toc compact">
-<li class="ulEmpty toc compact" id="section-toc.1-1.9.2.1.2.1">
-                    <p id="section-toc.1-1.9.2.1.2.1.1"><a href="#section-b.1.1" class="xref">B.1.1</a>.  <a href="#name-example-key-rsa-test" class="xref">Example Key RSA test</a></p>
+          <li class="toc compact ulBare ulEmpty" id="section-toc.1-1.9">
+            <p id="section-toc.1-1.9.1"><a href="#appendix-B" class="xref">Appendix B</a>.  <a href="#name-examples" class="xref">Examples</a></p>
+<ul class="ulEmpty toc ulBare compact">
+<li class="ulEmpty toc ulBare compact" id="section-toc.1-1.9.2.1">
+                <p id="section-toc.1-1.9.2.1.1"><a href="#appendix-B.1" class="xref">B.1</a>.  <a href="#name-example-keys" class="xref">Example Keys</a></p>
+<ul class="ulEmpty toc ulBare compact">
+<li class="ulEmpty toc ulBare compact" id="section-toc.1-1.9.2.1.2.1">
+                    <p id="section-toc.1-1.9.2.1.2.1.1"><a href="#appendix-B.1.1" class="xref">B.1.1</a>.  <a href="#name-example-key-rsa-test" class="xref">Example Key RSA test</a></p>
 </li>
-                  <li class="ulEmpty toc compact" id="section-toc.1-1.9.2.1.2.2">
-                    <p id="section-toc.1-1.9.2.1.2.2.1"><a href="#section-b.1.2" class="xref">B.1.2</a>.  <a href="#name-example-rsa-pss-key" class="xref">Example RSA PSS Key</a></p>
+                  <li class="ulEmpty toc ulBare compact" id="section-toc.1-1.9.2.1.2.2">
+                    <p id="section-toc.1-1.9.2.1.2.2.1"><a href="#appendix-B.1.2" class="xref">B.1.2</a>.  <a href="#name-example-rsa-pss-key" class="xref">Example RSA PSS Key</a></p>
 </li>
-                  <li class="ulEmpty toc compact" id="section-toc.1-1.9.2.1.2.3">
-                    <p id="section-toc.1-1.9.2.1.2.3.1"><a href="#section-b.1.3" class="xref">B.1.3</a>.  <a href="#name-example-ecc-p-256-test-key" class="xref">Example ECC P-256 Test Key</a></p>
+                  <li class="ulEmpty toc ulBare compact" id="section-toc.1-1.9.2.1.2.3">
+                    <p id="section-toc.1-1.9.2.1.2.3.1"><a href="#appendix-B.1.3" class="xref">B.1.3</a>.  <a href="#name-example-ecc-p-256-test-key" class="xref">Example ECC P-256 Test Key</a></p>
 </li>
-                  <li class="ulEmpty toc compact" id="section-toc.1-1.9.2.1.2.4">
-                    <p id="section-toc.1-1.9.2.1.2.4.1"><a href="#section-b.1.4" class="xref">B.1.4</a>.  <a href="#name-example-shared-secret" class="xref">Example Shared Secret</a></p>
+                  <li class="ulEmpty toc ulBare compact" id="section-toc.1-1.9.2.1.2.4">
+                    <p id="section-toc.1-1.9.2.1.2.4.1"><a href="#appendix-B.1.4" class="xref">B.1.4</a>.  <a href="#name-example-shared-secret" class="xref">Example Shared Secret</a></p>
 </li>
                 </ul>
 </li>
-              <li class="ulEmpty toc compact" id="section-toc.1-1.9.2.2">
-                <p id="section-toc.1-1.9.2.2.1"><a href="#section-b.2" class="xref">B.2</a>.  <a href="#name-test-cases" class="xref">Test Cases</a></p>
-<ul class="ulEmpty toc compact">
-<li class="ulEmpty toc compact" id="section-toc.1-1.9.2.2.2.1">
-                    <p id="section-toc.1-1.9.2.2.2.1.1"><a href="#section-b.2.1" class="xref">B.2.1</a>.  <a href="#name-minimal-signature-header-us" class="xref">Minimal Signature Header using rsa-pss-sha512</a></p>
+              <li class="ulEmpty toc ulBare compact" id="section-toc.1-1.9.2.2">
+                <p id="section-toc.1-1.9.2.2.1"><a href="#appendix-B.2" class="xref">B.2</a>.  <a href="#name-test-cases" class="xref">Test Cases</a></p>
+<ul class="ulEmpty toc ulBare compact">
+<li class="ulEmpty toc ulBare compact" id="section-toc.1-1.9.2.2.2.1">
+                    <p id="section-toc.1-1.9.2.2.2.1.1"><a href="#appendix-B.2.1" class="xref">B.2.1</a>.  <a href="#name-minimal-signature-header-us" class="xref">Minimal Signature Header using rsa-pss-sha512</a></p>
 </li>
-                  <li class="ulEmpty toc compact" id="section-toc.1-1.9.2.2.2.2">
-                    <p id="section-toc.1-1.9.2.2.2.2.1"><a href="#section-b.2.2" class="xref">B.2.2</a>.  <a href="#name-header-coverage-using-rsa-p" class="xref">Header Coverage using rsa-pss-sha512</a></p>
+                  <li class="ulEmpty toc ulBare compact" id="section-toc.1-1.9.2.2.2.2">
+                    <p id="section-toc.1-1.9.2.2.2.2.1"><a href="#appendix-B.2.2" class="xref">B.2.2</a>.  <a href="#name-header-coverage-using-rsa-p" class="xref">Header Coverage using rsa-pss-sha512</a></p>
 </li>
-                  <li class="ulEmpty toc compact" id="section-toc.1-1.9.2.2.2.3">
-                    <p id="section-toc.1-1.9.2.2.2.3.1"><a href="#section-b.2.3" class="xref">B.2.3</a>.  <a href="#name-full-coverage-using-rsa-pss" class="xref">Full Coverage using rsa-pss-sha512</a></p>
+                  <li class="ulEmpty toc ulBare compact" id="section-toc.1-1.9.2.2.2.3">
+                    <p id="section-toc.1-1.9.2.2.2.3.1"><a href="#appendix-B.2.3" class="xref">B.2.3</a>.  <a href="#name-full-coverage-using-rsa-pss" class="xref">Full Coverage using rsa-pss-sha512</a></p>
 </li>
-                  <li class="ulEmpty toc compact" id="section-toc.1-1.9.2.2.2.4">
-                    <p id="section-toc.1-1.9.2.2.2.4.1"><a href="#section-b.2.4" class="xref">B.2.4</a>.  <a href="#name-signing-a-response-using-ec" class="xref">Signing a Response using ecdsa-p256-sha256</a></p>
+                  <li class="ulEmpty toc ulBare compact" id="section-toc.1-1.9.2.2.2.4">
+                    <p id="section-toc.1-1.9.2.2.2.4.1"><a href="#appendix-B.2.4" class="xref">B.2.4</a>.  <a href="#name-signing-a-response-using-ec" class="xref">Signing a Response using ecdsa-p256-sha256</a></p>
 </li>
-                  <li class="ulEmpty toc compact" id="section-toc.1-1.9.2.2.2.5">
-                    <p id="section-toc.1-1.9.2.2.2.5.1"><a href="#section-b.2.5" class="xref">B.2.5</a>.  <a href="#name-signing-a-request-using-hma" class="xref">Signing a Request using hmac-sha256</a></p>
+                  <li class="ulEmpty toc ulBare compact" id="section-toc.1-1.9.2.2.2.5">
+                    <p id="section-toc.1-1.9.2.2.2.5.1"><a href="#appendix-B.2.5" class="xref">B.2.5</a>.  <a href="#name-signing-a-request-using-hma" class="xref">Signing a Request using hmac-sha256</a></p>
 </li>
                 </ul>
 </li>
             </ul>
 </li>
-          <li class="ulEmpty toc compact" id="section-toc.1-1.10">
-            <p id="section-toc.1-1.10.1"><a href="#section-appendix.c" class="xref"></a><a href="#name-acknowledgements" class="xref">Acknowledgements</a></p>
+          <li class="toc compact ulBare ulEmpty" id="section-toc.1-1.10">
+            <p id="section-toc.1-1.10.1"><a href="#appendix-C" class="xref"></a><a href="#name-acknowledgements" class="xref">Acknowledgements</a></p>
 </li>
-          <li class="ulEmpty toc compact" id="section-toc.1-1.11">
-            <p id="section-toc.1-1.11.1"><a href="#section-appendix.d" class="xref"></a><a href="#name-document-history" class="xref">Document History</a></p>
+          <li class="toc compact ulBare ulEmpty" id="section-toc.1-1.11">
+            <p id="section-toc.1-1.11.1"><a href="#appendix-D" class="xref"></a><a href="#name-document-history" class="xref">Document History</a></p>
 </li>
-          <li class="ulEmpty toc compact" id="section-toc.1-1.12">
-            <p id="section-toc.1-1.12.1"><a href="#section-appendix.e" class="xref"></a><a href="#name-authors-addresses" class="xref">Authors' Addresses</a></p>
+          <li class="toc compact ulBare ulEmpty" id="section-toc.1-1.12">
+            <p id="section-toc.1-1.12.1"><a href="#appendix-E" class="xref"></a><a href="#name-authors-addresses" class="xref">Authors' Addresses</a></p>
 </li>
         </ul>
 </nav>
@@ -2732,34 +2732,34 @@ Specification document(s):  </dt>
 </section>
 </section>
 <div id="detection">
-<section id="section-appendix.a">
+<section id="appendix-A">
       <h2 id="name-detecting-http-message-sign">
-<a href="#section-appendix.a" class="section-number selfRef">Appendix A. </a><a href="#name-detecting-http-message-sign" class="section-name selfRef">Detecting HTTP Message Signatures</a>
+<a href="#appendix-A" class="section-number selfRef">Appendix A. </a><a href="#name-detecting-http-message-sign" class="section-name selfRef">Detecting HTTP Message Signatures</a>
       </h2>
-<p id="section-appendix.a-1">There have been many attempts to create signed HTTP messages in the past, including other non-standard definitions of the <code>Signature</code> header used within this specification. It is recommended that developers wishing to support both this specification and other historical drafts do so carefully and deliberately, as incompatibilities between this specification and various versions of other drafts could lead to unexpected problems.<a href="#section-appendix.a-1" class="pilcrow">¶</a></p>
-<p id="section-appendix.a-2">It is recommended that implementers first detect and validate the <code>Signature-Input</code> header defined in this specification to detect that this standard is in use and not an alternative. If the <code>Signature-Input</code> header is present, all <code>Signature</code> headers can be parsed and interpreted in the context of this draft.<a href="#section-appendix.a-2" class="pilcrow">¶</a></p>
+<p id="appendix-A-1">There have been many attempts to create signed HTTP messages in the past, including other non-standard definitions of the <code>Signature</code> header used within this specification. It is recommended that developers wishing to support both this specification and other historical drafts do so carefully and deliberately, as incompatibilities between this specification and various versions of other drafts could lead to unexpected problems.<a href="#appendix-A-1" class="pilcrow">¶</a></p>
+<p id="appendix-A-2">It is recommended that implementers first detect and validate the <code>Signature-Input</code> header defined in this specification to detect that this standard is in use and not an alternative. If the <code>Signature-Input</code> header is present, all <code>Signature</code> headers can be parsed and interpreted in the context of this draft.<a href="#appendix-A-2" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="examples">
-<section id="section-appendix.b">
+<section id="appendix-B">
       <h2 id="name-examples">
-<a href="#section-appendix.b" class="section-number selfRef">Appendix B. </a><a href="#name-examples" class="section-name selfRef">Examples</a>
+<a href="#appendix-B" class="section-number selfRef">Appendix B. </a><a href="#name-examples" class="section-name selfRef">Examples</a>
       </h2>
 <div id="example-keys">
-<section id="section-b.1">
-        <h2 id="name-example-keys">
-<a href="#section-b.1" class="section-number selfRef">B.1. </a><a href="#name-example-keys" class="section-name selfRef">Example Keys</a>
-        </h2>
-<p id="section-b.1-1">This section provides cryptographic keys that are referenced in example signatures throughout this document.  These keys MUST NOT be used for any purpose other than testing.<a href="#section-b.1-1" class="pilcrow">¶</a></p>
-<p id="section-b.1-2">The key identifiers for each key are used throughout the examples in this specification. It is assumed for these examples that the signer and verifier can unambiguously dereference all key identifiers used here, and that the keys and algorithms used are appropriate for the context in which the signature is presented.<a href="#section-b.1-2" class="pilcrow">¶</a></p>
+<section id="appendix-B.1">
+        <h3 id="name-example-keys">
+<a href="#appendix-B.1" class="section-number selfRef">B.1. </a><a href="#name-example-keys" class="section-name selfRef">Example Keys</a>
+        </h3>
+<p id="appendix-B.1-1">This section provides cryptographic keys that are referenced in example signatures throughout this document.  These keys MUST NOT be used for any purpose other than testing.<a href="#appendix-B.1-1" class="pilcrow">¶</a></p>
+<p id="appendix-B.1-2">The key identifiers for each key are used throughout the examples in this specification. It is assumed for these examples that the signer and verifier can unambiguously dereference all key identifiers used here, and that the keys and algorithms used are appropriate for the context in which the signature is presented.<a href="#appendix-B.1-2" class="pilcrow">¶</a></p>
 <div id="example-key-rsa-test">
-<section id="section-b.1.1">
-          <h3 id="name-example-key-rsa-test">
-<a href="#section-b.1.1" class="section-number selfRef">B.1.1. </a><a href="#name-example-key-rsa-test" class="section-name selfRef">Example Key RSA test</a>
-          </h3>
-<p id="section-b.1.1-1">The following key is a 2048-bit RSA public and private key pair, referred to in this document
-as <code>test-key-rsa</code>:<a href="#section-b.1.1-1" class="pilcrow">¶</a></p>
-<div class="artwork art-text alignLeft" id="section-b.1.1-2">
+<section id="appendix-B.1.1">
+          <h4 id="name-example-key-rsa-test">
+<a href="#appendix-B.1.1" class="section-number selfRef">B.1.1. </a><a href="#name-example-key-rsa-test" class="section-name selfRef">Example Key RSA test</a>
+          </h4>
+<p id="appendix-B.1.1-1">The following key is a 2048-bit RSA public and private key pair, referred to in this document
+as <code>test-key-rsa</code>:<a href="#appendix-B.1.1-1" class="pilcrow">¶</a></p>
+<div class="artwork art-text alignLeft" id="appendix-B.1.1-2">
 <pre>
 -----BEGIN RSA PUBLIC KEY-----
 MIIBCgKCAQEAhAKYdtoeoy8zcAcR874L8cnZxKzAGwd7v36APp7Pv6Q2jdsPBRrw
@@ -2797,18 +2797,18 @@ qQKBiD5GwESzsFPy3Ga0MvZpn3D6EJQLgsnrtUPZx+z2Ep2x0xc5orneB5fGyF1P
 WtP+fG5Q6Dpdz3LRfm+KwBCWFKQjg7uTxcjerhBWEYPmEMKYwTJF5PBG9/ddvHLQ
 EQeNC8fHGg4UXU8mhHnSBt3EA10qQJfRDs15M38eG2cYwB1PZpDHScDnDA0=
 -----END RSA PRIVATE KEY-----
-</pre><a href="#section-b.1.1-2" class="pilcrow">¶</a>
+</pre><a href="#appendix-B.1.1-2" class="pilcrow">¶</a>
 </div>
 </section>
 </div>
 <div id="example-key-rsa-pss-test">
-<section id="section-b.1.2">
-          <h3 id="name-example-rsa-pss-key">
-<a href="#section-b.1.2" class="section-number selfRef">B.1.2. </a><a href="#name-example-rsa-pss-key" class="section-name selfRef">Example RSA PSS Key</a>
-          </h3>
-<p id="section-b.1.2-1">The following key is a 2048-bit RSA public and private key pair, referred to in this document
-as <code>test-key-rsa-pss</code>:<a href="#section-b.1.2-1" class="pilcrow">¶</a></p>
-<div class="artwork art-text alignLeft" id="section-b.1.2-2">
+<section id="appendix-B.1.2">
+          <h4 id="name-example-rsa-pss-key">
+<a href="#appendix-B.1.2" class="section-number selfRef">B.1.2. </a><a href="#name-example-rsa-pss-key" class="section-name selfRef">Example RSA PSS Key</a>
+          </h4>
+<p id="appendix-B.1.2-1">The following key is a 2048-bit RSA public and private key pair, referred to in this document
+as <code>test-key-rsa-pss</code>:<a href="#appendix-B.1.2-1" class="pilcrow">¶</a></p>
+<div class="artwork art-text alignLeft" id="appendix-B.1.2-2">
 <pre>
 -----BEGIN PUBLIC KEY-----
 MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAr4tmm3r20Wd/PbqvP1s2
@@ -2848,61 +2848,61 @@ dl2kZTXqGAk8dOhpUiw/HdM3OGWbhHj2NdCzBliOmPyQtAr770GITWvbAI+IRYyF
 S7Fnk6ZVVVHsxjtaHy1uJGFlaZzKR4AGNaUTOJMs6NadzCmGPAxNQQOCqoUjn4XR
 rOjr9w349JooGXhOxbu8nOxX
 -----END PRIVATE KEY-----
-</pre><a href="#section-b.1.2-2" class="pilcrow">¶</a>
+</pre><a href="#appendix-B.1.2-2" class="pilcrow">¶</a>
 </div>
 </section>
 </div>
 <div id="example-key-ecc-p256">
-<section id="section-b.1.3">
-          <h3 id="name-example-ecc-p-256-test-key">
-<a href="#section-b.1.3" class="section-number selfRef">B.1.3. </a><a href="#name-example-ecc-p-256-test-key" class="section-name selfRef">Example ECC P-256 Test Key</a>
-          </h3>
-<p id="section-b.1.3-1">The following key is an elliptical curve key over the curve P-256, referred
-to in this document as <code>test-key-ecc-p256</code>.<a href="#section-b.1.3-1" class="pilcrow">¶</a></p>
-<div class="artwork art-text alignLeft" id="section-b.1.3-2">
+<section id="appendix-B.1.3">
+          <h4 id="name-example-ecc-p-256-test-key">
+<a href="#appendix-B.1.3" class="section-number selfRef">B.1.3. </a><a href="#name-example-ecc-p-256-test-key" class="section-name selfRef">Example ECC P-256 Test Key</a>
+          </h4>
+<p id="appendix-B.1.3-1">The following key is an elliptical curve key over the curve P-256, referred
+to in this document as <code>test-key-ecc-p256</code>.<a href="#appendix-B.1.3-1" class="pilcrow">¶</a></p>
+<div class="artwork art-text alignLeft" id="appendix-B.1.3-2">
 <pre>
 -----BEGIN EC PRIVATE KEY-----
 MHcCAQEEIFKbhfNZfpDsW43+0+JjUr9K+bTeuxopu653+hBaXGA7oAoGCCqGSM49
 AwEHoUQDQgAEqIVYZVLCrPZHGHjP17CTW0/+D9Lfw0EkjqF7xB4FivAxzic30tMM
 4GF+hR6Dxh71Z50VGGdldkkDXZCnTNnoXQ==
 -----END EC PRIVATE KEY-----
-</pre><a href="#section-b.1.3-2" class="pilcrow">¶</a>
+</pre><a href="#appendix-B.1.3-2" class="pilcrow">¶</a>
 </div>
-<div class="artwork art-text alignLeft" id="section-b.1.3-3">
+<div class="artwork art-text alignLeft" id="appendix-B.1.3-3">
 <pre>
 -----BEGIN PUBLIC KEY-----
 MFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEqIVYZVLCrPZHGHjP17CTW0/+D9Lf
 w0EkjqF7xB4FivAxzic30tMM4GF+hR6Dxh71Z50VGGdldkkDXZCnTNnoXQ==
 -----END PUBLIC KEY-----
-</pre><a href="#section-b.1.3-3" class="pilcrow">¶</a>
+</pre><a href="#appendix-B.1.3-3" class="pilcrow">¶</a>
 </div>
 </section>
 </div>
 <div id="example-shared-secret">
-<section id="section-b.1.4">
-          <h3 id="name-example-shared-secret">
-<a href="#section-b.1.4" class="section-number selfRef">B.1.4. </a><a href="#name-example-shared-secret" class="section-name selfRef">Example Shared Secret</a>
-          </h3>
-<p id="section-b.1.4-1">The following shared secret is 64 randomly-generated bytes encoded in Base64,
-referred to in this document as <code>test-shared-secret</code>.<a href="#section-b.1.4-1" class="pilcrow">¶</a></p>
-<div class="artwork art-text alignLeft" id="section-b.1.4-2">
+<section id="appendix-B.1.4">
+          <h4 id="name-example-shared-secret">
+<a href="#appendix-B.1.4" class="section-number selfRef">B.1.4. </a><a href="#name-example-shared-secret" class="section-name selfRef">Example Shared Secret</a>
+          </h4>
+<p id="appendix-B.1.4-1">The following shared secret is 64 randomly-generated bytes encoded in Base64,
+referred to in this document as <code>test-shared-secret</code>.<a href="#appendix-B.1.4-1" class="pilcrow">¶</a></p>
+<div class="artwork art-text alignLeft" id="appendix-B.1.4-2">
 <pre>
 uzvJfB4u3N0Jy4T7NZ75MDVcr8zSTInedJtkgcu46YW4XByzNJjxBdtjUkdJPBt\
   bmHhIDi6pcl8jsasjlTMtDQ==
-</pre><a href="#section-b.1.4-2" class="pilcrow">¶</a>
+</pre><a href="#appendix-B.1.4-2" class="pilcrow">¶</a>
 </div>
 </section>
 </div>
 </section>
 </div>
 <div id="test-cases">
-<section id="section-b.2">
-        <h2 id="name-test-cases">
-<a href="#section-b.2" class="section-number selfRef">B.2. </a><a href="#name-test-cases" class="section-name selfRef">Test Cases</a>
-        </h2>
-<p id="section-b.2-1">This section provides non-normative examples that may be used as test cases to validate implementation correctness. These examples are based on the following HTTP messages:<a href="#section-b.2-1" class="pilcrow">¶</a></p>
-<p id="section-b.2-2">For requests, this <code>test-request</code> message is used:<a href="#section-b.2-2" class="pilcrow">¶</a></p>
-<div id="section-b.2-3">
+<section id="appendix-B.2">
+        <h3 id="name-test-cases">
+<a href="#appendix-B.2" class="section-number selfRef">B.2. </a><a href="#name-test-cases" class="section-name selfRef">Test Cases</a>
+        </h3>
+<p id="appendix-B.2-1">This section provides non-normative examples that may be used as test cases to validate implementation correctness. These examples are based on the following HTTP messages:<a href="#appendix-B.2-1" class="pilcrow">¶</a></p>
+<p id="appendix-B.2-2">For requests, this <code>test-request</code> message is used:<a href="#appendix-B.2-2" class="pilcrow">¶</a></p>
+<div id="appendix-B.2-3">
 <pre class="sourcecode lang-http-message">
 POST /foo?param=value&amp;pet=dog HTTP/1.1
 Host: example.com
@@ -2912,10 +2912,10 @@ Digest: SHA-256=X48E9qOokqqrvdts8nOJRJN3OWDUoyWxBf7kbu9DBPE=
 Content-Length: 18
 
 {"hello": "world"}
-</pre><a href="#section-b.2-3" class="pilcrow">¶</a>
+</pre><a href="#appendix-B.2-3" class="pilcrow">¶</a>
 </div>
-<p id="section-b.2-4">For responses, this <code>test-response</code> message is used:<a href="#section-b.2-4" class="pilcrow">¶</a></p>
-<div class="artwork art-text alignLeft" id="section-b.2-5">
+<p id="appendix-B.2-4">For responses, this <code>test-response</code> message is used:<a href="#appendix-B.2-4" class="pilcrow">¶</a></p>
+<div class="artwork art-text alignLeft" id="appendix-B.2-5">
 <pre>
 HTTP/1.1 200 OK
 Date: Tue, 20 Apr 2021 02:07:56 GMT
@@ -2924,24 +2924,24 @@ Digest: SHA-256=X48E9qOokqqrvdts8nOJRJN3OWDUoyWxBf7kbu9DBPE=
 Content-Length: 18
 
 {"hello": "world"}
-</pre><a href="#section-b.2-5" class="pilcrow">¶</a>
+</pre><a href="#appendix-B.2-5" class="pilcrow">¶</a>
 </div>
 <div id="minimal-signature-header-using-rsa-pss-sha512">
-<section id="section-b.2.1">
-          <h3 id="name-minimal-signature-header-us">
-<a href="#section-b.2.1" class="section-number selfRef">B.2.1. </a><a href="#name-minimal-signature-header-us" class="section-name selfRef">Minimal Signature Header using rsa-pss-sha512</a>
-          </h3>
-<p id="section-b.2.1-1">This example presents a minimal <code>Signature-Input</code> and <code>Signature</code> header for a signature using the <code>rsa-pss-sha512</code> algorithm over <code>test-request</code>, covering none
-of the content of the HTTP message request but providing a timestamped signature proof of possession of the key.<a href="#section-b.2.1-1" class="pilcrow">¶</a></p>
-<p id="section-b.2.1-2">The corresponding signature input is:<a href="#section-b.2.1-2" class="pilcrow">¶</a></p>
-<div class="artwork art-text alignLeft" id="section-b.2.1-3">
+<section id="appendix-B.2.1">
+          <h4 id="name-minimal-signature-header-us">
+<a href="#appendix-B.2.1" class="section-number selfRef">B.2.1. </a><a href="#name-minimal-signature-header-us" class="section-name selfRef">Minimal Signature Header using rsa-pss-sha512</a>
+          </h4>
+<p id="appendix-B.2.1-1">This example presents a minimal <code>Signature-Input</code> and <code>Signature</code> header for a signature using the <code>rsa-pss-sha512</code> algorithm over <code>test-request</code>, covering none
+of the content of the HTTP message request but providing a timestamped signature proof of possession of the key.<a href="#appendix-B.2.1-1" class="pilcrow">¶</a></p>
+<p id="appendix-B.2.1-2">The corresponding signature input is:<a href="#appendix-B.2.1-2" class="pilcrow">¶</a></p>
+<div class="artwork art-text alignLeft" id="appendix-B.2.1-3">
 <pre>
 "@signature-params": ();created=1618884475\
   ;keyid="test-key-rsa-pss";alg="rsa-pss-sha512"
-</pre><a href="#section-b.2.1-3" class="pilcrow">¶</a>
+</pre><a href="#appendix-B.2.1-3" class="pilcrow">¶</a>
 </div>
-<p id="section-b.2.1-4">This results in the following <code>Signature-Input</code> and <code>Signature</code> headers being added to the message:<a href="#section-b.2.1-4" class="pilcrow">¶</a></p>
-<div id="section-b.2.1-5">
+<p id="appendix-B.2.1-4">This results in the following <code>Signature-Input</code> and <code>Signature</code> headers being added to the message:<a href="#appendix-B.2.1-4" class="pilcrow">¶</a></p>
+<div id="appendix-B.2.1-5">
 <pre class="sourcecode lang-http-message">
 Signature-Input: sig1=();created=1618884475\
   ;keyid="test-key-rsa-pss";alg="rsa-pss-sha512"
@@ -2951,28 +2951,28 @@ Signature: sig1=:VrfdC2KEFFLoGMYTbQz4PSlKat4hAxcr5XkVN7Mm/7OQQJG+uX\
   RZLtSpnjECW6qsu2PVRoCYfnwe4gu8TfqH5GDx2SkpCF9BQ8CijuIWlOg7QP73tKt\
   QNp65u14Si9VEVXHWGiLw4blyPLzWz/fqJbdLaq94Ep60Nq8WjYEAInYH6KyV7EAD\
   60LXdspwF50R3dkWXJP/x+gkAHSMsxbg==:
-</pre><a href="#section-b.2.1-5" class="pilcrow">¶</a>
+</pre><a href="#appendix-B.2.1-5" class="pilcrow">¶</a>
 </div>
 </section>
 </div>
 <div id="header-coverage-using-rsa-pss-sha512">
-<section id="section-b.2.2">
-          <h3 id="name-header-coverage-using-rsa-p">
-<a href="#section-b.2.2" class="section-number selfRef">B.2.2. </a><a href="#name-header-coverage-using-rsa-p" class="section-name selfRef">Header Coverage using rsa-pss-sha512</a>
-          </h3>
-<p id="section-b.2.2-1">This example covers all the specified headers in <code>test-request</code> except for the body digest header using the <code>rsa-pss-sha512</code> algorithm.<a href="#section-b.2.2-1" class="pilcrow">¶</a></p>
-<p id="section-b.2.2-2">The corresponding signature input is:<a href="#section-b.2.2-2" class="pilcrow">¶</a></p>
-<div class="artwork art-text alignLeft" id="section-b.2.2-3">
+<section id="appendix-B.2.2">
+          <h4 id="name-header-coverage-using-rsa-p">
+<a href="#appendix-B.2.2" class="section-number selfRef">B.2.2. </a><a href="#name-header-coverage-using-rsa-p" class="section-name selfRef">Header Coverage using rsa-pss-sha512</a>
+          </h4>
+<p id="appendix-B.2.2-1">This example covers all the specified headers in <code>test-request</code> except for the body digest header using the <code>rsa-pss-sha512</code> algorithm.<a href="#appendix-B.2.2-1" class="pilcrow">¶</a></p>
+<p id="appendix-B.2.2-2">The corresponding signature input is:<a href="#appendix-B.2.2-2" class="pilcrow">¶</a></p>
+<div class="artwork art-text alignLeft" id="appendix-B.2.2-3">
 <pre>
 "host": example.com
 "date": Tue, 20 Apr 2021 02:07:55 GMT
 "content-type": application/json
 "@signature-params": ("host" "date" "content-type")\
   ;created=1618884475;keyid="test-key-rsa-pss"
-</pre><a href="#section-b.2.2-3" class="pilcrow">¶</a>
+</pre><a href="#appendix-B.2.2-3" class="pilcrow">¶</a>
 </div>
-<p id="section-b.2.2-4">This results in the following <code>Signature-Input</code> and <code>Signature</code> headers being added to the message:<a href="#section-b.2.2-4" class="pilcrow">¶</a></p>
-<div class="artwork art-text alignLeft" id="section-b.2.2-5">
+<p id="appendix-B.2.2-4">This results in the following <code>Signature-Input</code> and <code>Signature</code> headers being added to the message:<a href="#appendix-B.2.2-4" class="pilcrow">¶</a></p>
+<div class="artwork art-text alignLeft" id="appendix-B.2.2-5">
 <pre>
 Signature-Input: sig1=("host" "date" "content-type")\
   ;created=1618884475;keyid="test-key-rsa-pss"
@@ -2982,18 +2982,18 @@ Signature: sig1=:Zu48JBrHlXN+hVj3T5fPQUjMNEEhABM5vNmiWuUUl7BWNid5Rz\
   2O/qCoui2jFgff2kXQd6rjL1Up83Fpr+/KoZ6HQkv3qwBdMBDyHQykfZHhLn4AO1I\
   G+vKhOLJQDfaLsJ/fYfzsgc1s46j3GpPPD/W2nEEtdhNwu7oXq81qVRsENChIu1XI\
   FKR9q7WpyHDKEWTtaNZDS8TFvIQRU22w==:
-</pre><a href="#section-b.2.2-5" class="pilcrow">¶</a>
+</pre><a href="#appendix-B.2.2-5" class="pilcrow">¶</a>
 </div>
 </section>
 </div>
 <div id="full-coverage-using-rsa-pss-sha512">
-<section id="section-b.2.3">
-          <h3 id="name-full-coverage-using-rsa-pss">
-<a href="#section-b.2.3" class="section-number selfRef">B.2.3. </a><a href="#name-full-coverage-using-rsa-pss" class="section-name selfRef">Full Coverage using rsa-pss-sha512</a>
-          </h3>
-<p id="section-b.2.3-1">This example covers all headers in <code>test-request</code> plus the request target and message body digest using the <code>rsa-pss-sha512</code> algorithm.<a href="#section-b.2.3-1" class="pilcrow">¶</a></p>
-<p id="section-b.2.3-2">The corresponding signature input is:<a href="#section-b.2.3-2" class="pilcrow">¶</a></p>
-<div class="artwork art-text alignLeft" id="section-b.2.3-3">
+<section id="appendix-B.2.3">
+          <h4 id="name-full-coverage-using-rsa-pss">
+<a href="#appendix-B.2.3" class="section-number selfRef">B.2.3. </a><a href="#name-full-coverage-using-rsa-pss" class="section-name selfRef">Full Coverage using rsa-pss-sha512</a>
+          </h4>
+<p id="appendix-B.2.3-1">This example covers all headers in <code>test-request</code> plus the request target and message body digest using the <code>rsa-pss-sha512</code> algorithm.<a href="#appendix-B.2.3-1" class="pilcrow">¶</a></p>
+<p id="appendix-B.2.3-2">The corresponding signature input is:<a href="#appendix-B.2.3-2" class="pilcrow">¶</a></p>
+<div class="artwork art-text alignLeft" id="appendix-B.2.3-3">
 <pre>
 "@request-target": post /foo?param=value&amp;pet=dog
 "host": example.com
@@ -3004,10 +3004,10 @@ Signature: sig1=:Zu48JBrHlXN+hVj3T5fPQUjMNEEhABM5vNmiWuUUl7BWNid5Rz\
 "@signature-params": ("@request-target" "host" "date" \
   "content-type" "digest" "content-length");created=1618884475\
   ;keyid="test-key-rsa-pss"
-</pre><a href="#section-b.2.3-3" class="pilcrow">¶</a>
+</pre><a href="#appendix-B.2.3-3" class="pilcrow">¶</a>
 </div>
-<p id="section-b.2.3-4">This results in the following <code>Signature-Input</code> and <code>Signature</code> headers being added to the message:<a href="#section-b.2.3-4" class="pilcrow">¶</a></p>
-<div class="artwork art-text alignLeft" id="section-b.2.3-5">
+<p id="appendix-B.2.3-4">This results in the following <code>Signature-Input</code> and <code>Signature</code> headers being added to the message:<a href="#appendix-B.2.3-4" class="pilcrow">¶</a></p>
+<div class="artwork art-text alignLeft" id="appendix-B.2.3-5">
 <pre>
 Signature-Input: sig1=("@request-target" "host" "date" \
   "content-type" "digest" "content-length");created=1618884475\
@@ -3019,19 +3019,19 @@ Signature: \
   j2MuX1Ipzvv4EgbHJdKwmWRNamfmKJZC4U5Tn0F58lzGF+WIpU73V67/6aSGvJGM5\
   7U9bRHrBB7ExuQhOX2J2dvJMYkE33pEJA70XBUp9ZvciTI+vjIUgUQ2oRww3huWML\
   mMMqEc95CliwIoL5aBdCnlQ==:
-</pre><a href="#section-b.2.3-5" class="pilcrow">¶</a>
+</pre><a href="#appendix-B.2.3-5" class="pilcrow">¶</a>
 </div>
 </section>
 </div>
 <div id="signing-a-response-using-ecdsa-p256-sha256">
-<section id="section-b.2.4">
-          <h3 id="name-signing-a-response-using-ec">
-<a href="#section-b.2.4" class="section-number selfRef">B.2.4. </a><a href="#name-signing-a-response-using-ec" class="section-name selfRef">Signing a Response using ecdsa-p256-sha256</a>
-          </h3>
-<p id="section-b.2.4-1">This example covers portions of the <code>test-response</code> response message using the <code>ecdsa-p256-sha256</code> algorithm
-and the key <code>test-key-ecc-p256</code>.<a href="#section-b.2.4-1" class="pilcrow">¶</a></p>
-<p id="section-b.2.4-2">The corresponding signature input is:<a href="#section-b.2.4-2" class="pilcrow">¶</a></p>
-<div class="artwork art-text alignLeft" id="section-b.2.4-3">
+<section id="appendix-B.2.4">
+          <h4 id="name-signing-a-response-using-ec">
+<a href="#appendix-B.2.4" class="section-number selfRef">B.2.4. </a><a href="#name-signing-a-response-using-ec" class="section-name selfRef">Signing a Response using ecdsa-p256-sha256</a>
+          </h4>
+<p id="appendix-B.2.4-1">This example covers portions of the <code>test-response</code> response message using the <code>ecdsa-p256-sha256</code> algorithm
+and the key <code>test-key-ecc-p256</code>.<a href="#appendix-B.2.4-1" class="pilcrow">¶</a></p>
+<p id="appendix-B.2.4-2">The corresponding signature input is:<a href="#appendix-B.2.4-2" class="pilcrow">¶</a></p>
+<div class="artwork art-text alignLeft" id="appendix-B.2.4-3">
 <pre>
 "date": Tue, 20 Apr 2021 02:07:56 GMT
 "content-type": application/json
@@ -3039,44 +3039,44 @@ and the key <code>test-key-ecc-p256</code>.<a href="#section-b.2.4-1" class="pil
 "content-length": 18
 "@signature-params": ("date" "content-type" "digest" \
   "content-length");created=1618884475;keyid="test-key-ecc-p256"
-</pre><a href="#section-b.2.4-3" class="pilcrow">¶</a>
+</pre><a href="#appendix-B.2.4-3" class="pilcrow">¶</a>
 </div>
-<p id="section-b.2.4-4">This results in the following <code>Signature-Input</code> and <code>Signature</code> headers being added to the message:<a href="#section-b.2.4-4" class="pilcrow">¶</a></p>
-<div class="artwork art-text alignLeft" id="section-b.2.4-5">
+<p id="appendix-B.2.4-4">This results in the following <code>Signature-Input</code> and <code>Signature</code> headers being added to the message:<a href="#appendix-B.2.4-4" class="pilcrow">¶</a></p>
+<div class="artwork art-text alignLeft" id="appendix-B.2.4-5">
 <pre>
 Signature-Input: sig1=("date" "content-type" "digest" \
   "content-length");created=1618884475;keyid="test-key-ecc-p256"
 Signature: \
   sig1=:3zmRDW6r50/RETqqhtx/N5sdd5eTh8xmHdsrYRK9wK4rCNEwLjCOBlcQxTL\
   2oJTCWGRkuqE2r9KyqZFY9jd+NQ==:
-</pre><a href="#section-b.2.4-5" class="pilcrow">¶</a>
+</pre><a href="#appendix-B.2.4-5" class="pilcrow">¶</a>
 </div>
 </section>
 </div>
 <div id="signing-a-request-using-hmac-sha256">
-<section id="section-b.2.5">
-          <h3 id="name-signing-a-request-using-hma">
-<a href="#section-b.2.5" class="section-number selfRef">B.2.5. </a><a href="#name-signing-a-request-using-hma" class="section-name selfRef">Signing a Request using hmac-sha256</a>
-          </h3>
-<p id="section-b.2.5-1">This example covers portions of the <code>test-request</code> using the <code>hmac-sha256</code> algorithm and the
-secret <code>test-shared-secret</code>.<a href="#section-b.2.5-1" class="pilcrow">¶</a></p>
-<p id="section-b.2.5-2">The corresponding signature input is:<a href="#section-b.2.5-2" class="pilcrow">¶</a></p>
-<div class="artwork art-text alignLeft" id="section-b.2.5-3">
+<section id="appendix-B.2.5">
+          <h4 id="name-signing-a-request-using-hma">
+<a href="#appendix-B.2.5" class="section-number selfRef">B.2.5. </a><a href="#name-signing-a-request-using-hma" class="section-name selfRef">Signing a Request using hmac-sha256</a>
+          </h4>
+<p id="appendix-B.2.5-1">This example covers portions of the <code>test-request</code> using the <code>hmac-sha256</code> algorithm and the
+secret <code>test-shared-secret</code>.<a href="#appendix-B.2.5-1" class="pilcrow">¶</a></p>
+<p id="appendix-B.2.5-2">The corresponding signature input is:<a href="#appendix-B.2.5-2" class="pilcrow">¶</a></p>
+<div class="artwork art-text alignLeft" id="appendix-B.2.5-3">
 <pre>
 "host": example.com
 "date": Tue, 20 Apr 2021 02:07:55 GMT
 "content-type": application/json
 "@signature-params": ("host" "date" "content-type")\
   ;created=1618884475;keyid="test-shared-secret"
-</pre><a href="#section-b.2.5-3" class="pilcrow">¶</a>
+</pre><a href="#appendix-B.2.5-3" class="pilcrow">¶</a>
 </div>
-<p id="section-b.2.5-4">This results in the following <code>Signature-Input</code> and <code>Signature</code> headers being added to the message:<a href="#section-b.2.5-4" class="pilcrow">¶</a></p>
-<div class="artwork art-text alignLeft" id="section-b.2.5-5">
+<p id="appendix-B.2.5-4">This results in the following <code>Signature-Input</code> and <code>Signature</code> headers being added to the message:<a href="#appendix-B.2.5-4" class="pilcrow">¶</a></p>
+<div class="artwork art-text alignLeft" id="appendix-B.2.5-5">
 <pre>
 Signature-Input: sig1=("host" "date" "content-type")\
   ;created=1618884475;keyid="test-shared-secret"
 Signature: sig1=:x54VEvVOb0TMw8fUbsWdUHqqqOre+K7sB/LqHQvnfaQ=:
-</pre><a href="#section-b.2.5-5" class="pilcrow">¶</a>
+</pre><a href="#appendix-B.2.5-5" class="pilcrow">¶</a>
 </div>
 </section>
 </div>
@@ -3085,12 +3085,12 @@ Signature: sig1=:x54VEvVOb0TMw8fUbsWdUHqqqOre+K7sB/LqHQvnfaQ=:
 </section>
 </div>
 <div id="acknowledgements">
-<section id="section-appendix.c">
+<section id="appendix-C">
       <h2 id="name-acknowledgements">
 <a href="#name-acknowledgements" class="section-name selfRef">Acknowledgements</a>
       </h2>
-<p id="section-appendix.c-1">This specification was initially based on the draft-cavage-http-signatures internet draft.  The editors would like to thank the authors of that draft, Mark Cavage and Manu Sporny, for their work on that draft and their continuing contributions.<a href="#section-appendix.c-1" class="pilcrow">¶</a></p>
-<p id="section-appendix.c-2">The editors would also like to thank the following individuals for feedback, insight, and implementation of this draft and its predecessors (in alphabetical order):
+<p id="appendix-C-1">This specification was initially based on the draft-cavage-http-signatures internet draft.  The editors would like to thank the authors of that draft, Mark Cavage and Manu Sporny, for their work on that draft and their continuing contributions.<a href="#appendix-C-1" class="pilcrow">¶</a></p>
+<p id="appendix-C-2">The editors would also like to thank the following individuals for feedback, insight, and implementation of this draft and its predecessors (in alphabetical order):
 Mark Adamcin,
 Mark Allen,
 Paul Annesley,
@@ -3123,144 +3123,144 @@ Dirk Stein,
 Henry Story,
 Lukasz Szewc,
 Chris Webber, and
-Jeffrey Yasskin.<a href="#section-appendix.c-2" class="pilcrow">¶</a></p>
+Jeffrey Yasskin.<a href="#appendix-C-2" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="document-history">
-<section id="section-appendix.d">
+<section id="appendix-D">
       <h2 id="name-document-history">
 <a href="#name-document-history" class="section-name selfRef">Document History</a>
       </h2>
-<p id="section-appendix.d-1"><em>RFC EDITOR: please remove this section before publication</em><a href="#section-appendix.d-1" class="pilcrow">¶</a></p>
+<p id="appendix-D-1"><em>RFC EDITOR: please remove this section before publication</em><a href="#appendix-D-1" class="pilcrow">¶</a></p>
 <ul class="normal">
-<li class="normal" id="section-appendix.d-2.1">
-          <p id="section-appendix.d-2.1.1">draft-ietf-httpbis-message-signatures<a href="#section-appendix.d-2.1.1" class="pilcrow">¶</a></p>
+<li class="normal" id="appendix-D-2.1">
+          <p id="appendix-D-2.1.1">draft-ietf-httpbis-message-signatures<a href="#appendix-D-2.1.1" class="pilcrow">¶</a></p>
 <ul class="normal">
-<li class="normal" id="section-appendix.d-2.1.2.1">-06<a href="#section-appendix.d-2.1.2.1" class="pilcrow">¶</a>
+<li class="normal" id="appendix-D-2.1.2.1">-06<a href="#appendix-D-2.1.2.1" class="pilcrow">¶</a>
 </li>
-            <li class="normal" id="section-appendix.d-2.1.2.2">
-              <p id="section-appendix.d-2.1.2.2.1">-05<a href="#section-appendix.d-2.1.2.2.1" class="pilcrow">¶</a></p>
+            <li class="normal" id="appendix-D-2.1.2.2">
+              <p id="appendix-D-2.1.2.2.1">-05<a href="#appendix-D-2.1.2.2.1" class="pilcrow">¶</a></p>
 <ul class="normal">
-<li class="normal" id="section-appendix.d-2.1.2.2.2.1">Remove list prefixes.<a href="#section-appendix.d-2.1.2.2.2.1" class="pilcrow">¶</a>
+<li class="normal" id="appendix-D-2.1.2.2.2.1">Remove list prefixes.<a href="#appendix-D-2.1.2.2.2.1" class="pilcrow">¶</a>
 </li>
-                <li class="normal" id="section-appendix.d-2.1.2.2.2.2">Clarify signature algorithm parameters.<a href="#section-appendix.d-2.1.2.2.2.2" class="pilcrow">¶</a>
+                <li class="normal" id="appendix-D-2.1.2.2.2.2">Clarify signature algorithm parameters.<a href="#appendix-D-2.1.2.2.2.2" class="pilcrow">¶</a>
 </li>
-                <li class="normal" id="section-appendix.d-2.1.2.2.2.3">Update and fix examples.<a href="#section-appendix.d-2.1.2.2.2.3" class="pilcrow">¶</a>
+                <li class="normal" id="appendix-D-2.1.2.2.2.3">Update and fix examples.<a href="#appendix-D-2.1.2.2.2.3" class="pilcrow">¶</a>
 </li>
-                <li class="normal" id="section-appendix.d-2.1.2.2.2.4">Add examples for ECC and HMAC.<a href="#section-appendix.d-2.1.2.2.2.4" class="pilcrow">¶</a>
+                <li class="normal" id="appendix-D-2.1.2.2.2.4">Add examples for ECC and HMAC.<a href="#appendix-D-2.1.2.2.2.4" class="pilcrow">¶</a>
 </li>
               </ul>
 </li>
-            <li class="normal" id="section-appendix.d-2.1.2.3">
-              <p id="section-appendix.d-2.1.2.3.1">-04<a href="#section-appendix.d-2.1.2.3.1" class="pilcrow">¶</a></p>
+            <li class="normal" id="appendix-D-2.1.2.3">
+              <p id="appendix-D-2.1.2.3.1">-04<a href="#appendix-D-2.1.2.3.1" class="pilcrow">¶</a></p>
 <ul class="normal">
-<li class="normal" id="section-appendix.d-2.1.2.3.2.1">Moved signature component definitions up to intro.<a href="#section-appendix.d-2.1.2.3.2.1" class="pilcrow">¶</a>
+<li class="normal" id="appendix-D-2.1.2.3.2.1">Moved signature component definitions up to intro.<a href="#appendix-D-2.1.2.3.2.1" class="pilcrow">¶</a>
 </li>
-                <li class="normal" id="section-appendix.d-2.1.2.3.2.2">Created formal function definitions for algorithms to fulfill.<a href="#section-appendix.d-2.1.2.3.2.2" class="pilcrow">¶</a>
+                <li class="normal" id="appendix-D-2.1.2.3.2.2">Created formal function definitions for algorithms to fulfill.<a href="#appendix-D-2.1.2.3.2.2" class="pilcrow">¶</a>
 </li>
-                <li class="normal" id="section-appendix.d-2.1.2.3.2.3">Updated all examples.<a href="#section-appendix.d-2.1.2.3.2.3" class="pilcrow">¶</a>
+                <li class="normal" id="appendix-D-2.1.2.3.2.3">Updated all examples.<a href="#appendix-D-2.1.2.3.2.3" class="pilcrow">¶</a>
 </li>
-                <li class="normal" id="section-appendix.d-2.1.2.3.2.4">Added nonce parameter field.<a href="#section-appendix.d-2.1.2.3.2.4" class="pilcrow">¶</a>
+                <li class="normal" id="appendix-D-2.1.2.3.2.4">Added nonce parameter field.<a href="#appendix-D-2.1.2.3.2.4" class="pilcrow">¶</a>
 </li>
               </ul>
 </li>
-            <li class="normal" id="section-appendix.d-2.1.2.4">
-              <p id="section-appendix.d-2.1.2.4.1">-03<a href="#section-appendix.d-2.1.2.4.1" class="pilcrow">¶</a></p>
+            <li class="normal" id="appendix-D-2.1.2.4">
+              <p id="appendix-D-2.1.2.4.1">-03<a href="#appendix-D-2.1.2.4.1" class="pilcrow">¶</a></p>
 <ul class="normal">
-<li class="normal" id="section-appendix.d-2.1.2.4.2.1">Clarified signing and verification processes.<a href="#section-appendix.d-2.1.2.4.2.1" class="pilcrow">¶</a>
+<li class="normal" id="appendix-D-2.1.2.4.2.1">Clarified signing and verification processes.<a href="#appendix-D-2.1.2.4.2.1" class="pilcrow">¶</a>
 </li>
-                <li class="normal" id="section-appendix.d-2.1.2.4.2.2">Updated algorithm and key selection method.<a href="#section-appendix.d-2.1.2.4.2.2" class="pilcrow">¶</a>
+                <li class="normal" id="appendix-D-2.1.2.4.2.2">Updated algorithm and key selection method.<a href="#appendix-D-2.1.2.4.2.2" class="pilcrow">¶</a>
 </li>
-                <li class="normal" id="section-appendix.d-2.1.2.4.2.3">Clearly defined core algorithm set.<a href="#section-appendix.d-2.1.2.4.2.3" class="pilcrow">¶</a>
+                <li class="normal" id="appendix-D-2.1.2.4.2.3">Clearly defined core algorithm set.<a href="#appendix-D-2.1.2.4.2.3" class="pilcrow">¶</a>
 </li>
-                <li class="normal" id="section-appendix.d-2.1.2.4.2.4">Defined JOSE signature mapping process.<a href="#section-appendix.d-2.1.2.4.2.4" class="pilcrow">¶</a>
+                <li class="normal" id="appendix-D-2.1.2.4.2.4">Defined JOSE signature mapping process.<a href="#appendix-D-2.1.2.4.2.4" class="pilcrow">¶</a>
 </li>
-                <li class="normal" id="section-appendix.d-2.1.2.4.2.5">Removed legacy signature methods.<a href="#section-appendix.d-2.1.2.4.2.5" class="pilcrow">¶</a>
+                <li class="normal" id="appendix-D-2.1.2.4.2.5">Removed legacy signature methods.<a href="#appendix-D-2.1.2.4.2.5" class="pilcrow">¶</a>
 </li>
-                <li class="normal" id="section-appendix.d-2.1.2.4.2.6">Define signature parameters separately from "signature" object model.<a href="#section-appendix.d-2.1.2.4.2.6" class="pilcrow">¶</a>
+                <li class="normal" id="appendix-D-2.1.2.4.2.6">Define signature parameters separately from "signature" object model.<a href="#appendix-D-2.1.2.4.2.6" class="pilcrow">¶</a>
 </li>
-                <li class="normal" id="section-appendix.d-2.1.2.4.2.7">Define serialization values for signature-input header based on signature input.<a href="#section-appendix.d-2.1.2.4.2.7" class="pilcrow">¶</a>
+                <li class="normal" id="appendix-D-2.1.2.4.2.7">Define serialization values for signature-input header based on signature input.<a href="#appendix-D-2.1.2.4.2.7" class="pilcrow">¶</a>
 </li>
               </ul>
 </li>
-            <li class="normal" id="section-appendix.d-2.1.2.5">
-              <p id="section-appendix.d-2.1.2.5.1">-02<a href="#section-appendix.d-2.1.2.5.1" class="pilcrow">¶</a></p>
+            <li class="normal" id="appendix-D-2.1.2.5">
+              <p id="appendix-D-2.1.2.5.1">-02<a href="#appendix-D-2.1.2.5.1" class="pilcrow">¶</a></p>
 <ul class="normal">
-<li class="normal" id="section-appendix.d-2.1.2.5.2.1">Removed editorial comments on document sources.<a href="#section-appendix.d-2.1.2.5.2.1" class="pilcrow">¶</a>
+<li class="normal" id="appendix-D-2.1.2.5.2.1">Removed editorial comments on document sources.<a href="#appendix-D-2.1.2.5.2.1" class="pilcrow">¶</a>
 </li>
-                <li class="normal" id="section-appendix.d-2.1.2.5.2.2">Removed in-document issues list in favor of tracked issues.<a href="#section-appendix.d-2.1.2.5.2.2" class="pilcrow">¶</a>
+                <li class="normal" id="appendix-D-2.1.2.5.2.2">Removed in-document issues list in favor of tracked issues.<a href="#appendix-D-2.1.2.5.2.2" class="pilcrow">¶</a>
 </li>
-                <li class="normal" id="section-appendix.d-2.1.2.5.2.3">Replaced unstructured <code>Signature</code> header with <code>Signature-Input</code> and <code>Signature</code> Dictionary Structured Header Fields.<a href="#section-appendix.d-2.1.2.5.2.3" class="pilcrow">¶</a>
+                <li class="normal" id="appendix-D-2.1.2.5.2.3">Replaced unstructured <code>Signature</code> header with <code>Signature-Input</code> and <code>Signature</code> Dictionary Structured Header Fields.<a href="#appendix-D-2.1.2.5.2.3" class="pilcrow">¶</a>
 </li>
-                <li class="normal" id="section-appendix.d-2.1.2.5.2.4">Defined content identifiers for individual Dictionary members, e.g., <code>"x-dictionary-field";key=member-name</code>.<a href="#section-appendix.d-2.1.2.5.2.4" class="pilcrow">¶</a>
+                <li class="normal" id="appendix-D-2.1.2.5.2.4">Defined content identifiers for individual Dictionary members, e.g., <code>"x-dictionary-field";key=member-name</code>.<a href="#appendix-D-2.1.2.5.2.4" class="pilcrow">¶</a>
 </li>
-                <li class="normal" id="section-appendix.d-2.1.2.5.2.5">Defined content identifiers for first N members of a List, e.g., <code>"x-list-field":prefix=4</code>.<a href="#section-appendix.d-2.1.2.5.2.5" class="pilcrow">¶</a>
+                <li class="normal" id="appendix-D-2.1.2.5.2.5">Defined content identifiers for first N members of a List, e.g., <code>"x-list-field":prefix=4</code>.<a href="#appendix-D-2.1.2.5.2.5" class="pilcrow">¶</a>
 </li>
-                <li class="normal" id="section-appendix.d-2.1.2.5.2.6">Fixed up examples.<a href="#section-appendix.d-2.1.2.5.2.6" class="pilcrow">¶</a>
+                <li class="normal" id="appendix-D-2.1.2.5.2.6">Fixed up examples.<a href="#appendix-D-2.1.2.5.2.6" class="pilcrow">¶</a>
 </li>
-                <li class="normal" id="section-appendix.d-2.1.2.5.2.7">Updated introduction now that it's adopted.<a href="#section-appendix.d-2.1.2.5.2.7" class="pilcrow">¶</a>
+                <li class="normal" id="appendix-D-2.1.2.5.2.7">Updated introduction now that it's adopted.<a href="#appendix-D-2.1.2.5.2.7" class="pilcrow">¶</a>
 </li>
-                <li class="normal" id="section-appendix.d-2.1.2.5.2.8">Defined specialty content identifiers and a means to extend them.<a href="#section-appendix.d-2.1.2.5.2.8" class="pilcrow">¶</a>
+                <li class="normal" id="appendix-D-2.1.2.5.2.8">Defined specialty content identifiers and a means to extend them.<a href="#appendix-D-2.1.2.5.2.8" class="pilcrow">¶</a>
 </li>
-                <li class="normal" id="section-appendix.d-2.1.2.5.2.9">Required signature parameters to be included in signature.<a href="#section-appendix.d-2.1.2.5.2.9" class="pilcrow">¶</a>
+                <li class="normal" id="appendix-D-2.1.2.5.2.9">Required signature parameters to be included in signature.<a href="#appendix-D-2.1.2.5.2.9" class="pilcrow">¶</a>
 </li>
-                <li class="normal" id="section-appendix.d-2.1.2.5.2.10">Added guidance on backwards compatibility, detection, and use of signature methods.<a href="#section-appendix.d-2.1.2.5.2.10" class="pilcrow">¶</a>
+                <li class="normal" id="appendix-D-2.1.2.5.2.10">Added guidance on backwards compatibility, detection, and use of signature methods.<a href="#appendix-D-2.1.2.5.2.10" class="pilcrow">¶</a>
 </li>
               </ul>
 </li>
-            <li class="normal" id="section-appendix.d-2.1.2.6">
-              <p id="section-appendix.d-2.1.2.6.1">-01<a href="#section-appendix.d-2.1.2.6.1" class="pilcrow">¶</a></p>
+            <li class="normal" id="appendix-D-2.1.2.6">
+              <p id="appendix-D-2.1.2.6.1">-01<a href="#appendix-D-2.1.2.6.1" class="pilcrow">¶</a></p>
 <ul class="normal">
-<li class="normal" id="section-appendix.d-2.1.2.6.2.1">Strengthened requirement for content identifiers for header fields to be lower-case (changed from SHOULD to MUST).<a href="#section-appendix.d-2.1.2.6.2.1" class="pilcrow">¶</a>
+<li class="normal" id="appendix-D-2.1.2.6.2.1">Strengthened requirement for content identifiers for header fields to be lower-case (changed from SHOULD to MUST).<a href="#appendix-D-2.1.2.6.2.1" class="pilcrow">¶</a>
 </li>
-                <li class="normal" id="section-appendix.d-2.1.2.6.2.2">Added real example values for Creation Time and Expiration Time.<a href="#section-appendix.d-2.1.2.6.2.2" class="pilcrow">¶</a>
+                <li class="normal" id="appendix-D-2.1.2.6.2.2">Added real example values for Creation Time and Expiration Time.<a href="#appendix-D-2.1.2.6.2.2" class="pilcrow">¶</a>
 </li>
-                <li class="normal" id="section-appendix.d-2.1.2.6.2.3">Minor editorial corrections and readability improvements.<a href="#section-appendix.d-2.1.2.6.2.3" class="pilcrow">¶</a>
+                <li class="normal" id="appendix-D-2.1.2.6.2.3">Minor editorial corrections and readability improvements.<a href="#appendix-D-2.1.2.6.2.3" class="pilcrow">¶</a>
 </li>
               </ul>
 </li>
-            <li class="normal" id="section-appendix.d-2.1.2.7">
-              <p id="section-appendix.d-2.1.2.7.1">-00<a href="#section-appendix.d-2.1.2.7.1" class="pilcrow">¶</a></p>
+            <li class="normal" id="appendix-D-2.1.2.7">
+              <p id="appendix-D-2.1.2.7.1">-00<a href="#appendix-D-2.1.2.7.1" class="pilcrow">¶</a></p>
 <ul class="normal">
-<li class="normal" id="section-appendix.d-2.1.2.7.2.1">Initialized from draft-richanna-http-message-signatures-00, following adoption by the working group.<a href="#section-appendix.d-2.1.2.7.2.1" class="pilcrow">¶</a>
+<li class="normal" id="appendix-D-2.1.2.7.2.1">Initialized from draft-richanna-http-message-signatures-00, following adoption by the working group.<a href="#appendix-D-2.1.2.7.2.1" class="pilcrow">¶</a>
 </li>
               </ul>
 </li>
           </ul>
 </li>
-        <li class="normal" id="section-appendix.d-2.2">
-          <p id="section-appendix.d-2.2.1">draft-richanna-http-message-signatures<a href="#section-appendix.d-2.2.1" class="pilcrow">¶</a></p>
+        <li class="normal" id="appendix-D-2.2">
+          <p id="appendix-D-2.2.1">draft-richanna-http-message-signatures<a href="#appendix-D-2.2.1" class="pilcrow">¶</a></p>
 <ul class="normal">
-<li class="normal" id="section-appendix.d-2.2.2.1">
-              <p id="section-appendix.d-2.2.2.1.1">-00<a href="#section-appendix.d-2.2.2.1.1" class="pilcrow">¶</a></p>
+<li class="normal" id="appendix-D-2.2.2.1">
+              <p id="appendix-D-2.2.2.1.1">-00<a href="#appendix-D-2.2.2.1.1" class="pilcrow">¶</a></p>
 <ul class="normal">
-<li class="normal" id="section-appendix.d-2.2.2.1.2.1">Converted to xml2rfc v3 and reformatted to comply with RFC style guides.<a href="#section-appendix.d-2.2.2.1.2.1" class="pilcrow">¶</a>
+<li class="normal" id="appendix-D-2.2.2.1.2.1">Converted to xml2rfc v3 and reformatted to comply with RFC style guides.<a href="#appendix-D-2.2.2.1.2.1" class="pilcrow">¶</a>
 </li>
-                <li class="normal" id="section-appendix.d-2.2.2.1.2.2">Removed Signature auth-scheme definition and related content.<a href="#section-appendix.d-2.2.2.1.2.2" class="pilcrow">¶</a>
+                <li class="normal" id="appendix-D-2.2.2.1.2.2">Removed Signature auth-scheme definition and related content.<a href="#appendix-D-2.2.2.1.2.2" class="pilcrow">¶</a>
 </li>
-                <li class="normal" id="section-appendix.d-2.2.2.1.2.3">Removed conflicting normative requirements for use of algorithm parameter. Now MUST NOT be relied upon.<a href="#section-appendix.d-2.2.2.1.2.3" class="pilcrow">¶</a>
+                <li class="normal" id="appendix-D-2.2.2.1.2.3">Removed conflicting normative requirements for use of algorithm parameter. Now MUST NOT be relied upon.<a href="#appendix-D-2.2.2.1.2.3" class="pilcrow">¶</a>
 </li>
-                <li class="normal" id="section-appendix.d-2.2.2.1.2.4">Removed Extensions appendix.<a href="#section-appendix.d-2.2.2.1.2.4" class="pilcrow">¶</a>
+                <li class="normal" id="appendix-D-2.2.2.1.2.4">Removed Extensions appendix.<a href="#appendix-D-2.2.2.1.2.4" class="pilcrow">¶</a>
 </li>
-                <li class="normal" id="section-appendix.d-2.2.2.1.2.5">Rewrote abstract and introduction to explain context and need, and challenges inherent in signing HTTP messages.<a href="#section-appendix.d-2.2.2.1.2.5" class="pilcrow">¶</a>
+                <li class="normal" id="appendix-D-2.2.2.1.2.5">Rewrote abstract and introduction to explain context and need, and challenges inherent in signing HTTP messages.<a href="#appendix-D-2.2.2.1.2.5" class="pilcrow">¶</a>
 </li>
-                <li class="normal" id="section-appendix.d-2.2.2.1.2.6">Rewrote and heavily expanded algorithm definition, retaining normative requirements.<a href="#section-appendix.d-2.2.2.1.2.6" class="pilcrow">¶</a>
+                <li class="normal" id="appendix-D-2.2.2.1.2.6">Rewrote and heavily expanded algorithm definition, retaining normative requirements.<a href="#appendix-D-2.2.2.1.2.6" class="pilcrow">¶</a>
 </li>
-                <li class="normal" id="section-appendix.d-2.2.2.1.2.7">Added definitions for key terms, referenced RFC 7230 for HTTP terms.<a href="#section-appendix.d-2.2.2.1.2.7" class="pilcrow">¶</a>
+                <li class="normal" id="appendix-D-2.2.2.1.2.7">Added definitions for key terms, referenced RFC 7230 for HTTP terms.<a href="#appendix-D-2.2.2.1.2.7" class="pilcrow">¶</a>
 </li>
-                <li class="normal" id="section-appendix.d-2.2.2.1.2.8">Added examples for canonicalization and signature generation steps.<a href="#section-appendix.d-2.2.2.1.2.8" class="pilcrow">¶</a>
+                <li class="normal" id="appendix-D-2.2.2.1.2.8">Added examples for canonicalization and signature generation steps.<a href="#appendix-D-2.2.2.1.2.8" class="pilcrow">¶</a>
 </li>
-                <li class="normal" id="section-appendix.d-2.2.2.1.2.9">Rewrote Signature header definition, retaining normative requirements.<a href="#section-appendix.d-2.2.2.1.2.9" class="pilcrow">¶</a>
+                <li class="normal" id="appendix-D-2.2.2.1.2.9">Rewrote Signature header definition, retaining normative requirements.<a href="#appendix-D-2.2.2.1.2.9" class="pilcrow">¶</a>
 </li>
-                <li class="normal" id="section-appendix.d-2.2.2.1.2.10">Added default values for algorithm and expires parameters.<a href="#section-appendix.d-2.2.2.1.2.10" class="pilcrow">¶</a>
+                <li class="normal" id="appendix-D-2.2.2.1.2.10">Added default values for algorithm and expires parameters.<a href="#appendix-D-2.2.2.1.2.10" class="pilcrow">¶</a>
 </li>
-                <li class="normal" id="section-appendix.d-2.2.2.1.2.11">Rewrote HTTP Signature Algorithms registry definition. Added change control policy and registry template. Removed suggested URI.<a href="#section-appendix.d-2.2.2.1.2.11" class="pilcrow">¶</a>
+                <li class="normal" id="appendix-D-2.2.2.1.2.11">Rewrote HTTP Signature Algorithms registry definition. Added change control policy and registry template. Removed suggested URI.<a href="#appendix-D-2.2.2.1.2.11" class="pilcrow">¶</a>
 </li>
-                <li class="normal" id="section-appendix.d-2.2.2.1.2.12">Added IANA HTTP Signature Parameter registry.<a href="#section-appendix.d-2.2.2.1.2.12" class="pilcrow">¶</a>
+                <li class="normal" id="appendix-D-2.2.2.1.2.12">Added IANA HTTP Signature Parameter registry.<a href="#appendix-D-2.2.2.1.2.12" class="pilcrow">¶</a>
 </li>
-                <li class="normal" id="section-appendix.d-2.2.2.1.2.13">Added additional normative and informative references.<a href="#section-appendix.d-2.2.2.1.2.13" class="pilcrow">¶</a>
+                <li class="normal" id="appendix-D-2.2.2.1.2.13">Added additional normative and informative references.<a href="#appendix-D-2.2.2.1.2.13" class="pilcrow">¶</a>
 </li>
-                <li class="normal" id="section-appendix.d-2.2.2.1.2.14">Added Topics for Working Group Discussion section, to be removed prior to publication as an RFC.<a href="#section-appendix.d-2.2.2.1.2.14" class="pilcrow">¶</a>
+                <li class="normal" id="appendix-D-2.2.2.1.2.14">Added Topics for Working Group Discussion section, to be removed prior to publication as an RFC.<a href="#appendix-D-2.2.2.1.2.14" class="pilcrow">¶</a>
 </li>
               </ul>
 </li>
@@ -3270,7 +3270,7 @@ Jeffrey Yasskin.<a href="#section-appendix.c-2" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="authors-addresses">
-<section id="section-appendix.e">
+<section id="appendix-E">
       <h2 id="name-authors-addresses">
 <a href="#name-authors-addresses" class="section-name selfRef">Authors' Addresses</a>
       </h2>

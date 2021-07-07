@@ -13,16 +13,16 @@ terminating reverse proxy to convey the client certificate of a
 mutually-authenticated TLS connection to the origin server in a common and
 predictable manner. 
     " name="description">
-<meta content="xml2rfc 3.8.0" name="generator">
+<meta content="xml2rfc 3.9.1" name="generator">
 <meta content="http" name="keyword">
 <meta content="client certificate" name="keyword">
 <meta content="draft-ietf-httpbis-client-cert-field" name="ietf.draft">
 <!-- Generator version information:
-  xml2rfc 3.8.0
+  xml2rfc 3.9.1
     Python 3.9.5
     appdirs 1.4.4
     ConfigArgParse 1.3
-    google-i18n-address 2.4.0
+    google-i18n-address 2.5.0
     html5lib 1.1
     intervaltree 3.1.0
     Jinja2 2.11.3
@@ -1015,7 +1015,7 @@ address div.right {
 </tr></thead>
 <tfoot><tr>
 <td class="left">Campbell &amp; Bishop</td>
-<td class="center">Expires 3 January 2022</td>
+<td class="center">Expires 8 January 2022</td>
 <td class="right">[Page]</td>
 </tr></tfoot>
 </table>
@@ -1028,12 +1028,12 @@ address div.right {
 <dd class="internet-draft">draft-ietf-httpbis-client-cert-field</dd>
 <dt class="label-published">Published:</dt>
 <dd class="published">
-<time datetime="2021-07-02" class="published">2 July 2021</time>
+<time datetime="2021-07-07" class="published">7 July 2021</time>
     </dd>
 <dt class="label-intended-status">Intended Status:</dt>
 <dd class="intended-status">Informational</dd>
 <dt class="label-expires">Expires:</dt>
-<dd class="expires"><time datetime="2022-01-03">3 January 2022</time></dd>
+<dd class="expires"><time datetime="2022-01-08">8 January 2022</time></dd>
 <dt class="label-authors">Authors:</dt>
 <dd class="authors">
 <div class="author">
@@ -1083,7 +1083,7 @@ predictable manner.<a href="#section-abstract-1" class="pilcrow">¶</a></p>
         time. It is inappropriate to use Internet-Drafts as reference
         material or to cite them other than as "work in progress."<a href="#section-boilerplate.1-3" class="pilcrow">¶</a></p>
 <p id="section-boilerplate.1-4">
-        This Internet-Draft will expire on 3 January 2022.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
+        This Internet-Draft will expire on 8 January 2022.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="copyright">
@@ -1111,74 +1111,74 @@ predictable manner.<a href="#section-abstract-1" class="pilcrow">¶</a></p>
         <a href="#" onclick="scroll(0,0)" class="toplink">▲</a><h2 id="name-table-of-contents">
 <a href="#name-table-of-contents" class="section-name selfRef">Table of Contents</a>
         </h2>
-<nav class="toc"><ul class="toc ulEmpty compact">
-<li class="toc ulEmpty compact" id="section-toc.1-1.1">
+<nav class="toc"><ul class="compact toc ulBare ulEmpty">
+<li class="compact toc ulBare ulEmpty" id="section-toc.1-1.1">
             <p id="section-toc.1-1.1.1" class="keepWithNext"><a href="#section-1" class="xref">1</a>.  <a href="#name-introduction" class="xref">Introduction</a></p>
-<ul class="toc ulEmpty compact">
-<li class="toc ulEmpty compact" id="section-toc.1-1.1.2.1">
+<ul class="toc ulEmpty compact ulBare">
+<li class="toc ulEmpty compact ulBare" id="section-toc.1-1.1.2.1">
                 <p id="section-toc.1-1.1.2.1.1" class="keepWithNext"><a href="#section-1.1" class="xref">1.1</a>.  <a href="#name-requirements-notation-and-c" class="xref">Requirements Notation and Conventions</a></p>
 </li>
-              <li class="toc ulEmpty compact" id="section-toc.1-1.1.2.2">
+              <li class="toc ulEmpty compact ulBare" id="section-toc.1-1.1.2.2">
                 <p id="section-toc.1-1.1.2.2.1" class="keepWithNext"><a href="#section-1.2" class="xref">1.2</a>.  <a href="#name-terminology" class="xref">Terminology</a></p>
 </li>
             </ul>
 </li>
-          <li class="toc ulEmpty compact" id="section-toc.1-1.2">
+          <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.2">
             <p id="section-toc.1-1.2.1"><a href="#section-2" class="xref">2</a>.  <a href="#name-http-header-field-and-proce" class="xref">HTTP Header Field and Processing Rules</a></p>
-<ul class="toc ulEmpty compact">
-<li class="toc ulEmpty compact" id="section-toc.1-1.2.2.1">
+<ul class="toc ulEmpty compact ulBare">
+<li class="toc ulEmpty compact ulBare" id="section-toc.1-1.2.2.1">
                 <p id="section-toc.1-1.2.2.1.1"><a href="#section-2.1" class="xref">2.1</a>.  <a href="#name-encoding" class="xref">Encoding</a></p>
 </li>
-              <li class="toc ulEmpty compact" id="section-toc.1-1.2.2.2">
+              <li class="toc ulEmpty compact ulBare" id="section-toc.1-1.2.2.2">
                 <p id="section-toc.1-1.2.2.2.1"><a href="#section-2.2" class="xref">2.2</a>.  <a href="#name-client-cert-http-header-fie" class="xref">Client-Cert HTTP Header Field</a></p>
 </li>
-              <li class="toc ulEmpty compact" id="section-toc.1-1.2.2.3">
+              <li class="toc ulEmpty compact ulBare" id="section-toc.1-1.2.2.3">
                 <p id="section-toc.1-1.2.2.3.1"><a href="#section-2.3" class="xref">2.3</a>.  <a href="#name-processing-rules" class="xref">Processing Rules</a></p>
 </li>
             </ul>
 </li>
-          <li class="toc ulEmpty compact" id="section-toc.1-1.3">
+          <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3">
             <p id="section-toc.1-1.3.1"><a href="#section-3" class="xref">3</a>.  <a href="#name-security-considerations" class="xref">Security Considerations</a></p>
 </li>
-          <li class="toc ulEmpty compact" id="section-toc.1-1.4">
+          <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4">
             <p id="section-toc.1-1.4.1"><a href="#section-4" class="xref">4</a>.  <a href="#name-iana-considerations" class="xref">IANA Considerations</a></p>
 </li>
-          <li class="toc ulEmpty compact" id="section-toc.1-1.5">
+          <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5">
             <p id="section-toc.1-1.5.1"><a href="#section-5" class="xref">5</a>.  <a href="#name-references" class="xref">References</a></p>
-<ul class="toc ulEmpty compact">
-<li class="toc ulEmpty compact" id="section-toc.1-1.5.2.1">
+<ul class="toc ulEmpty compact ulBare">
+<li class="toc ulEmpty compact ulBare" id="section-toc.1-1.5.2.1">
                 <p id="section-toc.1-1.5.2.1.1"><a href="#section-5.1" class="xref">5.1</a>.  <a href="#name-normative-references" class="xref">Normative References</a></p>
 </li>
-              <li class="toc ulEmpty compact" id="section-toc.1-1.5.2.2">
+              <li class="toc ulEmpty compact ulBare" id="section-toc.1-1.5.2.2">
                 <p id="section-toc.1-1.5.2.2.1"><a href="#section-5.2" class="xref">5.2</a>.  <a href="#name-informative-references" class="xref">Informative References</a></p>
 </li>
             </ul>
 </li>
-          <li class="toc ulEmpty compact" id="section-toc.1-1.6">
-            <p id="section-toc.1-1.6.1"><a href="#section-appendix.a" class="xref">Appendix A</a>.  <a href="#name-example" class="xref">Example</a></p>
+          <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6">
+            <p id="section-toc.1-1.6.1"><a href="#appendix-A" class="xref">Appendix A</a>.  <a href="#name-example" class="xref">Example</a></p>
 </li>
-          <li class="toc ulEmpty compact" id="section-toc.1-1.7">
-            <p id="section-toc.1-1.7.1"><a href="#section-appendix.b" class="xref">Appendix B</a>.  <a href="#name-considerations-considered" class="xref">Considerations Considered</a></p>
-<ul class="toc ulEmpty compact">
-<li class="toc ulEmpty compact" id="section-toc.1-1.7.2.1">
-                <p id="section-toc.1-1.7.2.1.1"><a href="#section-b.1" class="xref">B.1</a>.  <a href="#name-field-injection" class="xref">Field Injection</a></p>
+          <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.7">
+            <p id="section-toc.1-1.7.1"><a href="#appendix-B" class="xref">Appendix B</a>.  <a href="#name-considerations-considered" class="xref">Considerations Considered</a></p>
+<ul class="toc ulEmpty compact ulBare">
+<li class="toc ulEmpty compact ulBare" id="section-toc.1-1.7.2.1">
+                <p id="section-toc.1-1.7.2.1.1"><a href="#appendix-B.1" class="xref">B.1</a>.  <a href="#name-field-injection" class="xref">Field Injection</a></p>
 </li>
-              <li class="toc ulEmpty compact" id="section-toc.1-1.7.2.2">
-                <p id="section-toc.1-1.7.2.2.1"><a href="#section-b.2" class="xref">B.2</a>.  <a href="#name-the-forwarded-http-extensio" class="xref">The Forwarded HTTP Extension</a></p>
+              <li class="toc ulEmpty compact ulBare" id="section-toc.1-1.7.2.2">
+                <p id="section-toc.1-1.7.2.2.1"><a href="#appendix-B.2" class="xref">B.2</a>.  <a href="#name-the-forwarded-http-extensio" class="xref">The Forwarded HTTP Extension</a></p>
 </li>
-              <li class="toc ulEmpty compact" id="section-toc.1-1.7.2.3">
-                <p id="section-toc.1-1.7.2.3.1"><a href="#section-b.3" class="xref">B.3</a>.  <a href="#name-the-whole-certificate-and-o" class="xref">The Whole Certificate and Only the Whole Certificate</a></p>
+              <li class="toc ulEmpty compact ulBare" id="section-toc.1-1.7.2.3">
+                <p id="section-toc.1-1.7.2.3.1"><a href="#appendix-B.3" class="xref">B.3</a>.  <a href="#name-the-whole-certificate-and-o" class="xref">The Whole Certificate and Only the Whole Certificate</a></p>
 </li>
             </ul>
 </li>
-          <li class="toc ulEmpty compact" id="section-toc.1-1.8">
-            <p id="section-toc.1-1.8.1"><a href="#section-appendix.c" class="xref">Appendix C</a>.  <a href="#name-acknowledgements" class="xref">Acknowledgements</a></p>
+          <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.8">
+            <p id="section-toc.1-1.8.1"><a href="#appendix-C" class="xref">Appendix C</a>.  <a href="#name-acknowledgements" class="xref">Acknowledgements</a></p>
 </li>
-          <li class="toc ulEmpty compact" id="section-toc.1-1.9">
-            <p id="section-toc.1-1.9.1"><a href="#section-appendix.d" class="xref">Appendix D</a>.  <a href="#name-document-history" class="xref">Document History</a></p>
+          <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.9">
+            <p id="section-toc.1-1.9.1"><a href="#appendix-D" class="xref">Appendix D</a>.  <a href="#name-document-history" class="xref">Document History</a></p>
 </li>
-          <li class="toc ulEmpty compact" id="section-toc.1-1.10">
-            <p id="section-toc.1-1.10.1"><a href="#section-appendix.e" class="xref"></a><a href="#name-authors-addresses" class="xref">Authors' Addresses</a></p>
+          <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.10">
+            <p id="section-toc.1-1.10.1"><a href="#appendix-E" class="xref"></a><a href="#name-authors-addresses" class="xref">Authors' Addresses</a></p>
 </li>
         </ul>
 </nav>
@@ -1468,19 +1468,19 @@ Other deployments that meet the requirements set forth herein are also possible.
 </section>
 </section>
 <div id="example">
-<section id="section-appendix.a">
+<section id="appendix-A">
       <h2 id="name-example">
-<a href="#section-appendix.a" class="section-number selfRef">Appendix A. </a><a href="#name-example" class="section-name selfRef">Example</a>
+<a href="#appendix-A" class="section-number selfRef">Appendix A. </a><a href="#name-example" class="section-name selfRef">Example</a>
       </h2>
-<p id="section-appendix.a-1">In a hypothetical example where a TLS client presents the client and
+<p id="appendix-A-1">In a hypothetical example where a TLS client presents the client and
 intermediate certificate from <a href="#example-chain" class="xref">Figure 1</a> when establishing a
 mutually-authenticated TLS connection with the TTRP, the proxy would send the
 <code>Client-Cert</code> field shown in {#example-header} to the backend. Note that line
 breaks and whitespace have been added to the field value in <a href="#example-header" class="xref">Figure 2</a>
-for display and formatting purposes only.<a href="#section-appendix.a-1" class="pilcrow">¶</a></p>
+for display and formatting purposes only.<a href="#appendix-A-1" class="pilcrow">¶</a></p>
 <span id="name-certificate-chain-with-clie"></span><div id="example-chain">
 <figure id="figure-1">
-        <div class="artwork art-text alignLeft" id="section-appendix.a-2.1">
+        <div class="artwork art-text alignLeft" id="appendix-A-2.1">
 <pre>
 -----BEGIN CERTIFICATE-----
 MIIBqDCCAU6gAwIBAgIBBzAKBggqhkjOPQQDAjA6MRswGQYDVQQKDBJMZXQncyBB
@@ -1527,7 +1527,7 @@ YGMg1Qyrkx4CIB4ivz3wQcQkGhcsUZ1SOImd/lq1Q0FLf09rGfLQPWDc
 </div>
 <span id="name-header-field-in-http-reques"></span><div id="example-header">
 <figure id="figure-2">
-        <div class="artwork art-text alignLeft" id="section-appendix.a-3.1">
+        <div class="artwork art-text alignLeft" id="appendix-A-3.1">
 <pre>
 Client-Cert: MIIBqDCCAU6gAwIBAgIBBzAKBggqhkjOPQQDAjA6MRswGQYDVQQKDBJM
  ZXQncyBBdXRoZW50aWNhdGUxGzAZBgNVBAMMEkxBIEludGVybWVkaWF0ZSBDQTAeFw0y
@@ -1547,16 +1547,16 @@ Client-Cert: MIIBqDCCAU6gAwIBAgIBBzAKBggqhkjOPQQDAjA6MRswGQYDVQQKDBJM
 </section>
 </div>
 <div id="considerations-considered">
-<section id="section-appendix.b">
+<section id="appendix-B">
       <h2 id="name-considerations-considered">
-<a href="#section-appendix.b" class="section-number selfRef">Appendix B. </a><a href="#name-considerations-considered" class="section-name selfRef">Considerations Considered</a>
+<a href="#appendix-B" class="section-number selfRef">Appendix B. </a><a href="#name-considerations-considered" class="section-name selfRef">Considerations Considered</a>
       </h2>
 <div id="field-injection">
-<section id="section-b.1">
-        <h2 id="name-field-injection">
-<a href="#section-b.1" class="section-number selfRef">B.1. </a><a href="#name-field-injection" class="section-name selfRef">Field Injection</a>
-        </h2>
-<p id="section-b.1-1">This draft requires that the TTRP sanitize the fields of the incoming request by
+<section id="appendix-B.1">
+        <h3 id="name-field-injection">
+<a href="#appendix-B.1" class="section-number selfRef">B.1. </a><a href="#name-field-injection" class="section-name selfRef">Field Injection</a>
+        </h3>
+<p id="appendix-B.1-1">This draft requires that the TTRP sanitize the fields of the incoming request by
 removing or overwriting any existing instances of the <code>Client-Cert</code> header field
 before dispatching that request to the backend application. Otherwise, a client
 could inject its own <code>Client-Cert</code> field that would appear to the backend to
@@ -1569,15 +1569,15 @@ and it would therefor be inappropriate for this draft to define a one-off
 solution. In the absence of a generic standardized solution existing currently,
 stripping/sanitizing the fields is the de facto means of protecting against
 field injection in practice today. Sanitizing the fields is sufficient when
-properly implemented and is a normative requirement of <a href="#sec" class="xref">Section 3</a>.<a href="#section-b.1-1" class="pilcrow">¶</a></p>
+properly implemented and is a normative requirement of <a href="#sec" class="xref">Section 3</a>.<a href="#appendix-B.1-1" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="the-forwarded-http-extension">
-<section id="section-b.2">
-        <h2 id="name-the-forwarded-http-extensio">
-<a href="#section-b.2" class="section-number selfRef">B.2. </a><a href="#name-the-forwarded-http-extensio" class="section-name selfRef">The Forwarded HTTP Extension</a>
-        </h2>
-<p id="section-b.2-1">The <code>Forwarded</code> HTTP header field defined in <span>[<a href="#RFC7239" class="xref">RFC7239</a>]</span> allows proxy
+<section id="appendix-B.2">
+        <h3 id="name-the-forwarded-http-extensio">
+<a href="#appendix-B.2" class="section-number selfRef">B.2. </a><a href="#name-the-forwarded-http-extensio" class="section-name selfRef">The Forwarded HTTP Extension</a>
+        </h3>
+<p id="appendix-B.2-1">The <code>Forwarded</code> HTTP header field defined in <span>[<a href="#RFC7239" class="xref">RFC7239</a>]</span> allows proxy
 components to disclose information lost in the proxying process. The TLS client
 certificate information of concern to this draft could have been communicated
 with an extension parameter to the <code>Forwarded</code> field; however, doing so
@@ -1591,15 +1591,15 @@ syntax of the <code>Forwarded</code> field is expressive but also more complicat
 would make processing it more cumbersome, and more importantly, make properly
 sanitizing its content as required by <a href="#sec" class="xref">Section 3</a> to prevent field injection
 considerably more difficult and error prone. Thus, this draft opted for the
-flatter and more straightforward structure of a single <code>Client-Cert</code> header.<a href="#section-b.2-1" class="pilcrow">¶</a></p>
+flatter and more straightforward structure of a single <code>Client-Cert</code> header.<a href="#appendix-B.2-1" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="the-whole-certificate-and-only-the-whole-certificate">
-<section id="section-b.3">
-        <h2 id="name-the-whole-certificate-and-o">
-<a href="#section-b.3" class="section-number selfRef">B.3. </a><a href="#name-the-whole-certificate-and-o" class="section-name selfRef">The Whole Certificate and Only the Whole Certificate</a>
-        </h2>
-<p id="section-b.3-1">Different applications will have varying requirements about what information
+<section id="appendix-B.3">
+        <h3 id="name-the-whole-certificate-and-o">
+<a href="#appendix-B.3" class="section-number selfRef">B.3. </a><a href="#name-the-whole-certificate-and-o" class="section-name selfRef">The Whole Certificate and Only the Whole Certificate</a>
+        </h3>
+<p id="appendix-B.3-1">Different applications will have varying requirements about what information
 from the client certificate is needed, such as the subject and/or issuer
 distinguished name, subject alternative name(s), serial number, subject public
 key info, fingerprint, etc.. Furthermore some applications, such as "OAuth 2.0
@@ -1607,127 +1607,127 @@ Mutual-TLS Client Authentication and Certificate-Bound Access Tokens"
 <span>[<a href="#RFC8705" class="xref">RFC8705</a>]</span>, make use of the entire certificate. In order to accommodate the
 latter and ensure wide applicability by not trying to cherry-pick particular
 certificate information, this draft opted to pass the full encoded certificate
-as the value of the <code>Client-Cert</code> field.<a href="#section-b.3-1" class="pilcrow">¶</a></p>
-<p id="section-b.3-2">The handshake and validation of the client certificate (chain) of the
+as the value of the <code>Client-Cert</code> field.<a href="#appendix-B.3-1" class="pilcrow">¶</a></p>
+<p id="appendix-B.3-2">The handshake and validation of the client certificate (chain) of the
 mutually-authenticated TLS connection is performed by the TTRP.  With the
 responsibility of certificate validation falling on the TTRP, only the
 end-entity certificate is passed to the backend - the root Certificate Authority
-is not included nor are any intermediates.<a href="#section-b.3-2" class="pilcrow">¶</a></p>
+is not included nor are any intermediates.<a href="#appendix-B.3-2" class="pilcrow">¶</a></p>
 </section>
 </div>
 </section>
 </div>
 <div id="acknowledgements">
-<section id="section-appendix.c">
+<section id="appendix-C">
       <h2 id="name-acknowledgements">
-<a href="#section-appendix.c" class="section-number selfRef">Appendix C. </a><a href="#name-acknowledgements" class="section-name selfRef">Acknowledgements</a>
+<a href="#appendix-C" class="section-number selfRef">Appendix C. </a><a href="#name-acknowledgements" class="section-name selfRef">Acknowledgements</a>
       </h2>
-<p id="section-appendix.c-1">The author would like to thank the following individuals who've contributed in various ways ranging from just being generally supportive of bringing forth the draft to providing specific feedback or content:<a href="#section-appendix.c-1" class="pilcrow">¶</a></p>
+<p id="appendix-C-1">The author would like to thank the following individuals who've contributed in various ways ranging from just being generally supportive of bringing forth the draft to providing specific feedback or content:<a href="#appendix-C-1" class="pilcrow">¶</a></p>
 <ul class="normal">
-<li class="normal" id="section-appendix.c-2.1">Evan Anderson<a href="#section-appendix.c-2.1" class="pilcrow">¶</a>
+<li class="normal" id="appendix-C-2.1">Evan Anderson<a href="#appendix-C-2.1" class="pilcrow">¶</a>
 </li>
-        <li class="normal" id="section-appendix.c-2.2">Annabelle Backman<a href="#section-appendix.c-2.2" class="pilcrow">¶</a>
+        <li class="normal" id="appendix-C-2.2">Annabelle Backman<a href="#appendix-C-2.2" class="pilcrow">¶</a>
 </li>
-        <li class="normal" id="section-appendix.c-2.3">Mike Bishop<a href="#section-appendix.c-2.3" class="pilcrow">¶</a>
+        <li class="normal" id="appendix-C-2.3">Mike Bishop<a href="#appendix-C-2.3" class="pilcrow">¶</a>
 </li>
-        <li class="normal" id="section-appendix.c-2.4">Rory Hewitt<a href="#section-appendix.c-2.4" class="pilcrow">¶</a>
+        <li class="normal" id="appendix-C-2.4">Rory Hewitt<a href="#appendix-C-2.4" class="pilcrow">¶</a>
 </li>
-        <li class="normal" id="section-appendix.c-2.5">Fredrik Jeansson<a href="#section-appendix.c-2.5" class="pilcrow">¶</a>
+        <li class="normal" id="appendix-C-2.5">Fredrik Jeansson<a href="#appendix-C-2.5" class="pilcrow">¶</a>
 </li>
-        <li class="normal" id="section-appendix.c-2.6">Benjamin Kaduk<a href="#section-appendix.c-2.6" class="pilcrow">¶</a>
+        <li class="normal" id="appendix-C-2.6">Benjamin Kaduk<a href="#appendix-C-2.6" class="pilcrow">¶</a>
 </li>
-        <li class="normal" id="section-appendix.c-2.7">Torsten Lodderstedt<a href="#section-appendix.c-2.7" class="pilcrow">¶</a>
+        <li class="normal" id="appendix-C-2.7">Torsten Lodderstedt<a href="#appendix-C-2.7" class="pilcrow">¶</a>
 </li>
-        <li class="normal" id="section-appendix.c-2.8">Kathleen Moriarty<a href="#section-appendix.c-2.8" class="pilcrow">¶</a>
+        <li class="normal" id="appendix-C-2.8">Kathleen Moriarty<a href="#appendix-C-2.8" class="pilcrow">¶</a>
 </li>
-        <li class="normal" id="section-appendix.c-2.9">Mark Nottingham<a href="#section-appendix.c-2.9" class="pilcrow">¶</a>
+        <li class="normal" id="appendix-C-2.9">Mark Nottingham<a href="#appendix-C-2.9" class="pilcrow">¶</a>
 </li>
-        <li class="normal" id="section-appendix.c-2.10">Mike Ounsworth<a href="#section-appendix.c-2.10" class="pilcrow">¶</a>
+        <li class="normal" id="appendix-C-2.10">Mike Ounsworth<a href="#appendix-C-2.10" class="pilcrow">¶</a>
 </li>
-        <li class="normal" id="section-appendix.c-2.11">Matt Peterson<a href="#section-appendix.c-2.11" class="pilcrow">¶</a>
+        <li class="normal" id="appendix-C-2.11">Matt Peterson<a href="#appendix-C-2.11" class="pilcrow">¶</a>
 </li>
-        <li class="normal" id="section-appendix.c-2.12">Eric Rescorla<a href="#section-appendix.c-2.12" class="pilcrow">¶</a>
+        <li class="normal" id="appendix-C-2.12">Eric Rescorla<a href="#appendix-C-2.12" class="pilcrow">¶</a>
 </li>
-        <li class="normal" id="section-appendix.c-2.13">Justin Richer<a href="#section-appendix.c-2.13" class="pilcrow">¶</a>
+        <li class="normal" id="appendix-C-2.13">Justin Richer<a href="#appendix-C-2.13" class="pilcrow">¶</a>
 </li>
-        <li class="normal" id="section-appendix.c-2.14">Michael Richardson<a href="#section-appendix.c-2.14" class="pilcrow">¶</a>
+        <li class="normal" id="appendix-C-2.14">Michael Richardson<a href="#appendix-C-2.14" class="pilcrow">¶</a>
 </li>
-        <li class="normal" id="section-appendix.c-2.15">Joe Salowey<a href="#section-appendix.c-2.15" class="pilcrow">¶</a>
+        <li class="normal" id="appendix-C-2.15">Joe Salowey<a href="#appendix-C-2.15" class="pilcrow">¶</a>
 </li>
-        <li class="normal" id="section-appendix.c-2.16">Rich Salz<a href="#section-appendix.c-2.16" class="pilcrow">¶</a>
+        <li class="normal" id="appendix-C-2.16">Rich Salz<a href="#appendix-C-2.16" class="pilcrow">¶</a>
 </li>
-        <li class="normal" id="section-appendix.c-2.17">Mohit Sethi<a href="#section-appendix.c-2.17" class="pilcrow">¶</a>
+        <li class="normal" id="appendix-C-2.17">Mohit Sethi<a href="#appendix-C-2.17" class="pilcrow">¶</a>
 </li>
-        <li class="normal" id="section-appendix.c-2.18">Rifaat Shekh-Yusef<a href="#section-appendix.c-2.18" class="pilcrow">¶</a>
+        <li class="normal" id="appendix-C-2.18">Rifaat Shekh-Yusef<a href="#appendix-C-2.18" class="pilcrow">¶</a>
 </li>
-        <li class="normal" id="section-appendix.c-2.19">Travis Spencer<a href="#section-appendix.c-2.19" class="pilcrow">¶</a>
+        <li class="normal" id="appendix-C-2.19">Travis Spencer<a href="#appendix-C-2.19" class="pilcrow">¶</a>
 </li>
-        <li class="normal" id="section-appendix.c-2.20">Nick Sullivan<a href="#section-appendix.c-2.20" class="pilcrow">¶</a>
+        <li class="normal" id="appendix-C-2.20">Nick Sullivan<a href="#appendix-C-2.20" class="pilcrow">¶</a>
 </li>
-        <li class="normal" id="section-appendix.c-2.21">Peter Wu<a href="#section-appendix.c-2.21" class="pilcrow">¶</a>
+        <li class="normal" id="appendix-C-2.21">Peter Wu<a href="#appendix-C-2.21" class="pilcrow">¶</a>
 </li>
-        <li class="normal" id="section-appendix.c-2.22">Hans Zandbelt<a href="#section-appendix.c-2.22" class="pilcrow">¶</a>
+        <li class="normal" id="appendix-C-2.22">Hans Zandbelt<a href="#appendix-C-2.22" class="pilcrow">¶</a>
 </li>
       </ul>
 </section>
 </div>
 <div id="document-history">
-<section id="section-appendix.d">
+<section id="appendix-D">
       <h2 id="name-document-history">
-<a href="#section-appendix.d" class="section-number selfRef">Appendix D. </a><a href="#name-document-history" class="section-name selfRef">Document History</a>
+<a href="#appendix-D" class="section-number selfRef">Appendix D. </a><a href="#name-document-history" class="section-name selfRef">Document History</a>
       </h2>
 <ul class="normal ulEmpty">
-<li class="normal ulEmpty" id="section-appendix.d-1.1">To be removed by the RFC Editor before publication as an RFC<a href="#section-appendix.d-1.1" class="pilcrow">¶</a>
+<li class="normal ulEmpty" id="appendix-D-1.1">To be removed by the RFC Editor before publication as an RFC<a href="#appendix-D-1.1" class="pilcrow">¶</a>
 </li>
       </ul>
-<p id="section-appendix.d-2">draft-ietf-httpbis-client-cert-field-00<a href="#section-appendix.d-2" class="pilcrow">¶</a></p>
+<p id="appendix-D-2">draft-ietf-httpbis-client-cert-field-00<a href="#appendix-D-2" class="pilcrow">¶</a></p>
 <ul class="normal">
-<li class="normal" id="section-appendix.d-3.1">Initial WG revision<a href="#section-appendix.d-3.1" class="pilcrow">¶</a>
+<li class="normal" id="appendix-D-3.1">Initial WG revision<a href="#appendix-D-3.1" class="pilcrow">¶</a>
 </li>
-        <li class="normal" id="section-appendix.d-3.2">Mike Bishop added as co-editor<a href="#section-appendix.d-3.2" class="pilcrow">¶</a>
+        <li class="normal" id="appendix-D-3.2">Mike Bishop added as co-editor<a href="#appendix-D-3.2" class="pilcrow">¶</a>
 </li>
       </ul>
-<p id="section-appendix.d-4">draft-bdc-something-something-certificate-05<a href="#section-appendix.d-4" class="pilcrow">¶</a></p>
+<p id="appendix-D-4">draft-bdc-something-something-certificate-05<a href="#appendix-D-4" class="pilcrow">¶</a></p>
 <ul class="normal">
-<li class="normal" id="section-appendix.d-5.1">Change intended status of the draft to Informational<a href="#section-appendix.d-5.1" class="pilcrow">¶</a>
+<li class="normal" id="appendix-D-5.1">Change intended status of the draft to Informational<a href="#appendix-D-5.1" class="pilcrow">¶</a>
 </li>
-        <li class="normal" id="section-appendix.d-5.2">Editorial updates and (hopefully) clarifications<a href="#section-appendix.d-5.2" class="pilcrow">¶</a>
-</li>
-      </ul>
-<p id="section-appendix.d-6">draft-bdc-something-something-certificate-04<a href="#section-appendix.d-6" class="pilcrow">¶</a></p>
-<ul class="normal">
-<li class="normal" id="section-appendix.d-7.1">Update reference from draft-ietf-oauth-mtls to RFC8705<a href="#section-appendix.d-7.1" class="pilcrow">¶</a>
+        <li class="normal" id="appendix-D-5.2">Editorial updates and (hopefully) clarifications<a href="#appendix-D-5.2" class="pilcrow">¶</a>
 </li>
       </ul>
-<p id="section-appendix.d-8">draft-bdc-something-something-certificate-03<a href="#section-appendix.d-8" class="pilcrow">¶</a></p>
+<p id="appendix-D-6">draft-bdc-something-something-certificate-04<a href="#appendix-D-6" class="pilcrow">¶</a></p>
 <ul class="normal">
-<li class="normal" id="section-appendix.d-9.1">Expanded further discussion notes to capture some of the feedback in and around the presentation of the draft in SECDISPATCH at IETF 107 and add those who've provided such feedback to the acknowledgements<a href="#section-appendix.d-9.1" class="pilcrow">¶</a>
+<li class="normal" id="appendix-D-7.1">Update reference from draft-ietf-oauth-mtls to RFC8705<a href="#appendix-D-7.1" class="pilcrow">¶</a>
 </li>
       </ul>
-<p id="section-appendix.d-10">draft-bdc-something-something-certificate-02<a href="#section-appendix.d-10" class="pilcrow">¶</a></p>
+<p id="appendix-D-8">draft-bdc-something-something-certificate-03<a href="#appendix-D-8" class="pilcrow">¶</a></p>
 <ul class="normal">
-<li class="normal" id="section-appendix.d-11.1">Editorial tweaks + further discussion notes<a href="#section-appendix.d-11.1" class="pilcrow">¶</a>
+<li class="normal" id="appendix-D-9.1">Expanded further discussion notes to capture some of the feedback in and around the presentation of the draft in SECDISPATCH at IETF 107 and add those who've provided such feedback to the acknowledgements<a href="#appendix-D-9.1" class="pilcrow">¶</a>
 </li>
       </ul>
-<p id="section-appendix.d-12">draft-bdc-something-something-certificate-01<a href="#section-appendix.d-12" class="pilcrow">¶</a></p>
+<p id="appendix-D-10">draft-bdc-something-something-certificate-02<a href="#appendix-D-10" class="pilcrow">¶</a></p>
 <ul class="normal">
-<li class="normal" id="section-appendix.d-13.1">Use the RFC v3 Format or die trying<a href="#section-appendix.d-13.1" class="pilcrow">¶</a>
+<li class="normal" id="appendix-D-11.1">Editorial tweaks + further discussion notes<a href="#appendix-D-11.1" class="pilcrow">¶</a>
 </li>
       </ul>
-<p id="section-appendix.d-14">draft-bdc-something-something-certificate-00<a href="#section-appendix.d-14" class="pilcrow">¶</a></p>
+<p id="appendix-D-12">draft-bdc-something-something-certificate-01<a href="#appendix-D-12" class="pilcrow">¶</a></p>
 <ul class="normal">
-<li class="normal" id="section-appendix.d-15.1">Initial draft after a time constrained and rushed <a href="https://datatracker.ietf.org/meeting/106/materials/slides-106-secdispatch-securing-protocols-between-proxies-and-backend-http-servers-00">secdispatch
+<li class="normal" id="appendix-D-13.1">Use the RFC v3 Format or die trying<a href="#appendix-D-13.1" class="pilcrow">¶</a>
+</li>
+      </ul>
+<p id="appendix-D-14">draft-bdc-something-something-certificate-00<a href="#appendix-D-14" class="pilcrow">¶</a></p>
+<ul class="normal">
+<li class="normal" id="appendix-D-15.1">Initial draft after a time constrained and rushed <a href="https://datatracker.ietf.org/meeting/106/materials/slides-106-secdispatch-securing-protocols-between-proxies-and-backend-http-servers-00">secdispatch
 presentation</a>
 at IETF 106 in Singapore with the recommendation to write up a draft (at
 the end of the
 <a href="https://datatracker.ietf.org/meeting/106/materials/minutes-106-secdispatch">minutes</a>)
-and some folks expressing interest despite the rather poor presentation<a href="#section-appendix.d-15.1" class="pilcrow">¶</a>
+and some folks expressing interest despite the rather poor presentation<a href="#appendix-D-15.1" class="pilcrow">¶</a>
 </li>
       </ul>
 </section>
 </div>
 <div id="authors-addresses">
-<section id="section-appendix.e">
+<section id="appendix-E">
       <h2 id="name-authors-addresses">
 <a href="#name-authors-addresses" class="section-name selfRef">Authors' Addresses</a>
       </h2>
