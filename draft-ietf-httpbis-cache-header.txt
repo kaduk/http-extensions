@@ -4,8 +4,8 @@
 
 HTTP                                                       M. Nottingham
 Internet-Draft                                                    Fastly
-Intended status: Standards Track                             7 July 2021
-Expires: 8 January 2022
+Intended status: Standards Track                             9 July 2021
+Expires: 10 January 2022
 
 
               The Cache-Status HTTP Response Header Field
@@ -48,7 +48,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 8 January 2022.
+   This Internet-Draft will expire on 10 January 2022.
 
 Copyright Notice
 
@@ -217,13 +217,15 @@ Table of Contents
       the request was for the complete response)
 
    The most specific reason that the cache is aware of SHOULD be used.
+   See also [I-D.ietf-httpbis-semantics], Section 4.
 
 2.3.  The fwd-status parameter
 
-   "fwd-status" indicates what status code the next hop server returned
-   in response to the request.  Only meaningful when "fwd" is present;
-   if "fwd-status" is not present but "fwd" is, it defaults to the
-   status code sent in the response.
+   "fwd-status" indicates what status code (see
+   [I-D.ietf-httpbis-semantics], Section 15) the next hop server
+   returned in response to the request.  Only meaningful when "fwd" is
+   present; if "fwd-status" is not present but "fwd" is, it defaults to
+   the status code sent in the response.
 
    This parameter is useful to distinguish cases when the next hop
    server sends a 304 Not Modified response to a conditional request, or
@@ -231,30 +233,34 @@ Table of Contents
 
 2.4.  The ttl parameter
 
-   "ttl" indicates the response's remaining freshness lifetime as
-   calculated by the cache, as an integer number of seconds, measured
-   when the response header section is sent by the cache.  This includes
-   freshness assigned by the cache; e.g., through heuristics, local
-   configuration, or other factors.  May be negative, to indicate
-   staleness.
+   "ttl" indicates the response's remaining freshness lifetime (see
+   [I-D.ietf-httpbis-cache], Section 4.2.1) as calculated by the cache,
+   as an integer number of seconds, measured when the response header
+   section is sent by the cache.  This includes freshness assigned by
+   the cache; e.g., through heuristics (see [I-D.ietf-httpbis-cache],
+   Section 4.2.2), local configuration, or other factors.  May be
+   negative, to indicate staleness.
 
 2.5.  The stored parameter
 
-   "stored" indicates whether the cache stored the response; a true
-   value indicates that it did.  Only meaningful when fwd is present.
+   "stored" indicates whether the cache stored the response (see
+   [I-D.ietf-httpbis-cache], Section 3); a true value indicates that it
+   did.  Only meaningful when fwd is present.
 
 2.6.  The collapsed parameter
 
    "collapsed" indicates whether this request was collapsed together
-   with one or more other forward requests; if true, the response was
+   with one or more other forward requests (see
+   [I-D.ietf-httpbis-cache], Section 4); if true, the response was
    successfully reused; if not, a new request had to be made.  If not
    present, the request was not collapsed with others.  Only meaningful
    when fwd is present.
 
 2.7.  The key parameter
 
-   "key" conveys a representation of the cache key used for the
-   response.  Note that this may be implementation-specific.
+   "key" conveys a representation of the cache key (see
+   [I-D.ietf-httpbis-cache], Section 2) used for the response.  Note
+   that this may be implementation-specific.
 
 2.8.  The detail parameter
 
@@ -356,7 +362,8 @@ Table of Contents
    procedures.
 
    Also, please create the following entry in the Hypertext Transfer
-   Protocol (HTTP) Field Name Registry:
+   Protocol (HTTP) Field Name Registry defined in
+   [I-D.ietf-httpbis-semantics], Section 18.4:
 
    *  Field name: Cache-Status
 
@@ -407,6 +414,20 @@ Table of Contents
    [RFC8941]  Nottingham, M. and P-H. Kamp, "Structured Field Values for
               HTTP", RFC 8941, DOI 10.17487/RFC8941, February 2021,
               <https://datatracker.ietf.org/doc/html/rfc8941>.
+
+   [I-D.ietf-httpbis-semantics]
+              Fielding, R. T., Nottingham, M., and J. Reschke, "HTTP
+              Semantics", Work in Progress, Internet-Draft, draft-ietf-
+              httpbis-semantics-16, 27 May 2021,
+              <https://datatracker.ietf.org/doc/html/draft-ietf-httpbis-
+              semantics-16>.
+
+   [I-D.ietf-httpbis-cache]
+              Fielding, R. T., Nottingham, M., and J. Reschke, "HTTP
+              Caching", Work in Progress, Internet-Draft, draft-ietf-
+              httpbis-cache-16, 27 May 2021,
+              <https://datatracker.ietf.org/doc/html/draft-ietf-httpbis-
+              cache-16>.
 
    [RFC8174]  Leiba, B., "Ambiguity of Uppercase vs Lowercase in RFC
               2119 Key Words", BCP 14, RFC 8174, DOI 10.17487/RFC8174,
