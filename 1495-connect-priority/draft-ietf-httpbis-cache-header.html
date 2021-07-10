@@ -9,33 +9,196 @@
 <meta content="
        To aid debugging, HTTP caches often append header fields to a response explaining how they handled the request. This specification codifies that practice and updates it to align with HTTP's current caching model. 
     " name="description">
-<meta content="xml2rfc 3.8.0" name="generator">
+<meta content="xml2rfc 3.9.1" name="generator">
 <meta content="http" name="keyword">
 <meta content="cache" name="keyword">
 <meta content="debugging" name="keyword">
 <meta content="x-cache" name="keyword">
 <meta content="draft-ietf-httpbis-cache-header" name="ietf.draft">
 <!-- Generator version information:
-  xml2rfc 3.8.0
-    Python 3.8.10
+  xml2rfc 3.9.1
+    Python 3.9.5
     appdirs 1.4.4
-    ConfigArgParse 1.2.3
-    google-i18n-address 2.4.0
+    ConfigArgParse 1.3
+    google-i18n-address 2.5.0
     html5lib 1.1
     intervaltree 3.1.0
-    Jinja2 2.11.2
+    Jinja2 2.11.3
     kitchen 1.2.6
     lxml 4.6.3
     pycountry 20.7.3
-    pyflakes 2.2.0
-    PyYAML 5.3.1
+    pyflakes 2.3.0
+    PyYAML 5.4.1
     requests 2.25.1
-    setuptools 51.3.3
+    setuptools 52.0.0
     six 1.15.0
 -->
 <link href="draft-ietf-httpbis-cache-header.xml" rel="alternate" type="application/rfc+xml">
 <link href="#copyright" rel="license">
-<style type="text/css">@import url('https://martinthomson.github.io/i-d-template/fonts.css');
+<style type="text/css">@font-face {
+  font-family: 'Lora';
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: local('Lora Italic'), local('Lora-Italic'), url('https://martinthomson.github.io/rfc-css/fonts/lora-italic-cyrillic-ext.woff2') format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+@font-face {
+  font-family: 'Lora';
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: local('Lora Italic'), local('Lora-Italic'), url('https://martinthomson.github.io/rfc-css/fonts/lora-italic-cyrillic-ext.woff2') format('woff2');
+  unicode-range: U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+@font-face {
+  font-family: 'Lora';
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: local('Lora Italic'), local('Lora-Italic'), url('https://martinthomson.github.io/rfc-css/fonts/lora-italic-vietnamese.woff2') format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+1EA0-1EF9, U+20AB;
+}
+@font-face {
+  font-family: 'Lora';
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: local('Lora Italic'), local('Lora-Italic'), url('https://martinthomson.github.io/rfc-css/fonts/lora-italic-latin-ext.woff2') format('woff2');
+  unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+@font-face {
+  font-family: 'Lora';
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: local('Lora Italic'), local('Lora-Italic'), url('https://martinthomson.github.io/rfc-css/fonts/lora-italic-latin.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'Lora';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local('Lora Regular'), local('Lora-Regular'), url('https://martinthomson.github.io/rfc-css/fonts/lora-regular-cyrillic-ext.woff2') format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+@font-face {
+  font-family: 'Lora';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local('Lora Regular'), local('Lora-Regular'), url('https://martinthomson.github.io/rfc-css/fonts/lora-regular-cyrillic.woff2') format('woff2');
+  unicode-range: U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+@font-face {
+  font-family: 'Lora';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local('Lora Regular'), local('Lora-Regular'), url('https://martinthomson.github.io/rfc-css/fonts/lora-regular-vietnamese.woff2') format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+1EA0-1EF9, U+20AB;
+}
+@font-face {
+  font-family: 'Lora';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local('Lora Regular'), local('Lora-Regular'), url('https://martinthomson.github.io/rfc-css/fonts/lora-regular-latin-ext.woff2') format('woff2');
+  unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: 'Lora';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local('Lora Regular'), local('Lora-Regular'), url('https://martinthomson.github.io/rfc-css/fonts/lora-regular-latin.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: 'Lora';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: local('Lora Bold'), local('Lora-Bold'), url('https://martinthomson.github.io/rfc-css/fonts/lora-bold-cyrillic-ext.woff2') format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+@font-face {
+  font-family: 'Lora';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: local('Lora Bold'), local('Lora-Bold'), url('https://martinthomson.github.io/rfc-css/fonts/lora-bold-cyrillic.woff2') format('woff2');
+  unicode-range: U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+@font-face {
+  font-family: 'Lora';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: local('Lora Bold'), local('Lora-Bold'), url('https://martinthomson.github.io/rfc-css/fonts/lora-bold-vietnamese.woff2') format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+1EA0-1EF9, U+20AB;
+}
+@font-face {
+  font-family: 'Lora';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: local('Lora Bold'), local('Lora-Bold'), url('https://martinthomson.github.io/rfc-css/fonts/lora-bold-latin-ext.woff2') format('woff2');
+  unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: 'Lora';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: local('Lora Bold'), local('Lora-Bold'), url('https://martinthomson.github.io/rfc-css/fonts/lora-bold-latin.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: 'Cabin Condensed';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: local('Cabin Condensed SemiBold'), local('CabinCondensed-SemiBold'), url('https://martinthomson.github.io/rfc-css/fonts/cabincondensed-semibold-vietnamese.woff2') format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+1EA0-1EF9, U+20AB;
+}
+@font-face {
+  font-family: 'Cabin Condensed';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: local('Cabin Condensed SemiBold'), local('CabinCondensed-SemiBold'), url('https://martinthomson.github.io/rfc-css/fonts/cabincondensed-semibold-latin-ext.woff2') format('woff2');
+  unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: 'Cabin Condensed';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: local('Cabin Condensed SemiBold'), local('CabinCondensed-SemiBold'), url('https://martinthomson.github.io/rfc-css/fonts/cabincondensed-semibold-latin.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: 'Oxygen Mono';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local('Oxygen Mono'), local('OxygenMono-Regular'), url('https://martinthomson.github.io/rfc-css/fonts/oxygenmono-regular-latin-ext.woff2') format('woff2');
+  unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: 'Oxygen Mono';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local('Oxygen Mono'), local('OxygenMono-Regular'), url('https://martinthomson.github.io/rfc-css/fonts/oxygenmono-regular-latin.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
 
 html {
   --background-color: #fff;
@@ -846,11 +1009,11 @@ address div.right {
 <thead><tr>
 <td class="left">Internet-Draft</td>
 <td class="center">Cache-Status Header</td>
-<td class="right">June 2021</td>
+<td class="right">July 2021</td>
 </tr></thead>
 <tfoot><tr>
 <td class="left">Nottingham</td>
-<td class="center">Expires 16 December 2021</td>
+<td class="center">Expires 11 January 2022</td>
 <td class="right">[Page]</td>
 </tr></tfoot>
 </table>
@@ -863,12 +1026,12 @@ address div.right {
 <dd class="internet-draft">draft-ietf-httpbis-cache-header</dd>
 <dt class="label-published">Published:</dt>
 <dd class="published">
-<time datetime="2021-06-14" class="published">14 June 2021</time>
+<time datetime="2021-07-10" class="published">10 July 2021</time>
     </dd>
 <dt class="label-intended-status">Intended Status:</dt>
 <dd class="intended-status">Standards Track</dd>
 <dt class="label-expires">Expires:</dt>
-<dd class="expires"><time datetime="2021-12-16">16 December 2021</time></dd>
+<dd class="expires"><time datetime="2022-01-11">11 January 2022</time></dd>
 <dt class="label-authors">Author:</dt>
 <dd class="authors">
 <div class="author">
@@ -910,7 +1073,7 @@ address div.right {
         time. It is inappropriate to use Internet-Drafts as reference
         material or to cite them other than as "work in progress."<a href="#section-boilerplate.1-3" class="pilcrow">¶</a></p>
 <p id="section-boilerplate.1-4">
-        This Internet-Draft will expire on 16 December 2021.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
+        This Internet-Draft will expire on 11 January 2022.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="copyright">
@@ -938,69 +1101,69 @@ address div.right {
         <a href="#" onclick="scroll(0,0)" class="toplink">▲</a><h2 id="name-table-of-contents">
 <a href="#name-table-of-contents" class="section-name selfRef">Table of Contents</a>
         </h2>
-<nav class="toc"><ul class="toc ulEmpty compact">
-<li class="toc ulEmpty compact" id="section-toc.1-1.1">
+<nav class="toc"><ul class="ulBare ulEmpty compact toc">
+<li class="ulBare ulEmpty compact toc" id="section-toc.1-1.1">
             <p id="section-toc.1-1.1.1" class="keepWithNext"><a href="#section-1" class="xref">1</a>.  <a href="#name-introduction" class="xref">Introduction</a></p>
-<ul class="toc ulEmpty compact">
-<li class="toc ulEmpty compact" id="section-toc.1-1.1.2.1">
+<ul class="ulBare compact toc ulEmpty">
+<li class="ulBare compact toc ulEmpty" id="section-toc.1-1.1.2.1">
                 <p id="section-toc.1-1.1.2.1.1" class="keepWithNext"><a href="#section-1.1" class="xref">1.1</a>.  <a href="#name-notational-conventions" class="xref">Notational Conventions</a></p>
 </li>
             </ul>
 </li>
-          <li class="toc ulEmpty compact" id="section-toc.1-1.2">
+          <li class="ulBare ulEmpty compact toc" id="section-toc.1-1.2">
             <p id="section-toc.1-1.2.1"><a href="#section-2" class="xref">2</a>.  <a href="#name-the-cache-status-http-respo" class="xref">The Cache-Status HTTP Response Header Field</a></p>
-<ul class="toc ulEmpty compact">
-<li class="toc ulEmpty compact" id="section-toc.1-1.2.2.1">
+<ul class="ulBare compact toc ulEmpty">
+<li class="ulBare compact toc ulEmpty" id="section-toc.1-1.2.2.1">
                 <p id="section-toc.1-1.2.2.1.1" class="keepWithNext"><a href="#section-2.1" class="xref">2.1</a>.  <a href="#name-the-hit-parameter" class="xref">The hit parameter</a></p>
 </li>
-              <li class="toc ulEmpty compact" id="section-toc.1-1.2.2.2">
+              <li class="ulBare compact toc ulEmpty" id="section-toc.1-1.2.2.2">
                 <p id="section-toc.1-1.2.2.2.1"><a href="#section-2.2" class="xref">2.2</a>.  <a href="#name-the-fwd-parameter" class="xref">The fwd parameter</a></p>
 </li>
-              <li class="toc ulEmpty compact" id="section-toc.1-1.2.2.3">
+              <li class="ulBare compact toc ulEmpty" id="section-toc.1-1.2.2.3">
                 <p id="section-toc.1-1.2.2.3.1"><a href="#section-2.3" class="xref">2.3</a>.  <a href="#name-the-fwd-status-parameter" class="xref">The fwd-status parameter</a></p>
 </li>
-              <li class="toc ulEmpty compact" id="section-toc.1-1.2.2.4">
+              <li class="ulBare compact toc ulEmpty" id="section-toc.1-1.2.2.4">
                 <p id="section-toc.1-1.2.2.4.1"><a href="#section-2.4" class="xref">2.4</a>.  <a href="#name-the-ttl-parameter" class="xref">The ttl parameter</a></p>
 </li>
-              <li class="toc ulEmpty compact" id="section-toc.1-1.2.2.5">
+              <li class="ulBare compact toc ulEmpty" id="section-toc.1-1.2.2.5">
                 <p id="section-toc.1-1.2.2.5.1"><a href="#section-2.5" class="xref">2.5</a>.  <a href="#name-the-stored-parameter" class="xref">The stored parameter</a></p>
 </li>
-              <li class="toc ulEmpty compact" id="section-toc.1-1.2.2.6">
+              <li class="ulBare compact toc ulEmpty" id="section-toc.1-1.2.2.6">
                 <p id="section-toc.1-1.2.2.6.1"><a href="#section-2.6" class="xref">2.6</a>.  <a href="#name-the-collapsed-parameter" class="xref">The collapsed parameter</a></p>
 </li>
-              <li class="toc ulEmpty compact" id="section-toc.1-1.2.2.7">
+              <li class="ulBare compact toc ulEmpty" id="section-toc.1-1.2.2.7">
                 <p id="section-toc.1-1.2.2.7.1"><a href="#section-2.7" class="xref">2.7</a>.  <a href="#name-the-key-parameter" class="xref">The key parameter</a></p>
 </li>
-              <li class="toc ulEmpty compact" id="section-toc.1-1.2.2.8">
+              <li class="ulBare compact toc ulEmpty" id="section-toc.1-1.2.2.8">
                 <p id="section-toc.1-1.2.2.8.1"><a href="#section-2.8" class="xref">2.8</a>.  <a href="#name-the-detail-parameter" class="xref">The detail parameter</a></p>
 </li>
             </ul>
 </li>
-          <li class="toc ulEmpty compact" id="section-toc.1-1.3">
+          <li class="ulBare ulEmpty compact toc" id="section-toc.1-1.3">
             <p id="section-toc.1-1.3.1"><a href="#section-3" class="xref">3</a>.  <a href="#name-examples" class="xref">Examples</a></p>
 </li>
-          <li class="toc ulEmpty compact" id="section-toc.1-1.4">
+          <li class="ulBare ulEmpty compact toc" id="section-toc.1-1.4">
             <p id="section-toc.1-1.4.1"><a href="#section-4" class="xref">4</a>.  <a href="#name-defining-new-cache-status-p" class="xref">Defining New Cache-Status Parameters</a></p>
 </li>
-          <li class="toc ulEmpty compact" id="section-toc.1-1.5">
+          <li class="ulBare ulEmpty compact toc" id="section-toc.1-1.5">
             <p id="section-toc.1-1.5.1"><a href="#section-5" class="xref">5</a>.  <a href="#name-iana-considerations" class="xref">IANA Considerations</a></p>
 </li>
-          <li class="toc ulEmpty compact" id="section-toc.1-1.6">
+          <li class="ulBare ulEmpty compact toc" id="section-toc.1-1.6">
             <p id="section-toc.1-1.6.1"><a href="#section-6" class="xref">6</a>.  <a href="#name-security-considerations" class="xref">Security Considerations</a></p>
 </li>
-          <li class="toc ulEmpty compact" id="section-toc.1-1.7">
+          <li class="ulBare ulEmpty compact toc" id="section-toc.1-1.7">
             <p id="section-toc.1-1.7.1"><a href="#section-7" class="xref">7</a>.  <a href="#name-references" class="xref">References</a></p>
-<ul class="toc ulEmpty compact">
-<li class="toc ulEmpty compact" id="section-toc.1-1.7.2.1">
+<ul class="ulBare compact toc ulEmpty">
+<li class="ulBare compact toc ulEmpty" id="section-toc.1-1.7.2.1">
                 <p id="section-toc.1-1.7.2.1.1"><a href="#section-7.1" class="xref">7.1</a>.  <a href="#name-normative-references" class="xref">Normative References</a></p>
 </li>
-              <li class="toc ulEmpty compact" id="section-toc.1-1.7.2.2">
+              <li class="ulBare compact toc ulEmpty" id="section-toc.1-1.7.2.2">
                 <p id="section-toc.1-1.7.2.2.1"><a href="#section-7.2" class="xref">7.2</a>.  <a href="#name-informative-references" class="xref">Informative References</a></p>
 </li>
             </ul>
 </li>
-          <li class="toc ulEmpty compact" id="section-toc.1-1.8">
-            <p id="section-toc.1-1.8.1"><a href="#section-appendix.a" class="xref"></a><a href="#name-authors-address" class="xref">Author's Address</a></p>
+          <li class="ulBare ulEmpty compact toc" id="section-toc.1-1.8">
+            <p id="section-toc.1-1.8.1"><a href="#appendix-A" class="xref"></a><a href="#name-authors-address" class="xref">Author's Address</a></p>
 </li>
         </ul>
 </nav>
@@ -1037,7 +1200,7 @@ Cache-Status   = sf-list
 </pre><a href="#section-2-3" class="pilcrow">¶</a>
 </div>
 <p id="section-2-4">Each member of the list represents a cache that has handled the request. The first member of the list represents the cache closest to the origin server, and the last member of the list represents the cache closest to the user (possibly including the user agent's cache itself, if it appends a value).<a href="#section-2-4" class="pilcrow">¶</a></p>
-<p id="section-2-5">The Cache-Status header field is only applicable to responses that are generated by an origin server. An intermediary SHOULD NOT append a Cache-Status member to responses that it generates, even if that intermediary contains a cache, except when the generated response is based upon a stored response (e.g., a 304 Not Modified or 206 Partial Content).<a href="#section-2-5" class="pilcrow">¶</a></p>
+<p id="section-2-5">The Cache-Status header field is only applicable to responses that have been generated by an origin server. An intermediary SHOULD NOT append a Cache-Status member to responses that it generates, even if that intermediary contains a cache, except when the generated response is based upon a stored response (e.g., a 304 Not Modified or 206 Partial Content).<a href="#section-2-5" class="pilcrow">¶</a></p>
 <p id="section-2-6">Caches determine when it is appropriate to add the Cache-Status header field to a response. Some might add it to all responses, whereas others might only do so when specifically configured to, or when the request contains a header field that activates a debugging mode.<a href="#section-2-6" class="pilcrow">¶</a></p>
 <p id="section-2-7">When adding a value to the Cache-Status header field, caches SHOULD preserve the existing field value, to allow debugging of the entire chain of caches handling the request.<a href="#section-2-7" class="pilcrow">¶</a></p>
 <p id="section-2-8">Each list member identifies the cache that inserted it and MUST be a String or Token. Depending on the deployment, this might be a product or service name (e.g., ExampleCache or "Example CDN"), a hostname ("cache-3.example.com"), an IP address, or a generated string.<a href="#section-2-8" class="pilcrow">¶</a></p>
@@ -1091,7 +1254,7 @@ detail       = sf-token / sf-string
           <li class="normal" id="section-2.2-3.8">partial - The cache was able to select a partial response for the request, but it did not contain all of the requested ranges (or the request was for the complete response)<a href="#section-2.2-3.8" class="pilcrow">¶</a>
 </li>
         </ul>
-<p id="section-2.2-4">The most specific reason that the cache is aware of SHOULD be used.<a href="#section-2.2-4" class="pilcrow">¶</a></p>
+<p id="section-2.2-4">The most specific reason that the cache is aware of SHOULD be used. See also <span>[<a href="#I-D.ietf-httpbis-semantics" class="xref">I-D.ietf-httpbis-semantics</a>], <a href="https://datatracker.ietf.org/doc/html/draft-ietf-httpbis-semantics-16#section-4" class="relref">Section 4</a></span>.<a href="#section-2.2-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="the-fwd-status-parameter">
@@ -1099,7 +1262,7 @@ detail       = sf-token / sf-string
         <h3 id="name-the-fwd-status-parameter">
 <a href="#section-2.3" class="section-number selfRef">2.3. </a><a href="#name-the-fwd-status-parameter" class="section-name selfRef">The fwd-status parameter</a>
         </h3>
-<p id="section-2.3-1">"fwd-status" indicates what status code the next hop server returned in response to the request. Only meaningful when "fwd" is present; if "fwd-status" is not present but "fwd" is, it defaults to the status code sent in the response.<a href="#section-2.3-1" class="pilcrow">¶</a></p>
+<p id="section-2.3-1">"fwd-status" indicates what status code (see <span>[<a href="#I-D.ietf-httpbis-semantics" class="xref">I-D.ietf-httpbis-semantics</a>], <a href="https://datatracker.ietf.org/doc/html/draft-ietf-httpbis-semantics-16#section-15" class="relref">Section 15</a></span>) the next hop server returned in response to the request. Only meaningful when "fwd" is present; if "fwd-status" is not present but "fwd" is, it defaults to the status code sent in the response.<a href="#section-2.3-1" class="pilcrow">¶</a></p>
 <p id="section-2.3-2">This parameter is useful to distinguish cases when the next hop server sends a 304 Not Modified response to a conditional request, or a 206 Partial Response because of a range request.<a href="#section-2.3-2" class="pilcrow">¶</a></p>
 </section>
 </div>
@@ -1108,7 +1271,7 @@ detail       = sf-token / sf-string
         <h3 id="name-the-ttl-parameter">
 <a href="#section-2.4" class="section-number selfRef">2.4. </a><a href="#name-the-ttl-parameter" class="section-name selfRef">The ttl parameter</a>
         </h3>
-<p id="section-2.4-1">"ttl" indicates the response's remaining freshness lifetime as calculated by the cache, as an integer number of seconds, measured when the response header section is sent by the cache. This includes freshness assigned by the cache; e.g., through heuristics, local configuration, or other factors. May be negative, to indicate staleness.<a href="#section-2.4-1" class="pilcrow">¶</a></p>
+<p id="section-2.4-1">"ttl" indicates the response's remaining freshness lifetime (see <span>[<a href="#I-D.ietf-httpbis-cache" class="xref">I-D.ietf-httpbis-cache</a>], <a href="https://datatracker.ietf.org/doc/html/draft-ietf-httpbis-cache-16#section-4.2.1" class="relref">Section 4.2.1</a></span>) as calculated by the cache, as an integer number of seconds, measured when the response header section is sent by the cache. This includes freshness assigned by the cache; e.g., through heuristics (see <span>[<a href="#I-D.ietf-httpbis-cache" class="xref">I-D.ietf-httpbis-cache</a>], <a href="https://datatracker.ietf.org/doc/html/draft-ietf-httpbis-cache-16#section-4.2.2" class="relref">Section 4.2.2</a></span>), local configuration, or other factors. May be negative, to indicate staleness.<a href="#section-2.4-1" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="the-stored-parameter">
@@ -1116,7 +1279,7 @@ detail       = sf-token / sf-string
         <h3 id="name-the-stored-parameter">
 <a href="#section-2.5" class="section-number selfRef">2.5. </a><a href="#name-the-stored-parameter" class="section-name selfRef">The stored parameter</a>
         </h3>
-<p id="section-2.5-1">"stored" indicates whether the cache stored the response; a true value indicates that it did. Only meaningful when fwd is present.<a href="#section-2.5-1" class="pilcrow">¶</a></p>
+<p id="section-2.5-1">"stored" indicates whether the cache stored the response (see <span>[<a href="#I-D.ietf-httpbis-cache" class="xref">I-D.ietf-httpbis-cache</a>], <a href="https://datatracker.ietf.org/doc/html/draft-ietf-httpbis-cache-16#section-3" class="relref">Section 3</a></span>); a true value indicates that it did. Only meaningful when fwd is present.<a href="#section-2.5-1" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="the-collapsed-parameter">
@@ -1124,7 +1287,7 @@ detail       = sf-token / sf-string
         <h3 id="name-the-collapsed-parameter">
 <a href="#section-2.6" class="section-number selfRef">2.6. </a><a href="#name-the-collapsed-parameter" class="section-name selfRef">The collapsed parameter</a>
         </h3>
-<p id="section-2.6-1">"collapsed" indicates whether this request was collapsed together with one or more other forward requests; if true, the response was successfully reused; if not, a new request had to be made. If not present, the request was not collapsed with others. Only meaningful when fwd is present.<a href="#section-2.6-1" class="pilcrow">¶</a></p>
+<p id="section-2.6-1">"collapsed" indicates whether this request was collapsed together with one or more other forward requests (see <span>[<a href="#I-D.ietf-httpbis-cache" class="xref">I-D.ietf-httpbis-cache</a>], <a href="https://datatracker.ietf.org/doc/html/draft-ietf-httpbis-cache-16#section-4" class="relref">Section 4</a></span>); if true, the response was successfully reused; if not, a new request had to be made. If not present, the request was not collapsed with others. Only meaningful when fwd is present.<a href="#section-2.6-1" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="the-key-parameter">
@@ -1132,7 +1295,7 @@ detail       = sf-token / sf-string
         <h3 id="name-the-key-parameter">
 <a href="#section-2.7" class="section-number selfRef">2.7. </a><a href="#name-the-key-parameter" class="section-name selfRef">The key parameter</a>
         </h3>
-<p id="section-2.7-1">"key" conveys a representation of the cache key used for the response. Note that this may be implementation-specific.<a href="#section-2.7-1" class="pilcrow">¶</a></p>
+<p id="section-2.7-1">"key" conveys a representation of the cache key (see <span>[<a href="#I-D.ietf-httpbis-cache" class="xref">I-D.ietf-httpbis-cache</a>], <a href="https://datatracker.ietf.org/doc/html/draft-ietf-httpbis-cache-16#section-2" class="relref">Section 2</a></span>) used for the response. Note that this may be implementation-specific.<a href="#section-2.7-1" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="the-detail-parameter">
@@ -1243,6 +1406,17 @@ Cache-Status: OriginCache; hit; ttl=1100,
 <a href="#section-5" class="section-number selfRef">5. </a><a href="#name-iana-considerations" class="section-name selfRef">IANA Considerations</a>
       </h2>
 <p id="section-5-1">Upon publication, please create the HTTP Cache-Status Parameters registry at <a href="https://iana.org/assignments/http-cache-status">https://iana.org/assignments/http-cache-status</a> and populate it with the types defined in <a href="#field" class="xref">Section 2</a>; see <a href="#register" class="xref">Section 4</a> for its associated procedures.<a href="#section-5-1" class="pilcrow">¶</a></p>
+<p id="section-5-2">Also, please create the following entry in the Hypertext Transfer Protocol (HTTP) Field Name Registry defined in <span>[<a href="#I-D.ietf-httpbis-semantics" class="xref">I-D.ietf-httpbis-semantics</a>], <a href="https://datatracker.ietf.org/doc/html/draft-ietf-httpbis-semantics-16#section-18.4" class="relref">Section 18.4</a></span>:<a href="#section-5-2" class="pilcrow">¶</a></p>
+<ul class="normal">
+<li class="normal" id="section-5-3.1">Field name: Cache-Status<a href="#section-5-3.1" class="pilcrow">¶</a>
+</li>
+        <li class="normal" id="section-5-3.2">Status: permanent<a href="#section-5-3.2" class="pilcrow">¶</a>
+</li>
+        <li class="normal" id="section-5-3.3">Specification document: [this document]<a href="#section-5-3.3" class="pilcrow">¶</a>
+</li>
+        <li class="normal" id="section-5-3.4">Comments:<a href="#section-5-3.4" class="pilcrow">¶</a>
+</li>
+      </ul>
 </section>
 </div>
 <div id="security-considerations">
@@ -1277,6 +1451,14 @@ Cache-Status: OriginCache; hit; ttl=1100,
         <dd>
 <span class="refAuthor">Nottingham, M.</span> and <span class="refAuthor">P-H. Kamp</span>, <span class="refTitle">"Structured Field Values for HTTP"</span>, <span class="seriesInfo">RFC 8941</span>, <span class="seriesInfo">DOI 10.17487/RFC8941</span>, <time datetime="2021-02" class="refDate">February 2021</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/rfc8941">https://datatracker.ietf.org/doc/html/rfc8941</a>&gt;</span>. </dd>
 <dd class="break"></dd>
+<dt id="I-D.ietf-httpbis-semantics">[I-D.ietf-httpbis-semantics]</dt>
+        <dd>
+<span class="refAuthor">Fielding, R. T.</span>, <span class="refAuthor">Nottingham, M.</span>, and <span class="refAuthor">J. Reschke</span>, <span class="refTitle">"HTTP Semantics"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-httpbis-semantics-16</span>, <time datetime="2021-05-27" class="refDate">27 May 2021</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-ietf-httpbis-semantics-16">https://datatracker.ietf.org/doc/html/draft-ietf-httpbis-semantics-16</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="I-D.ietf-httpbis-cache">[I-D.ietf-httpbis-cache]</dt>
+        <dd>
+<span class="refAuthor">Fielding, R. T.</span>, <span class="refAuthor">Nottingham, M.</span>, and <span class="refAuthor">J. Reschke</span>, <span class="refTitle">"HTTP Caching"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-httpbis-cache-16</span>, <time datetime="2021-05-27" class="refDate">27 May 2021</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-ietf-httpbis-cache-16">https://datatracker.ietf.org/doc/html/draft-ietf-httpbis-cache-16</a>&gt;</span>. </dd>
+<dd class="break"></dd>
 <dt id="RFC8174">[RFC8174]</dt>
         <dd>
 <span class="refAuthor">Leiba, B.</span>, <span class="refTitle">"Ambiguity of Uppercase vs Lowercase in RFC 2119 Key Words"</span>, <span class="seriesInfo">BCP 14</span>, <span class="seriesInfo">RFC 8174</span>, <span class="seriesInfo">DOI 10.17487/RFC8174</span>, <time datetime="2017-05" class="refDate">May 2017</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/rfc8174">https://datatracker.ietf.org/doc/html/rfc8174</a>&gt;</span>. </dd>
@@ -1300,7 +1482,7 @@ Cache-Status: OriginCache; hit; ttl=1100,
 </section>
 </section>
 <div id="authors-addresses">
-<section id="section-appendix.a">
+<section id="appendix-A">
       <h2 id="name-authors-address">
 <a href="#name-authors-address" class="section-name selfRef">Author's Address</a>
       </h2>
