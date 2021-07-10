@@ -5,8 +5,8 @@
 HTTP                                                              K. Oku
 Internet-Draft                                                    Fastly
 Intended status: Standards Track                               L. Pardue
-Expires: 10 January 2022                                      Cloudflare
-                                                             9 July 2021
+Expires: 11 January 2022                                      Cloudflare
+                                                            10 July 2021
 
 
                Extensible Prioritization Scheme for HTTP
@@ -55,7 +55,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 10 January 2022.
+   This Internet-Draft will expire on 11 January 2022.
 
 Copyright Notice
 
@@ -77,31 +77,32 @@ Table of Contents
      1.1.  Notational Conventions
    2.  Motivation for Replacing HTTP/2 Priorities
      2.1.  Disabling HTTP/2 Priorities
-   3.  Priority Parameters
-     3.1.  Urgency
-     3.2.  Incremental
-     3.3.  Defining New Parameters
-       3.3.1.  Registration
-   4.  The Priority HTTP Header Field
-   5.  Reprioritization
-   6.  The PRIORITY_UPDATE Frame
-     6.1.  HTTP/2 PRIORITY_UPDATE Frame
-     6.2.  HTTP/3 PRIORITY_UPDATE Frame
-   7.  Merging Client- and Server-Driven Parameters
-   8.  Client Scheduling
-   9.  Server Scheduling
-     9.1.  Intermediaries with Multiple Backend Connections
-   10. Retransmission Scheduling
-   11. Fairness
-     11.1.  Coalescing Intermediaries
-     11.2.  HTTP/1.x Back Ends
-     11.3.  Intentional Introduction of Unfairness
-   12. Why use an End-to-End Header Field?
-   13. Security Considerations
-   14. IANA Considerations
-   15. References
-     15.1.  Normative References
-     15.2.  Informative References
+   3.  Applicability of the Extensible Priority Scheme
+   4.  Priority Parameters
+     4.1.  Urgency
+     4.2.  Incremental
+     4.3.  Defining New Parameters
+       4.3.1.  Registration
+   5.  The Priority HTTP Header Field
+   6.  Reprioritization
+   7.  The PRIORITY_UPDATE Frame
+     7.1.  HTTP/2 PRIORITY_UPDATE Frame
+     7.2.  HTTP/3 PRIORITY_UPDATE Frame
+   8.  Merging Client- and Server-Driven Parameters
+   9.  Client Scheduling
+   10. Server Scheduling
+     10.1.  Intermediaries with Multiple Backend Connections
+   11. Retransmission Scheduling
+   12. Fairness
+     12.1.  Coalescing Intermediaries
+     12.2.  HTTP/1.x Back Ends
+     12.3.  Intentional Introduction of Unfairness
+   13. Why use an End-to-End Header Field?
+   14. Security Considerations
+   15. IANA Considerations
+   16. References
+     16.1.  Normative References
+     16.2.  Informative References
    Appendix A.  Acknowledgements
    Appendix B.  Change Log
      B.1.  Since draft-ietf-httpbis-priority-01
@@ -252,12 +253,12 @@ Table of Contents
    Until the client receives the SETTINGS frame from the server, the
    client SHOULD send the signals of the HTTP/2 priority scheme (see
    Section 2) and the signals of this prioritization scheme (see
-   Section 4 and Section 6.1).  When the client receives the first
+   Section 5 and Section 7.1).  When the client receives the first
    SETTINGS frame that contains the SETTINGS_DEPRECATE_HTTP2_PRIORITIES
    parameter with value of 1, it SHOULD stop sending the HTTP/2 priority
    signals.  If the value was 0 or if the settings parameter was absent,
-   it SHOULD stop sending PRIORITY_UPDATE frames (Section 6.1), but MAY
-   continue sending the Priority header field (Section 4), as it is an
+   it SHOULD stop sending PRIORITY_UPDATE frames (Section 7.1), but MAY
+   continue sending the Priority header field (Section 5), as it is an
    end-to-end signal that might be useful to nodes behind the server
    that the client is directly connected to.
 
@@ -269,18 +270,29 @@ Table of Contents
 
    Where both endpoints disable HTTP/2 priorities, the client is
    expected to send this scheme's priority signal.  Handling of omitted
-   signals is described in Section 3.
+   signals is described in Section 4.
 
-3.  Priority Parameters
+3.  Applicability of the Extensible Priority Scheme
+
+   The priority scheme defined by this document considers only the
+   prioritization of HTTP messages and tunnels, see Section 9,
+   Section 10, and {TODO: xref to CONNECT, depends on
+   https://github.com/httpwg/http-extensions/pull/1544}
+
+   Where HTTP extensions change stream behavior or define new data
+   carriage mechanisms, they MAY also define how this priority scheme
+   can be applied.
+
+4.  Priority Parameters
 
    The priority information is a sequence of key-value pairs, providing
    room for future extensions.  Each key-value pair represents a
    priority parameter.
 
-   The Priority HTTP header field (Section 4) is an end-to-end way to
+   The Priority HTTP header field (Section 5) is an end-to-end way to
    transmit this set of parameters when a request or a response is
    issued.  In order to reprioritize a request, HTTP-version-specific
-   frames (Section 6.1 and Section 6.2) are used by clients to transmit
+   frames (Section 7.1 and Section 7.2) are used by clients to transmit
    the same information on a single hop.  If intermediaries want to
    specify prioritization on a multiplexed HTTP connection, they SHOULD
    use a PRIORITY_UPDATE frame and SHOULD NOT change the Priority header
@@ -293,12 +305,12 @@ Table of Contents
    parameters.  When receiving an HTTP request that does not carry these
    priority parameters, a server SHOULD act as if their default values
    were specified.  Note that handling of omitted parameters is
-   different when processing an HTTP response; see Section 7.
+   different when processing an HTTP response; see Section 8.
 
    Unknown parameters, parameters with out-of-range values or values of
    unexpected types MUST be ignored.
 
-3.1.  Urgency
+4.1.  Urgency
 
    The urgency parameter ("u") takes an integer between 0 and 7, in
    descending order of priority.  This range provides sufficient
@@ -324,13 +336,13 @@ Table of Contents
    A client that fetches a document that likely consists of multiple
    HTTP resources (e.g., HTML) SHOULD assign the default urgency level
    to the main resource.  This convention allows servers to refine the
-   urgency using knowledge specific to the web-site (see Section 7).
+   urgency using knowledge specific to the web-site (see Section 8).
 
    The lowest urgency level (7) is reserved for background tasks such as
    delivery of software updates.  This urgency level SHOULD NOT be used
    for fetching responses that have impact on user interaction.
 
-3.2.  Incremental
+4.2.  Incremental
 
    The incremental parameter ("i") takes an sf-boolean as the value that
    indicates if an HTTP response can be processed incrementally, i.e.
@@ -360,7 +372,7 @@ Table of Contents
    :path = /image.jpg
    priority = u=5, i
 
-3.3.  Defining New Parameters
+4.3.  Defining New Parameters
 
    When attempting to define new parameters, care must be taken so that
    they do not adversely interfere with prioritization performed by
@@ -386,7 +398,7 @@ Table of Contents
    correspondingly specific (e.g., with a prefix that identifies the
    vendor, application or deployment).
 
-3.3.1.  Registration
+4.3.1.  Registration
 
    New Priority parameters can be defined by registering them in the
    HTTP Priority Parameters Registry.
@@ -401,7 +413,7 @@ Table of Contents
    *  Community feedback
 
    *  If the parameters are sufficiently well-defined and adhere to the
-      guidance provided in Section 3.3.
+      guidance provided in Section 4.3.
 
    Registration requests should use the following template:
 
@@ -415,14 +427,14 @@ Table of Contents
    (https://iana.org/assignments/http-priority) for details on where to
    send registration requests.
 
-4.  The Priority HTTP Header Field
+5.  The Priority HTTP Header Field
 
    The Priority HTTP header field can appear in requests and responses.
    A client uses it to specify the priority of the response.  A server
    uses it to inform the client that the priority was overwritten.  An
    intermediary can use the Priority information from client requests
    and server responses to correct or amend the precedence to suit it
-   (see Section 7).
+   (see Section 8).
 
    The Priority header field is an end-to-end signal of the request
    priority from the client or the response priority from the server.
@@ -438,7 +450,7 @@ Table of Contents
    An endpoint that fails to parse the Priority header field SHOULD use
    default parameter values.
 
-5.  Reprioritization
+6.  Reprioritization
 
    After a client sends a request, it may be beneficial to change the
    priority of the response.  As an example, a web browser might issue a
@@ -447,10 +459,10 @@ Table of Contents
    when the user navigates to a page which references the new JavaScript
    file, while the prefetch is in progress, the browser would send a
    reprioritization signal with the priority field value set to "u=0".
-   The PRIORITY_UPDATE frame (Section 6) can be used for such
+   The PRIORITY_UPDATE frame (Section 7) can be used for such
    reprioritization.
 
-6.  The PRIORITY_UPDATE Frame
+7.  The PRIORITY_UPDATE Frame
 
    This document specifies a new PRIORITY_UPDATE frame for HTTP/2
    ([HTTP2]) and HTTP/3 ([HTTP3]).  It carries priority parameters and
@@ -474,7 +486,7 @@ Table of Contents
    H3_FRAME_ERROR.
 
    A client MAY send a PRIORITY_UPDATE frame before the stream that it
-   references is open (except for HTTP/2 push streams; see Section 6.1).
+   references is open (except for HTTP/2 push streams; see Section 7.1).
    Furthermore, HTTP/3 offers no guaranteed ordering across streams,
    which could cause the frame to be received earlier than intended.
    Either case leads to a race condition where a server receives a
@@ -490,7 +502,7 @@ Table of Contents
    storing only the most recently received frame limits resource
    commitment.
 
-6.1.  HTTP/2 PRIORITY_UPDATE Frame
+7.1.  HTTP/2 PRIORITY_UPDATE Frame
 
    The HTTP/2 PRIORITY_UPDATE frame (type=0x10) is used by clients to
    signal the initial priority of a response, or to reprioritize a
@@ -553,7 +565,7 @@ Table of Contents
    If a client receives a PRIORITY_UPDATE frame, it MUST respond with a
    connection error of type PROTOCOL_ERROR.
 
-6.2.  HTTP/3 PRIORITY_UPDATE Frame
+7.2.  HTTP/3 PRIORITY_UPDATE Frame
 
    The HTTP/3 PRIORITY_UPDATE frame (type=0xF0700 or 0xF0701) is used by
    clients to signal the initial priority of a response, or to
@@ -605,7 +617,7 @@ Table of Contents
    client receives a PRIORITY_UPDATE frame, this MUST be treated as a
    connection error of type H3_FRAME_UNEXPECTED.
 
-7.  Merging Client- and Server-Driven Parameters
+8.  Merging Client- and Server-Driven Parameters
 
    It is not always the case that the client has the best understanding
    of how the HTTP responses deserve to be prioritized.  The server
@@ -630,7 +642,7 @@ Table of Contents
    server's disinterest in changing the client-provided value.  This is
    different from the logic being defined for the request header field,
    in which omission of a priority parameter implies the use of their
-   default values (see Section 3).
+   default values (see Section 4).
 
    As a non-normative example, when the client sends an HTTP request
    with the urgency parameter set to "5" and the incremental parameter
@@ -654,12 +666,12 @@ Table of Contents
    specified by the client, as the server did not specify the
    incremental("i") parameter.
 
-8.  Client Scheduling
+9.  Client Scheduling
 
    A client MAY use priority values to make local processing or
    scheduling choices about the requests it initiates.
 
-9.  Server Scheduling
+10.  Server Scheduling
 
    Priority signals are input to a prioritization process.  They do not
    guarantee any particular processing or transmission order for one
@@ -679,11 +691,11 @@ Table of Contents
    signals.  Servers can use other information to prioritize responses.
 
    It is RECOMMENDED that, when possible, servers respect the urgency
-   parameter (Section 3.1), sending higher urgency responses before
+   parameter (Section 4.1), sending higher urgency responses before
    lower urgency responses.
 
    It is RECOMMENDED that, when possible, servers respect the
-   incremental parameter (Section 3.2).  Non-incremental responses of
+   incremental parameter (Section 4.2).  Non-incremental responses of
    the same urgency SHOULD be served one-by-one based on the Stream ID,
    which corresponds to the order in which clients make requests.  Doing
    so ensures that clients can use request ordering to influence
@@ -730,13 +742,13 @@ Table of Contents
    concept of parameter value defaults applies slightly differently
    because there is no explicit client-signalled initial priority.  A
    server can apply priority signals provided in an origin response; see
-   the merging guidance given in Section 7.  In the absence of origin
+   the merging guidance given in Section 8.  In the absence of origin
    signals, applying default parameter values could be suboptimal.  How
    ever a server decides to schedule a pushed response, it can signal
    the intended priority to the client by including the Priority field
    in a PUSH_PROMISE or HEADERS frame.
 
-9.1.  Intermediaries with Multiple Backend Connections
+10.1.  Intermediaries with Multiple Backend Connections
 
    An intermediary serving an HTTP connection might split requests over
    multiple backend connections.  When it applies prioritization rules
@@ -753,7 +765,7 @@ Table of Contents
    Similarly, servers SHOULD allocate some amount of bandwidths to
    streams acting as tunnels.
 
-10.  Retransmission Scheduling
+11.  Retransmission Scheduling
 
    Transport protocols such as TCP and QUIC provide reliability by
    detecting packet losses and retransmitting lost information.  While
@@ -783,7 +795,7 @@ Table of Contents
    priorities might use the relative priority of streams when choosing
    probe data.
 
-11.  Fairness
+12.  Fairness
 
    As a general guideline, a server SHOULD NOT use priority information
    for making schedule decisions across multiple connections, unless it
@@ -795,7 +807,7 @@ Table of Contents
    problematic and presents possible mitigations, or where unfairness is
    desirable.
 
-11.1.  Coalescing Intermediaries
+12.1.  Coalescing Intermediaries
 
    When an intermediary coalesces HTTP requests coming from multiple
    clients into one HTTP/2 or HTTP/3 connection going to the backend
@@ -828,7 +840,7 @@ Table of Contents
 
    *  Via ([RFC7230], Section 5.7.1)
 
-11.2.  HTTP/1.x Back Ends
+12.2.  HTTP/1.x Back Ends
 
    It is common for CDN infrastructure to support different HTTP
    versions on the front end and back end.  For instance, the client-
@@ -843,7 +855,7 @@ Table of Contents
    can be scoped to individual end clients.  Authentication and other
    session information might provide this linkability.
 
-11.3.  Intentional Introduction of Unfairness
+12.3.  Intentional Introduction of Unfairness
 
    It is sometimes beneficial to deprioritize the transmission of one
    connection over others, knowing that doing so introduces a certain
@@ -855,7 +867,7 @@ Table of Contents
    software update images.  Doing so improves responsiveness of other
    connections at the cost of delaying the delivery of updates.
 
-12.  Why use an End-to-End Header Field?
+13.  Why use an End-to-End Header Field?
 
    Contrary to the prioritization scheme of HTTP/2 that uses a hop-by-
    hop frame, the Priority header field is defined as end-to-end.
@@ -880,7 +892,7 @@ Table of Contents
    textual value makes the prioritization scheme extensible; see the
    discussion below.
 
-13.  Security Considerations
+14.  Security Considerations
 
    [CVE-2019-9513] aka "Resource Loop", is a DoS attack based on
    manipulation of the HTTP/2 priority tree.  Extensible priorities does
@@ -917,7 +929,7 @@ Table of Contents
    depending on the information that is available to them from the QUIC
    transport layer.  TODO: so what can we suggest?
 
-14.  IANA Considerations
+15.  IANA Considerations
 
    This specification registers the following entry in the Permanent
    Message Header Field Names registry established by [RFC3864]:
@@ -966,12 +978,12 @@ Table of Contents
    Upon publication, please create the HTTP Priority Parameters registry
    at https://iana.org/assignments/http-priority
    (https://iana.org/assignments/http-priority) and populate it with the
-   types defined in Section 3; see Section 3.3.1 for its associated
+   types defined in Section 4; see Section 4.3.1 for its associated
    procedures.
 
-15.  References
+16.  References
 
-15.1.  Normative References
+16.1.  Normative References
 
    [HTTP2]    Belshe, M., Peon, R., and M. Thomson, Ed., "Hypertext
               Transfer Protocol Version 2 (HTTP/2)", RFC 7540,
@@ -1009,7 +1021,7 @@ Table of Contents
               HTTP", RFC 8941, DOI 10.17487/RFC8941, February 2021,
               <https://datatracker.ietf.org/doc/html/rfc8941>.
 
-15.2.  Informative References
+16.2.  Informative References
 
    [CVE-2019-9513]
               Common Vulnerabilities and Exposures, "CVE-2019-9513", 1
