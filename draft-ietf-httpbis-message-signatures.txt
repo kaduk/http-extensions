@@ -5,10 +5,10 @@
 HTTP                                                     A. Backman, Ed.
 Internet-Draft                                                    Amazon
 Intended status: Standards Track                               J. Richer
-Expires: 11 January 2022                             Bespoke Engineering
+Expires: 12 January 2022                             Bespoke Engineering
                                                                M. Sporny
                                                           Digital Bazaar
-                                                            10 July 2021
+                                                            11 July 2021
 
 
                          Signing HTTP Messages
@@ -53,7 +53,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 11 January 2022.
+   This Internet-Draft will expire on 12 January 2022.
 
 Copyright Notice
 
