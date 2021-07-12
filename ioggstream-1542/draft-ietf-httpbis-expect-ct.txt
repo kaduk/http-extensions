@@ -4,8 +4,8 @@
 
 HTTP                                                            E. Stark
 Internet-Draft                                                    Google
-Intended status: Experimental                               22 June 2021
-Expires: 24 December 2021
+Intended status: Experimental                               12 July 2021
+Expires: 13 January 2022
 
 
                       Expect-CT Extension for HTTP
@@ -50,7 +50,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 24 December 2021.
+   This Internet-Draft will expire on 13 January 2022.
 
 Copyright Notice
 
@@ -902,7 +902,7 @@ Table of Contents
               Stradling, "Certificate Transparency Version 2.0", Work in
               Progress, Internet-Draft, draft-ietf-trans-rfc6962-bis-39,
               17 May 2021, <https://datatracker.ietf.org/doc/html/draft-
-              ietf-trans-rfc6962-bis-39.txt>.
+              ietf-trans-rfc6962-bis-39>.
 
    [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
               Requirement Levels", BCP 14, RFC 2119,

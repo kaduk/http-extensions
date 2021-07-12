@@ -6,7 +6,7 @@ HTTP                                                            R. Polli
 Internet-Draft                         Team Digitale, Italian Government
 Obsoletes: 3230 (if approved)                                  L. Pardue
 Intended status: Standards Track                              Cloudflare
-Expires: 24 December 2021                                   22 June 2021
+Expires: 13 January 2022                                    12 July 2021
 
 
                              Digest Headers
@@ -49,7 +49,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 24 December 2021.
+   This Internet-Draft will expire on 13 January 2022.
 
 Copyright Notice
 
@@ -113,21 +113,11 @@ Table of Contents
      12.8.  Resource exhaustion
    13. IANA Considerations
      13.1.  Establish the HTTP Digest Algorithm Values Registry
-     13.2.  The "status" Field in the HTTP Digest Algorithm Values
-             Registry
-     13.3.  Deprecate "MD5" Digest Algorithm
-     13.4.  Update "UNIXsum" Digest Algorithm
-     13.5.  Update "UNIXcksum" Digest Algorithm
-     13.6.  Update "CRC32c" Digest Algorithm
-     13.7.  Deprecate "SHA" Digest Algorithm
-     13.8.  Obsolete "ADLER32" Digest Algorithm
-     13.9.  Obsolete "contentMD5" token in Digest Algorithm
-     13.10. The "id-sha-256" Digest Algorithm
-     13.11. The "id-sha-512" Digest Algorithm
-     13.12. Changes Compared to RFC3230
-     13.13. Changes Compared to RFC5843
-     13.14. Want-Digest Field Registration
-     13.15. Digest Field Registration
+     13.2.  Obsolete "contentMD5" token in Digest Algorithm
+     13.3.  Changes Compared to RFC3230
+     13.4.  Changes Compared to RFC5843
+     13.5.  Want-Digest Field Registration
+     13.6.  Digest Field Registration
    14. References
      14.1.  Normative References
      14.2.  Informative References
@@ -250,8 +240,8 @@ Table of Contents
    conventions in [SEMANTICS].  Changes are intended to be semantically
    compatible with existing implementations but note that negotiation of
    "Content-MD5" is deprecated Appendix B.1, "Digest" field parameters
-   are obsoleted Appendix B.2, "md5" and "sha" digest-algorithms are
-   obsoleted, and the "adler32" algorithm is deprecated.
+   are obsoleted Appendix B.2, and the algorithm table has been updated
+   to reflect the current state of the art.
 
 1.4.  Notational Conventions
 
@@ -456,27 +446,40 @@ Table of Contents
    is preferred; digest-algorithm token values MUST be compared in a
    case-insensitive fashion.
 
-   The Internet Assigned Numbers Authority (IANA) maintains a registry
-   for digest-algorithm values.  The registry is initialized with the
-   tokens listed below.
+   The "HTTP Digest Algorithm Values Registry", maintained by IANA at
+   https://www.iana.org/assignments/http-dig-alg/
+   (https://www.iana.org/assignments/http-dig-alg/) registers digest-
+   algorithm values.  Registrations MUST include the following fields:
 
-   Deprecated digest algorithms MUST NOT be used:
+   *  Digest algorithm: the token value.  The registry can be used to
+      reserve token values
 
-   *  "md5", see [CMU-836068] and [NO-MD5];
+   *  Status: the status of the algorithm.  Use "standard" for
+      standardized algorithms without known problems; "experimental" or
+      some other appropriate value
 
-   *  "sha", see [IACR-2020-014] and [NO-SHA1].
+      -  e.g. according to the type and status of the primary document
+         in which the algorithm is defined; "deprecated" when the
+         algorithm is insecure or otherwise undesirable; "reserved" when
+         Digest algorithm references a reserved token value
 
-   See the references above for further information.
+   *  Description: the description of the digest-algorithm and its
+      encoding
 
-   sha-256
-      *  Description: The SHA-256 algorithm [RFC6234].  The output of
-         this algorithm is encoded using the base64 encoding [RFC4648].
+   *  Reference: a set of pointers to the primary documents defining the
+      digest-algorithm
 
-      *  Reference: [RFC6234], [RFC4648], this document.
+   The associated encoding for new digest-algorithms MUST either be
+   represented as a quoted string or MUST NOT include ";" or "," in the
+   character sets used for the encoding.
 
-      *  Status: standard
+   Deprecated digest algorithms MUST NOT be used.
+
+   The registry is initialized with the tokens listed below.
 
    sha-512
+      *  Digest Algorithm: sha-512
+
       *  Description: The SHA-512 algorithm [RFC6234].  The output of
          this algorithm is encoded using the base64 encoding [RFC4648].
 
@@ -484,7 +487,19 @@ Table of Contents
 
       *  Status: standard
 
+   sha-256
+      *  Digest Algorithm: sha-256
+
+      *  Description: The SHA-256 algorithm [RFC6234].  The output of
+         this algorithm is encoded using the base64 encoding [RFC4648].
+
+      *  Reference: [RFC6234], [RFC4648], this document.
+
+      *  Status: standard
+
    md5
+      *  Digest Algorithm: md5
+
       *  Description: The MD5 algorithm, as specified in [RFC1321].  The
          output of this algorithm is encoded using the base64 encoding
          [RFC4648].  This digest-algorithm is now vulnerable to
@@ -495,6 +510,8 @@ Table of Contents
       *  Status: deprecated
 
    sha
+      *  Digest Algorithm: sha
+
       *  Description: The SHA-1 algorithm [RFC3174].  The output of this
          algorithm is encoded using the base64 encoding [RFC4648].  This
          digest-algorithm is now vulnerable to collision attacks.  See
@@ -505,6 +522,8 @@ Table of Contents
       *  Status: deprecated
 
    unixsum
+      *  Digest Algorithm: unixsum
+
       *  Description: The algorithm computed by the UNIX "sum" command,
          as defined by the Single UNIX Specification, Version 2 [UNIX].
          The output of this algorithm is an ASCII decimal-digit string
@@ -513,9 +532,11 @@ Table of Contents
 
       *  Reference: [UNIX], this document.
 
-      *  Status: standard
+      *  Status: deprecated
 
    unixcksum
+      *  Digest Algorithm: unixcksum
+
       *  Description: The algorithm computed by the UNIX "cksum"
          command, as defined by the Single UNIX Specification, Version 2
          [UNIX].  The output of this algorithm is an ASCII digit string
@@ -524,7 +545,38 @@ Table of Contents
 
       *  Reference: [UNIX], this document.
 
-      *  Status: standard
+      *  Status: deprecated
+
+   adler32
+      *  Digest Algorithm: adler32
+
+      *  Description: The ADLER32 algorithm is a checksum specified in
+         [RFC1950] "ZLIB Compressed Data Format".  The 32-bit output is
+         encoded in hexadecimal (using between 1 and 8 ASCII characters
+         from 0-9, A-F, and a-f; leading 0's are allowed).  For example,
+         adler32=03da0195 and adler32=3DA0195 are both valid checksums
+         for the 4-byte message "Wiki".  This algorithm is obsoleted and
+         SHOULD NOT be used.
+
+      *  Reference: [RFC1950], this document.
+
+      *  Status: deprecated
+
+   crc32c
+      *  Digest Algorithm: crc32c
+
+      *  Description: The CRC32c algorithm is a 32-bit cyclic redundancy
+         check.  It achieves a better hamming distance (for better
+         error-detection performance) than many other 32-bit CRC
+         functions.  Other places it is used include iSCSI and SCTP.
+         The 32-bit output is encoded in hexadecimal (using between 1
+         and 8 ASCII characters from 0-9, A-F, and a-f; leading 0's are
+         allowed).  For example, crc32c=0a72a4df and crc32c=A72A4DF are
+         both valid checksums for the 3-byte message "dog".
+
+      *  Reference: [RFC4960] appendix B, this document.
+
+      *  Status: deprecated.
 
    To allow sender and recipient to provide a checksum which is
    independent from "Content-Encoding", the following additional digest-
@@ -545,10 +597,6 @@ Table of Contents
       *  Reference: [RFC6234], [RFC4648], this document.
 
       *  Status: standard
-
-   If other digest-algorithm values are defined, the associated encoding
-   MUST either be represented as a quoted string or MUST NOT include ";"
-   or "," in the character sets used for the encoding.
 
 8.  Use of Digest when acting on resources
 
@@ -1178,7 +1226,7 @@ Table of Contents
    To help endpoints understand weaker algorithms from stronger ones,
    this document adds to the IANA Digest Algorithm Values registry a new
    "Status" field containing the most-recent appraisal of the digest-
-   algorithm; the allowed values are specified in Section 13.2.
+   algorithm.
 
    An endpoint might have a preference for algorithms, such as
    preferring "standard" algorithms over "deprecated" ones.  Transition
@@ -1216,117 +1264,12 @@ Table of Contents
 
    This memo sets this specification to be the establishing document for
    the HTTP Digest Algorithm Values (https://www.iana.org/assignments/
-   http-dig-alg/http-dig-alg.xhtml) registry.
+   http-dig-alg/) registry.
 
-13.2.  The "status" Field in the HTTP Digest Algorithm Values Registry
-
-   This memo adds the field "Status" to the HTTP Digest Algorithm Values
-   (https://www.iana.org/assignments/http-dig-alg/http-dig-alg.xhtml)
-   registry.  The allowed values for the "Status" fields are described
-   below.
-
-   Status
-      *  "standard" for standardized algorithms without known problems;
-
-      *  "experimental", "obsoleted" or some other appropriate value -
-         e.g. according to the type and status of the primary document
-         in which the algorithm is defined;
-
-      *  "deprecated" when the algorithm is insecure or otherwise
-         undesirable.
-
-13.3.  Deprecate "MD5" Digest Algorithm
-
-   This memo updates the "MD5" digest-algorithm in the HTTP Digest
-   Algorithm Values (https://www.iana.org/assignments/http-dig-alg/http-
-   dig-alg.xhtml) registry:
-
-   *  Digest Algorithm: md5
-
-   *  Description: As specified in Section 7.
-
-   *  Status: As specified in Section 7.
-
-13.4.  Update "UNIXsum" Digest Algorithm
-
-   This memo updates the "UNIXsum" digest-algorithm in the HTTP Digest
-   Algorithm Values (https://www.iana.org/assignments/http-dig-alg/http-
-   dig-alg.xhtml) registry:
-
-   *  Digest Algorithm: As specified in Section 7.
-
-   *  Description: As specified in Section 7.
-
-   *  Status: As specified in Section 7.
-
-13.5.  Update "UNIXcksum" Digest Algorithm
-
-   This memo updates the "UNIXcksum" digest-algorithm in the HTTP Digest
-   Algorithm Values (https://www.iana.org/assignments/http-dig-alg/http-
-   dig-alg.xhtml) registry:
-
-   *  Digest Algorithm: As specified in Section 7.
-
-   *  Description: As specified in Section 7.
-
-   *  Status: As specified in Section 7.
-
-13.6.  Update "CRC32c" Digest Algorithm
-
-   This memo updates the "CRC32c" digest-algorithm in the HTTP Digest
-   Algorithm Values (https://www.iana.org/assignments/http-dig-alg/http-
-   dig-alg.xhtml) registry:
-
-   *  Digest Algorithm: crc32c
-
-   *  Description: The CRC32c algorithm is a 32-bit cyclic redundancy
-      check.  It achieves a better hamming distance (for better error-
-      detection performance) than many other 32-bit CRC functions.
-      Other places it is used include iSCSI and SCTP.  The 32-bit output
-      is encoded in hexadecimal (using between 1 and 8 ASCII characters
-      from 0-9, A-F, and a-f; leading 0's are allowed).  For example,
-      crc32c=0a72a4df and crc32c=A72A4DF are both valid checksums for
-      the 3-byte message "dog".
-
-   *  Reference: [RFC4960] appendix B, this document.
-
-   *  Status: standard.
-
-13.7.  Deprecate "SHA" Digest Algorithm
-
-   This memo updates the "SHA" digest-algorithm in the HTTP Digest
-   Algorithm Values (https://www.iana.org/assignments/http-dig-alg/http-
-   dig-alg.xhtml) registry:
-
-   *  Digest Algorithm: sha
-
-   *  Description: As specified in Section 7.
-
-   *  Status: As specified in Section 7.
-
-13.8.  Obsolete "ADLER32" Digest Algorithm
-
-   This memo updates the "ADLER32" digest-algorithm in the HTTP Digest
-   Algorithm Values (https://www.iana.org/assignments/http-dig-alg/http-
-   dig-alg.xhtml) registry:
-
-   *  Digest Algorithm: adler32
-
-   *  Description: The ADLER32 algorithm is a checksum specified in
-      [RFC1950] "ZLIB Compressed Data Format".  The 32-bit output is
-      encoded in hexadecimal (using between 1 and 8 ASCII characters
-      from 0-9, A-F, and a-f; leading 0's are allowed).  For example,
-      adler32=03da0195 and adler32=3DA0195 are both valid checksums for
-      the 4-byte message "Wiki".  This algorithm is obsoleted and SHOULD
-      NOT be used.
-
-   *  Status: obsoleted
-
-13.9.  Obsolete "contentMD5" token in Digest Algorithm
+13.2.  Obsolete "contentMD5" token in Digest Algorithm
 
    This memo adds the "contentMD5" token in the HTTP Digest Algorithm
-   Values (https://www.iana.org/assignments/http-dig-alg/http-dig-
-   alg.xhtml) registry:
+   Values (https://www.iana.org/assignments/http-dig-alg/) registry:
 
    *  Digest Algorithm: contentMD5
 
@@ -1334,59 +1277,30 @@ Table of Contents
       to be used only in Want-Digest.  This token is obsoleted and MUST
       NOT be used.
 
-   *  Reference: Section 13.9 of this document, Section 5 of [RFC3230].
+   *  Reference: Section 13.2 of this document, Section 5 of [RFC3230].
 
    *  Status: obsoleted
 
-13.10.  The "id-sha-256" Digest Algorithm
-
-   This memo registers the "id-sha-256" digest-algorithm in the HTTP
-   Digest Algorithm Values (https://www.iana.org/assignments/http-dig-
-   alg/http-dig-alg.xhtml) registry:
-
-   *  Digest Algorithm: id-sha-256
-
-   *  Description: As specified in Section 7.
-
-   *  Status: As specified in Section 7.
-
-13.11.  The "id-sha-512" Digest Algorithm
-
-   This memo registers the "id-sha-512" digest-algorithm in the HTTP
-   Digest Algorithm Values (https://www.iana.org/assignments/http-dig-
-   alg/http-dig-alg.xhtml) registry:
-
-   *  Digest Algorithm: id-sha-512
-
-   *  Description: As specified in Section 7.
-
-   *  Status: As specified in Section 7.
-
-13.12.  Changes Compared to RFC3230
+13.3.  Changes Compared to RFC3230
 
    &#65532; The "contentMD5" digest-algorithm token defined in Section 5
    of [RFC3230] is removed from the HTTP Digest Algorithm Values
    Registry.
 
-13.13.  Changes Compared to RFC5843
+   All digest-algorithms defined in [RFC3230] are now "deprecated".
 
-   The digest-algorithm values for "MD5", "SHA", "SHA-256", "SHA-512",
-   "UNIXcksum", "UNIXsum", "ADLER32" and "CRC32c" have been updated to
-   lowercase.
+13.4.  Changes Compared to RFC5843
 
-   The status of "MD5" has been updated to "deprecated", and its
-   description states that this algorithm MUST NOT be used.
+   The digest-algorithm values for "MD5", "SHA", "SHA-256", "SHA-512"
+   have been updated to lowercase.
 
-   The status of "SHA" has been updated to "deprecated", and its
-   description states that this algorithm MUST NOT be used.
-
-   The status for "CRC2c", "UNIXsum" and "UNIXcksum" has been updated to
-   "standard".
+   The status of "MD5" and "SHA" has been updated to "deprecated", and
+   their description states that they MUST NOT be used.
 
    The "id-sha-256" and "id-sha-512" algorithms have been added to the
    registry.
 
-13.14.  Want-Digest Field Registration
+13.5.  Want-Digest Field Registration
 
    This section registers the "Want-Digest" field in the "Hypertext
    Transfer Protocol (HTTP) Field Name Registry" [SEMANTICS].
@@ -1397,7 +1311,7 @@ Table of Contents
 
    Specification document(s): Section 4 of this document
 
-13.15.  Digest Field Registration
+13.6.  Digest Field Registration
 
    This section registers the "Digest" field in the "Hypertext Transfer
    Protocol (HTTP) Field Name Registry" [SEMANTICS].
@@ -1485,7 +1399,7 @@ Table of Contents
               Semantics", Work in Progress, Internet-Draft, draft-ietf-
               httpbis-semantics-16, 27 May 2021,
               <https://datatracker.ietf.org/doc/html/draft-ietf-httpbis-
-              semantics-16.txt>.
+              semantics-16>.
 
    [UNIX]     The Open Group, "The Single UNIX Specification, Version 2
               - 6 Vol Set for UNIX 98", February 1997.
@@ -1496,21 +1410,21 @@ Table of Contents
               "HTTP/1.1", Work in Progress, Internet-Draft, draft-ietf-
               httpbis-messaging-16, 27 May 2021,
               <https://datatracker.ietf.org/doc/html/draft-ietf-httpbis-
-              messaging-16.txt>.
+              messaging-16>.
 
    [I-D.ietf-httpbis-header-structure]
               Nottingham, M. and P. Kamp, "Structured Field Values for
               HTTP", Work in Progress, Internet-Draft, draft-ietf-
               httpbis-header-structure-19, 3 June 2020,
               <https://datatracker.ietf.org/doc/html/draft-ietf-httpbis-
-              header-structure-19.txt>.
+              header-structure-19>.
 
    [I-D.thomson-http-mice]
               Thomson, M. and J. Yasskin, "Merkle Integrity Content
               Encoding", Work in Progress, Internet-Draft, draft-
               thomson-http-mice-03, 13 August 2018,
               <https://datatracker.ietf.org/doc/html/draft-thomson-http-
-              mice-03.txt>.
+              mice-03>.
 
    [NO-MD5]   Turner, S. and L. Chen, "Updated Security Considerations
               for the MD5 Message-Digest and the HMAC-MD5 Algorithms",
