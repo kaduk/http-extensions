@@ -105,8 +105,9 @@ Table of Contents
    capitals, as shown here.
 
    This document uses ABNF as defined in [RFC5234], with rules prefixed
-   with "sf-" as defined in [RFC8941].  It uses terminology from
-   [I-D.ietf-httpbis-semantics] and [I-D.ietf-httpbis-cache].
+   with "sf-" and the "key" rule as defined in [RFC8941].  It uses
+   terminology from [I-D.ietf-httpbis-semantics] and
+   [I-D.ietf-httpbis-cache].
 
 2.  The Cache-Status HTTP Response Header Field
 
@@ -218,8 +219,9 @@ Table of Contents
       request, but it did not contain all of the requested ranges (or
       the request was for the complete response)
 
-   The most specific reason that the cache is aware of SHOULD be used.
-   See also [I-D.ietf-httpbis-semantics], Section 4.
+   The most specific reason that the cache is aware of SHOULD be used,
+   to the extent that it is possible to implement.  See also
+   [I-D.ietf-httpbis-semantics], Section 4.
 
 2.3.  The fwd-status parameter
 
@@ -345,7 +347,8 @@ Table of Contents
 
    Registration requests should use the following template:
 
-   *  Name: [a name for the Cache-Status Parameter that matches key]
+   *  Name: [a name for the Cache-Status Parameter that matches the
+      'key' ABNF rule]
 
    *  Description: [a description of the parameter semantics and value]
 
