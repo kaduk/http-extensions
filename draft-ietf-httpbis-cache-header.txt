@@ -104,7 +104,8 @@ Table of Contents
    14 [RFC2119] [RFC8174] when, and only when, they appear in all
    capitals, as shown here.
 
-   This document uses ABNF as defined in [RFC5234], and terminology from
+   This document uses ABNF as defined in [RFC5234], with rules prefixed
+   with "sf-" as defined in [RFC8941].  It uses terminology from
    [I-D.ietf-httpbis-semantics] and [I-D.ietf-httpbis-cache].
 
 2.  The Cache-Status HTTP Response Header Field
