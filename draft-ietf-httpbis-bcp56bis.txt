@@ -3,10 +3,10 @@
 
 
 HTTP                                                       M. Nottingham
-Internet-Draft                                              12 July 2021
+Internet-Draft                                              13 July 2021
 Obsoletes: 3205 (if approved)                                           
 Intended status: Best Current Practice                                  
-Expires: 13 January 2022
+Expires: 14 January 2022
 
 
                       Building Protocols with HTTP
@@ -51,7 +51,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 13 January 2022.
+   This Internet-Draft will expire on 14 January 2022.
 
 Copyright Notice
 
@@ -1392,9 +1392,9 @@ Table of Contents
    [I-D.ietf-httpbis-priority]
               Oku, K. and L. Pardue, "Extensible Prioritization Scheme
               for HTTP", Work in Progress, Internet-Draft, draft-ietf-
-              httpbis-priority-03, 11 January 2021,
+              httpbis-priority-04, 11 July 2021,
               <https://datatracker.ietf.org/doc/html/draft-ietf-httpbis-
-              priority-03>.
+              priority-04>.
 
    [REFERRER-POLICY]
               Eisinger, J. and E. Stark, "Referrer Policy", World Wide
