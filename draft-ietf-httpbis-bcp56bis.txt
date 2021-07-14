@@ -212,8 +212,8 @@ Table of Contents
 
    Additionally, when a specification is using HTTP, all of the
    requirements of the HTTP protocol suite are in force (in particular,
-   [I-D.ietf-httpbis-semantics], but also other specifications as
-   appropriate).
+   [I-D.ietf-httpbis-semantics], but also other specifications such as
+   the specific version of HTTP in use, and any extensions in use).
 
    Note that this document is intended to apply to applications, not
    generic extensions to HTTP.  Furthermore, while it is intended for
