@@ -482,10 +482,10 @@ Table of Contents
    of that server, to give them the flexibility in deployment.
 
    This means that in most cases, specifications for applications that
-   use HTTP won't contain its URLs; while it is common practice for a
-   specification of a single-deployment API to specify the path prefix
-   "/app/v1" (for example), doing so in an IETF specification is
-   inappropriate.
+   use HTTP won't contain fixed application URLs or paths; while it is
+   common practice for a specification of a single-deployment API to
+   specify the path prefix "/app/v1" (for example), doing so in an IETF
+   specification is inappropriate.
 
    Therefore, the specification writer needs some mechanism to allow
    clients to discovery an application's URLs.  Additionally, they need
