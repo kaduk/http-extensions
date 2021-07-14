@@ -697,7 +697,7 @@ Table of Contents
    appropriate:
 
    *  For server-wide metadata, create a well-known URI [RFC8615], or
-      using an already existing one if it's appropriate (e.g., HostMeta
+      use an already existing one if appropriate (e.g., HostMeta
       [RFC6415]).
 
    *  For metadata about a specific resource, create a separate resource
