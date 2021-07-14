@@ -183,6 +183,9 @@ Table of Contents
    applicable in other situations.  Note that the requirements herein do
    not necessarily apply to the development of generic HTTP extensions.
 
+   This document obsoletes [RFC3205], to reflect experience and
+   developments regarding HTTP in the intervening time.
+
 1.1.  Notational Conventions
 
    The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT",
