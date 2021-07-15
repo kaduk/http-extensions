@@ -5,10 +5,10 @@
 HTTP                                                     A. Backman, Ed.
 Internet-Draft                                                    Amazon
 Intended status: Standards Track                               J. Richer
-Expires: 3 January 2022                              Bespoke Engineering
+Expires: 16 January 2022                             Bespoke Engineering
                                                                M. Sporny
                                                           Digital Bazaar
-                                                             2 July 2021
+                                                            15 July 2021
 
 
                          Signing HTTP Messages
@@ -53,7 +53,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 3 January 2022.
+   This Internet-Draft will expire on 16 January 2022.
 
 Copyright Notice
 
@@ -91,8 +91,9 @@ Table of Contents
        2.3.5.  Scheme
        2.3.6.  Request Target
        2.3.7.  Path
-       2.3.8.  Query Components
-       2.3.9.  Status Code
+       2.3.8.  Query
+       2.3.9.  Query Parameters
+       2.3.10. Status Code
      2.4.  Creating the Signature Input String
    3.  HTTP Message Signatures
      3.1.  Creating a Signature
@@ -411,8 +412,8 @@ Table of Contents
    such a canonical form.
 
    Content identifiers are defined using production grammar defined by
-   RFC8941, Section 4 [RFC8941].  The content identifier is an "sf-
-   string" value.  The content identifier type MAY define parameters
+   RFC8941, Section 4 [RFC8941].  The content identifier itself is an
+   "sf-string" value.  The content identifier type MAY define parameters
    which are included using the "parameters" rule.
 
    content-identifier = sf-string parameters
@@ -548,21 +549,25 @@ Table of Contents
 
    @method  The method used for a request.  (Section 2.3.2)
 
-   @target-uri  The target URI for a request.  (Section 2.3.3)
+   @target-uri  The full target URI for a request.  (Section 2.3.3)
 
-   @authority  The authority for a request.  (Section 2.3.4)
+   @authority  The authority of the target URI for a request.
+      (Section 2.3.4)
 
-   @scheme  The scheme of the requested URI.  (Section 2.3.5)
+   @scheme  The scheme of the target URI for a request.  (Section 2.3.5)
 
    @request-target  The request target.  (Section 2.3.6)
 
-   @path  The absolute path portion of the request target.
+   @path  The absolute path portion of the target URI for a request.
       (Section 2.3.7)
 
-   @query-param  The parsed query parameters of the request target.
+   @query  The query portion of the target URI for a request.
       (Section 2.3.8)
 
-   @status-code  The status code for a response.  (Section 2.3.9).
+   @query-params  The parsed query parameters of the target URI for a
+      request.  (Section 2.3.9)
+
+   @status  The status code for a response.  (Section 2.3.10).
 
    Additional specialty content identifiers MAY be defined and
    registered in the HTTP Signatures Specialty Content Identifier
@@ -571,7 +576,9 @@ Table of Contents
 2.3.1.  Signature Parameters
 
    HTTP Message Signatures have metadata properties that provide
-   information regarding the signature's generation and/or verification.
+   information regarding the signature's generation and/or verification,
+   such as the list of covered content, a timestamp, identifiers for
+   verification key material, and other utilities.
 
    The signature parameters specialty content is identified by the
    "@signature-params" identifier.
@@ -580,12 +587,6 @@ Table of Contents
    parameters for this signature, including the covered content list
    with all associated parameters.
 
-   *  "alg": The HTTP message signature algorithm from the HTTP Message
-      Signature Algorithm Registry, as an "sf-string" value.
-
-   *  "keyid": The identifier for the key material as an "sf-string"
-      value.
-
    *  "created": Creation time as an "sf-integer" UNIX timestamp value.
       Sub-second precision is not supported.
 
@@ -593,6 +594,12 @@ Table of Contents
       value.  Sub-second precision is not supported.
 
    *  "nonce": A random unique value generated for this signature.
+
+   *  "alg": The HTTP message signature algorithm from the HTTP Message
+      Signature Algorithm Registry, as an "sf-string" value.
+
+   *  "keyid": The identifier for the key material as an "sf-string"
+      value.
 
    Additional parameters can be defined in the HTTP Signature Parameters
    Registry (Section 5.2.2).
@@ -640,8 +647,9 @@ Table of Contents
    The "@method" identifier refers to the HTTP method of a request
    message.  The value of is canonicalized by taking the value of the
    method as a string.  Note that the method name is case-sensitive as
-   per [SEMANTICS], and conventionally standardized method names are
-   uppercase US-ASCII.
+   per [SEMANTICS] Section 9.1, and conventionally standardized method
+   names are uppercase US-ASCII.  If used, the "@method" identifier MUST
+   occur only once in the signature input.
 
    For example, the following request message:
 
@@ -661,7 +669,9 @@ Table of Contents
    The "@target-uri" identifier refers to the target URI of a request
    message.  The value is the full absolute target URI of the request,
    potentially assembled from all available parts including the
-   authority and request target.
+   authority and request target as described in [SEMANTICS] Section 7.1.
+   If used, the "@target-uri" identifier MUST occur only once in the
+   signature input.
 
    For example, the following message sent over HTTPS:
 
@@ -679,11 +689,15 @@ Table of Contents
 2.3.4.  Authority
 
    The "@authority" identifier refers to the authority component of the
-   target of the HTTP request message.  In HTTP 1.1, this is usually
-   conveyed using the "Host" header, while in HTTP 2 and HTTP 3 it is
-   conveyed using the ":authority" pseudo-header.  The value is the
-   fully-qualified authority component of the request, comprised of the
-   host and, optionally, port of the request target, as a string.
+   target URI of the HTTP request message, as defined in [SEMANTICS]
+   Section 7.2.  In HTTP 1.1, this is usually conveyed using the "Host"
+   header, while in HTTP 2 and HTTP 3 it is conveyed using the
+   ":authority" pseudo-header.  The value is the fully-qualified
+   authority component of the request, comprised of the host and,
+   optionally, port of the request target, as a string.  The Authority
+   value MUST be normalized according to the rules in [SEMANTICS]
+   Section 7.2.  If used, the "@authority" identifier MUST occur only
+   once in the signature input.
 
    For example, the following request message:
 
@@ -701,7 +715,8 @@ Table of Contents
 2.3.5.  Scheme
 
    The "@scheme" identifier refers to the scheme of the target URL of
-   the HTTP request message.  The value is the scheme as a string.
+   the HTTP request message.  The value is the scheme as a string as
+   defined in [SEMANTICS] Section 4.2.
 
    For example, the following request message requested over plain HTTP:
 
@@ -719,8 +734,11 @@ Table of Contents
 2.3.6.  Request Target
 
    The "@request-target" identifier refers to the full request target of
-   the HTTP request message.  The value of the request target can take
-   different forms, depending on the type of request.
+   the HTTP request message, as defined in [SEMANTICS] Section 7.1.  The
+   value of the request target can take different forms, depending on
+   the type of request.  For HTTP 1.1, the value is equivalent to the
+   request target portion of the request line.  If used, the "@request-
+   target" identifier MUST occur only once in the signature input.
 
    The origin form value is combination of the absolute path and query
    components of the request URL.  For example, the following request
@@ -769,8 +787,10 @@ Table of Contents
 2.3.7.  Path
 
    The "@path" identifier refers to the target path of the HTTP request
-   message.  The value is the absolute path of the request target, with
-   no query component and no trailing "?" character.
+   message.  The value is the absolute path of the request target
+   defined by [RFC3986], with no query component and no trailing "?"
+   character.  If used, the "@path" identifier MUST occur only once in
+   the signature input.
 
    For example, the following request message:
 
@@ -781,12 +801,13 @@ Table of Contents
 
    "@path": /path
 
-2.3.8.  Query Components
+2.3.8.  Query
 
    The "@query" identifier refers to the query component of the HTTP
-   request message.  When the identifier is used with no parameters, the
-   value is the entire normalized query string, not including the
-   leading "?" character.
+   request message.  The value is the entire normalized query string
+   defined by [RFC3986], not including the leading "?" character.  If
+   used, the "@query" identifier MUST occur only once in the signature
+   input.
 
    For example, the following request message:
 
@@ -797,42 +818,72 @@ Table of Contents
 
    "@query": param=value&foo=bar&baz=batman
 
-   If the request uses HTML form parameters in the query string, this
-   identifier allows addressing of individual query parameters by using
-   an OPTIONAL "key" parameter containing the name of a single query
-   parameter.  When this parameter is present, the value is the
-   normalized key-value pair of the named query parameter, separated by
-   an equals sign, not including any leading "?" characters or
-   separating "&" characters.
+   The following request message:
 
-   POST /path?param=value&foo=bar&baz=batman HTTP/1.1
+   POST /path?queryString HTTP/1.1
    Host: www.example.com
 
    Would result in the following "@query" value:
 
-   "@query";key="baz": baz=batman
-   "@query";key="param": param=value
+   "@query": queryString
 
-   If used in a response message, the "@query" identifier refers to the
-   associated value of the request that triggered the response message
-   being signed.
+2.3.9.  Query Parameters
 
-2.3.9.  Status Code
+   If a request target URI uses HTML form parameters in the query string
+   as defined in [HTMLURL] Section 5, the "@query-params" identifier
+   allows addressing of individual query parameters.  The query
+   parameters MUST be parsed according to [HTMLURL] Section 5.1,
+   resulting in a list of ("nameString", "valueString") tuples.  The
+   REQUIRED "name" parameter of each input identifier contains the
+   "nameString" of a single query parameter.  Several named query
+   parameters MAY be included in a single signature input.  Single named
+   parameters MAY occur in any order in the signature input string.
 
-   The "@status-code" identifier refers to the HTTP status code of a
-   response message.  The value is the serialized integer of the HTTP
-   response code, with no descriptive text.
+   The value of a single named parameter is the the "valueString" of the
+   named query parameter defined by [HTMLURL] Section 5.1, which is the
+   value after URL decoding.  Note that this value does not include any
+   leading "?" characters, equals sign "=", or separating "&"
+   characters.  Named query parameters with an empty "valueString" are
+   included with an empty string as the covered content value.
+
+   If a parameter name occurs multiple times in a request, all values of
+   that name MUST be included in separate signature input lines in the
+   order in which the parameters occur in the target URI.
+
+   For example for the following request:
+
+   POST /path?param=value&foo=bar&baz=batman&qux= HTTP/1.1
+   Host: www.example.com
+
+   Indicating the "baz", "qux" and "param" named query parameters in
+   would result in the following "@query-param" value:
+
+   "@query-params";name="baz": batman
+   "@query-params";name="qux":
+   "@query-params";name="param": value
+
+   If used in a response message, the "@query-params" identifier refers
+   to the associated value of the request that triggered the response
+   message being signed.
+
+2.3.10.  Status Code
+
+   The "@status" identifier refers to the three-digit numeric HTTP
+   status code of a response message as defined in [SEMANTICS]
+   Section 15.  The value is the serialized three-digit integer of the
+   HTTP response code, with no descriptive text.  If used, the "@status"
+   identifier MUST occur only once in the signature input.
 
    For example, the following response message:
 
    HTTP/1.1 200 OK
    Date: Fri, 26 Mar 2010 00:05:00 GMT
 
-   Would result in the following "@status-code" value:
+   Would result in the following "@status" value:
 
-   "@status-code": 200
+   "@status": 200
 
-   This identifier MUST NOT be used in a request message.
+   The "@status" identifier MUST NOT be used in a request message.
 
 2.4.  Creating the Signature Input String
 
@@ -1558,11 +1609,14 @@ Table of Contents
    | @path             | Active | Request,          | Section 2.3.7 of |
    |                   |        | Related-Response  | this document    |
    +-------------------+--------+-------------------+------------------+
-   | @query-param      | Active | Request,          | Section 2.3.8 of |
+   | @query            | Active | Request,          | Section 2.3.8 of |
    |                   |        | Related-Response  | this document    |
    +-------------------+--------+-------------------+------------------+
-   | @status-code      | Active | Response          | Section 2.3.9 of |
-   |                   |        |                   | this document    |
+   | @query-params     | Active | Request,          | Section 2.3.9 of |
+   |                   |        | Related-Response  | this document    |
+   +-------------------+--------+-------------------+------------------+
+   | @status           | Active | Response          | Section 2.3.10   |
+   |                   |        |                   | of this document |
    +-------------------+--------+-------------------+------------------+
 
      Table 4: Initial contents of the HTTP Signature Specialty Content
@@ -1591,11 +1645,15 @@ Table of Contents
               <https://csrc.nist.gov/publications/detail/fips/186/4/
               final>.
 
+   [HTMLURL]  "URL (Living Standard)", 2021,
+              <https://url.spec.whatwg.org/>.
+
    [MESSAGING]
-              Fielding, R., Ed. and J. Reschke, Ed., "Hypertext Transfer
-              Protocol (HTTP/1.1): Message Syntax and Routing",
-              RFC 7230, DOI 10.17487/RFC7230, June 2014,
-              <https://datatracker.ietf.org/doc/html/rfc7230>.
+              Fielding, R. T., Nottingham, M., and J. Reschke,
+              "HTTP/1.1", Work in Progress, Internet-Draft, draft-ietf-
+              httpbis-messaging-16, 27 May 2021,
+              <https://datatracker.ietf.org/doc/html/draft-ietf-httpbis-
+              messaging-16>.
 
    [POSIX.1]  "The Open Group Base Specifications Issue 7, 2018
               edition", 2018,
@@ -1611,6 +1669,11 @@ Table of Contents
               DOI 10.17487/RFC2119, March 1997,
               <https://datatracker.ietf.org/doc/html/rfc2119>.
 
+   [RFC3986]  Berners-Lee, T., Fielding, R., and L. Masinter, "Uniform
+              Resource Identifier (URI): Generic Syntax", STD 66,
+              RFC 3986, DOI 10.17487/RFC3986, January 2005,
+              <https://datatracker.ietf.org/doc/html/rfc3986>.
+
    [RFC8174]  Leiba, B., "Ambiguity of Uppercase vs Lowercase in RFC
               2119 Key Words", BCP 14, RFC 8174, DOI 10.17487/RFC8174,
               May 2017, <https://datatracker.ietf.org/doc/html/rfc8174>.
@@ -1625,10 +1688,11 @@ Table of Contents
               <https://datatracker.ietf.org/doc/html/rfc8941>.
 
    [SEMANTICS]
-              Fielding, R., Ed. and J. Reschke, Ed., "Hypertext Transfer
-              Protocol (HTTP/1.1): Semantics and Content", RFC 7231,
-              DOI 10.17487/RFC7231, June 2014,
-              <https://datatracker.ietf.org/doc/html/rfc7231>.
+              Fielding, R. T., Nottingham, M., and J. Reschke, "HTTP
+              Semantics", Work in Progress, Internet-Draft, draft-ietf-
+              httpbis-semantics-16, 27 May 2021,
+              <https://datatracker.ietf.org/doc/html/draft-ietf-httpbis-
+              semantics-16>.
 
 7.2.  Informative References
 

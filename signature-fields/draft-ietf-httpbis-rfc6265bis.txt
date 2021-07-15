@@ -6,11 +6,11 @@ HTTP                                                        L. Chen, Ed.
 Internet-Draft                                                Google LLC
 Obsoletes: 6265 (if approved)                         S. Englehardt, Ed.
 Intended status: Standards Track                                 Mozilla
-Expires: 3 January 2022                                     M. West, Ed.
+Expires: 16 January 2022                                    M. West, Ed.
                                                               Google LLC
                                                         J. Wilander, Ed.
                                                               Apple, Inc
-                                                             2 July 2021
+                                                            15 July 2021
 
 
                 Cookies: HTTP State Management Mechanism
@@ -54,7 +54,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 3 January 2022.
+   This Internet-Draft will expire on 16 January 2022.
 
 Copyright Notice
 
@@ -2339,7 +2339,7 @@ Table of Contents
               Semantics", Work in Progress, Internet-Draft, draft-ietf-
               httpbis-semantics-16, 27 May 2021,
               <https://datatracker.ietf.org/doc/html/draft-ietf-httpbis-
-              semantics-16.txt>.
+              semantics-16>.
 
    [RFC1034]  Mockapetris, P., "Domain names - concepts and facilities",
               STD 13, RFC 1034, DOI 10.17487/RFC1034, November 1987,
@@ -2425,20 +2425,20 @@ Table of Contents
               non-secure origins", Work in Progress, Internet-Draft,
               draft-ietf-httpbis-cookie-alone-01, 5 September 2016,
               <https://datatracker.ietf.org/doc/html/draft-ietf-httpbis-
-              cookie-alone-01.txt>.
+              cookie-alone-01>.
 
    [I-D.ietf-httpbis-cookie-prefixes]
               West, M., "Cookie Prefixes", Work in Progress, Internet-
               Draft, draft-ietf-httpbis-cookie-prefixes-00, 23 February
               2016, <https://datatracker.ietf.org/doc/html/draft-ietf-
-              httpbis-cookie-prefixes-00.txt>.
+              httpbis-cookie-prefixes-00>.
 
    [I-D.ietf-httpbis-cookie-same-site]
               West, M. and M. Goodwin, "Same-Site Cookies", Work in
               Progress, Internet-Draft, draft-ietf-httpbis-cookie-same-
               site-00, 20 June 2016,
               <https://datatracker.ietf.org/doc/html/draft-ietf-httpbis-
-              cookie-same-site-00.txt>.
+              cookie-same-site-00>.
 
    [prerendering]
               Bentzel, C., "Chrome Prerendering", n.d.,
