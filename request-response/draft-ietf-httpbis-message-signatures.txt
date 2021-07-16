@@ -2160,6 +2160,8 @@ Document History
          o  Define new specialty content identifiers, re-defined
             request-target identifier.
 
+         o  Added request-response binding.
+
       -  -05
 
          o  Remove list prefixes.
