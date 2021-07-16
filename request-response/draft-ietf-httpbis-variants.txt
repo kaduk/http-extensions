@@ -4,9 +4,9 @@
 
 HTTP                                                       M. Nottingham
 Internet-Draft                                                    Fastly
-Updates: 7234 (if approved)                                 30 June 2021
+Updates: 7234 (if approved)                                 16 July 2021
 Intended status: Standards Track                                        
-Expires: 1 January 2022
+Expires: 17 January 2022
 
 
                       HTTP Representation Variants
@@ -53,7 +53,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 1 January 2022.
+   This Internet-Draft will expire on 17 January 2022.
 
 Copyright Notice
 
@@ -793,7 +793,7 @@ Table of Contents
               HTTP", Work in Progress, Internet-Draft, draft-ietf-
               httpbis-header-structure-19, 3 June 2020,
               <https://datatracker.ietf.org/doc/html/draft-ietf-httpbis-
-              header-structure-19.txt>.
+              header-structure-19>.
 
    [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
               Requirement Levels", BCP 14, RFC 2119,
@@ -838,7 +838,7 @@ Table of Contents
               Grigorik, I. and Y. Weiss, "HTTP Client Hints", Work in
               Progress, Internet-Draft, draft-ietf-httpbis-client-hints-
               15, 3 July 2020, <https://datatracker.ietf.org/doc/html/
-              draft-ietf-httpbis-client-hints-15.txt>.
+              draft-ietf-httpbis-client-hints-15>.
 
    [RFC2295]  Holtman, K. and A. Mutz, "Transparent Content Negotiation
               in HTTP", RFC 2295, DOI 10.17487/RFC2295, March 1998,
