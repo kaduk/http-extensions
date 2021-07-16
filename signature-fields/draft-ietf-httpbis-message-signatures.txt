@@ -1949,7 +1949,7 @@ B.2.1.  Minimal Signature Header using rsa-pss-sha512
 B.2.2.  Selective Coverage using rsa-pss-sha512
 
    This example covers additional elements in "test-request", not
-   including the body Digest header using the "rsa-pss-sha512"
+   including the body Digest header, using the "rsa-pss-sha512"
    algorithm.
 
    The corresponding signature input is:
