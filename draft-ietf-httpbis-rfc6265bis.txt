@@ -335,7 +335,7 @@ Table of Contents
    character is used by Set-Cookie in a way that conflicts with such
    folding.
 
-   User agents MAY ignore Set-Cookie header fieldss based on response
+   User agents MAY ignore Set-Cookie header fields based on response
    status codes or the user agent's cookie policy (see Section 5.3).
 
 3.1.  Examples

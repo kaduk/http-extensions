@@ -346,6 +346,8 @@ Authors' Addresses
 
    Mark Nottingham
    Fastly
+   Prahran
+   VIC
    Australia
 
    Email: mnot@mnot.net
