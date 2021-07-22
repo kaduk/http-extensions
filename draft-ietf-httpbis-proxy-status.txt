@@ -5,8 +5,8 @@
 HTTP                                                       M. Nottingham
 Internet-Draft                                                    Fastly
 Intended status: Standards Track                               P. Sikora
-Expires: 22 January 2022                                          Google
-                                                            21 July 2021
+Expires: 23 January 2022                                          Google
+                                                            22 July 2021
 
 
               The Proxy-Status HTTP Response Header Field
@@ -48,7 +48,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 22 January 2022.
+   This Internet-Draft will expire on 23 January 2022.
 
 Copyright Notice
 
@@ -295,7 +295,12 @@ Table of Contents
    hop.  This is only applicable when that connection was actually
    established.
 
-   The value MUST be either an sf-token or sf-binary.  If the protocol
+   The value MUST be either an sf-token or sf-binary, representing a TLS
+   Application-Layer Protocol Negotiation (ALPN) Protocol ID (see
+   https://www.iana.org/assignments/tls-extensiontype-values/tls-
+   extensiontype-values.xhtml#alpn-protocol-ids
+   (https://www.iana.org/assignments/tls-extensiontype-values/tls-
+   extensiontype-values.xhtml#alpn-protocol-ids)).  If the protocol
    identifier is able to be expressed as an sf-token using UTF-8
    encoding, that form MUST be used.
 
@@ -330,9 +335,9 @@ Table of Contents
    New Proxy-Status Parameters can be defined by registering them in the
    HTTP Proxy-Status Parameters registry.
 
-   Registration requests are reviewed and approved by a Designated
-   Expert, as per [RFC8126], Section 4.5.  A specification document is
-   appreciated, but not required.
+   Registration requests are reviewed and approved by Expert Review, as
+   per [RFC8126], Section 4.5.  A specification document is appreciated,
+   but not required.
 
    The Expert(s) should consider the following factors when evaluating
    requests:
@@ -851,9 +856,9 @@ Table of Contents
    New Proxy Error Types can be defined by registering them in the HTTP
    Proxy Error Types registry.
 
-   Registration requests are reviewed and approved by a Designated
-   Expert, as per [RFC8126], Section 4.5.  A specification document is
-   appreciated, but not required.
+   Registration requests are reviewed and approved by Expert Review, as
+   per [RFC8126], Section 4.5.  A specification document is appreciated,
+   but not required.
 
    The Expert(s) should consider the following factors when evaluating
    requests:
