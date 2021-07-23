@@ -5,8 +5,8 @@
 HTTP                                                       M. Nottingham
 Internet-Draft                                                    Fastly
 Intended status: Standards Track                               P. Sikora
-Expires: 23 January 2022                                          Google
-                                                            22 July 2021
+Expires: 24 January 2022                                          Google
+                                                            23 July 2021
 
 
               The Proxy-Status HTTP Response Header Field
@@ -48,7 +48,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 23 January 2022.
+   This Internet-Draft will expire on 24 January 2022.
 
 Copyright Notice
 
@@ -183,8 +183,8 @@ Table of Contents
 
    Proxy-Status: FooProxy, ExampleCDN
 
-   indicates that this response was handled first by FooProxy and then
-   ExampleCDN.
+   indicates that this response was handled first by FooProxy (a reverse
+   proxy adjacent to the origin server) and then ExampleCDN.
 
    Intermediaries determine when it is appropriate to add the Proxy-
    Status field to a response.  Some might decide to append to it to all
@@ -301,7 +301,7 @@ Table of Contents
    extensiontype-values.xhtml#alpn-protocol-ids
    (https://www.iana.org/assignments/tls-extensiontype-values/tls-
    extensiontype-values.xhtml#alpn-protocol-ids)).  If the protocol
-   identifier is able to be expressed as an sf-token using UTF-8
+   identifier is able to be expressed as an sf-token using ASCII
    encoding, that form MUST be used.
 
    For example:
