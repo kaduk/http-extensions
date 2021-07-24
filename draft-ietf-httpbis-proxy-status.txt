@@ -372,6 +372,10 @@ Table of Contents
    This section lists the Proxy Error Types defined by this document.
    See Section 2.4 for information about defining new Proxy Error Types.
 
+   Note that implementations might not produce all Proxy Error Types.
+   The set of types below is designed to map to existing states in
+   implementations, and so may not be applicable to some.
+
 2.3.1.  DNS Timeout
 
    *  Name: dns_timeout
