@@ -5,8 +5,8 @@
 HTTP                                                       M. Nottingham
 Internet-Draft                                                    Fastly
 Intended status: Standards Track                               P. Sikora
-Expires: 24 January 2022                                          Google
-                                                            23 July 2021
+Expires: 25 January 2022                                          Google
+                                                            24 July 2021
 
 
               The Proxy-Status HTTP Response Header Field
@@ -48,7 +48,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 24 January 2022.
+   This Internet-Draft will expire on 25 January 2022.
 
 Copyright Notice
 
@@ -865,7 +865,8 @@ Table of Contents
 
    *  Extra Parameters: None.
 
-   *  Recommended HTTP status code:
+   *  Recommended HTTP status code: The most appropriate status code for
+      the response
 
    *  Reference: [this document]
 
