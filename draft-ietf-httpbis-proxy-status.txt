@@ -596,8 +596,12 @@ Table of Contents
 
    *  Extra Parameters:
 
+      -  alert-id: an sf-integer containing the applicable value from
+         the TLS Alerts registry.  See {!RFC8446}}.
+
       -  alert-message: an sf-token containing the applicable
-         description string from the TLS Alerts registry.
+         description string from the TLS Alerts registry.  See
+         [RFC8446].
 
    *  Recommended HTTP status code: 502
 
@@ -1028,6 +1032,10 @@ Table of Contents
               Lawrence, "Extended DNS Errors", RFC 8914,
               DOI 10.17487/RFC8914, October 2020,
               <https://datatracker.ietf.org/doc/html/rfc8914>.
+
+   [RFC8446]  Rescorla, E., "The Transport Layer Security (TLS) Protocol
+              Version 1.3", RFC 8446, DOI 10.17487/RFC8446, August 2018,
+              <https://datatracker.ietf.org/doc/html/rfc8446>.
 
 5.2.  Informative References
 
