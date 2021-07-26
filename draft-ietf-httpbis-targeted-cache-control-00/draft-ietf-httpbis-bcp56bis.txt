@@ -3,10 +3,10 @@
 
 
 HTTP                                                       M. Nottingham
-Internet-Draft                                              21 July 2021
+Internet-Draft                                              26 July 2021
 Obsoletes: 3205 (if approved)                                           
 Intended status: Best Current Practice                                  
-Expires: 22 January 2022
+Expires: 27 January 2022
 
 
                       Building Protocols with HTTP
@@ -53,7 +53,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 22 January 2022.
+   This Internet-Draft will expire on 27 January 2022.
 
 Copyright Notice
 
@@ -657,7 +657,8 @@ Table of Contents
 
    Applications should not change their state or have other side effects
    that might be significant to the client, since implementations can
-   and do retry HTTP GET requests that fail.  Note that this does not
+   and do retry HTTP GET requests that fail, and some GET requests might
+   be automatically replayed (see [RFC8470]).  Note that this does not
    include logging and similar functions; see
    [I-D.ietf-httpbis-semantics], Section 9.2.1.
 
@@ -1260,6 +1261,11 @@ Table of Contents
    Section 4.4.2 recommends support for 'https' URLs, and discourages
    the use of 'http' URLs, to provide authentication, integrity and
    confidentiality, as well as mitigate pervasive monitoring attacks.
+   Many applications using HTTP perform authentication and authorization
+   with bearer tokens (e.g., in session cookies).  If the transport is
+   unencrypted, an attacker that can eavesdrop on HTTP communications
+   can often escalate their privilege to perform operations on
+   resources.
 
    Section 4.13 highlights the implications of Web browsers'
    capabilities on applications that use HTTP.
@@ -1325,9 +1331,9 @@ Table of Contents
    [I-D.ietf-httpbis-semantics]
               Fielding, R. T., Nottingham, M., and J. Reschke, "HTTP
               Semantics", Work in Progress, Internet-Draft, draft-ietf-
-              httpbis-semantics-16, 27 May 2021,
+              httpbis-semantics-17, 25 July 2021,
               <https://datatracker.ietf.org/doc/html/draft-ietf-httpbis-
-              semantics-16>.
+              semantics-17>.
 
    [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
               Requirement Levels", BCP 14, RFC 2119,
@@ -1391,9 +1397,9 @@ Table of Contents
    [I-D.ietf-httpbis-cache]
               Fielding, R. T., Nottingham, M., and J. Reschke, "HTTP
               Caching", Work in Progress, Internet-Draft, draft-ietf-
-              httpbis-cache-16, 27 May 2021,
+              httpbis-cache-17, 25 July 2021,
               <https://datatracker.ietf.org/doc/html/draft-ietf-httpbis-
-              cache-16>.
+              cache-17>.
 
    [I-D.ietf-httpbis-priority]
               Oku, K. and L. Pardue, "Extensible Prioritization Scheme
@@ -1489,6 +1495,10 @@ Table of Contents
    [RFC8297]  Oku, K., "An HTTP Status Code for Indicating Hints",
               RFC 8297, DOI 10.17487/RFC8297, December 2017,
               <https://datatracker.ietf.org/doc/html/rfc8297>.
+
+   [RFC8470]  Thomson, M., Nottingham, M., and W. Tarreau, "Using Early
+              Data in HTTP", RFC 8470, DOI 10.17487/RFC8470, September
+              2018, <https://datatracker.ietf.org/doc/html/rfc8470>.
 
    [RFC8941]  Nottingham, M. and P-H. Kamp, "Structured Field Values for
               HTTP", RFC 8941, DOI 10.17487/RFC8941, February 2021,
