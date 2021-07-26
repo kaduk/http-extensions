@@ -6,11 +6,11 @@ HTTP                                                        L. Chen, Ed.
 Internet-Draft                                                Google LLC
 Obsoletes: 6265 (if approved)                         S. Englehardt, Ed.
 Intended status: Standards Track                                 Mozilla
-Expires: 25 January 2022                                    M. West, Ed.
+Expires: 27 January 2022                                    M. West, Ed.
                                                               Google LLC
                                                         J. Wilander, Ed.
                                                               Apple, Inc
-                                                            24 July 2021
+                                                            26 July 2021
 
 
                 Cookies: HTTP State Management Mechanism
@@ -54,7 +54,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 25 January 2022.
+   This Internet-Draft will expire on 27 January 2022.
 
 Copyright Notice
 
@@ -2338,9 +2338,9 @@ Table of Contents
 
    [HTTPSEM]  Fielding, R. T., Nottingham, M., and J. Reschke, "HTTP
               Semantics", Work in Progress, Internet-Draft, draft-ietf-
-              httpbis-semantics-16, 27 May 2021,
+              httpbis-semantics-17, 25 July 2021,
               <https://datatracker.ietf.org/doc/html/draft-ietf-httpbis-
-              semantics-16>.
+              semantics-17>.
 
    [RFC1034]  Mockapetris, P., "Domain names - concepts and facilities",
               STD 13, RFC 1034, DOI 10.17487/RFC1034, November 1987,

@@ -5,10 +5,10 @@
 HTTP                                                            S. Ludin
 Internet-Draft                                                    Akamai
 Intended status: Standards Track                           M. Nottingham
-Expires: 25 January 2022                                          Fastly
+Expires: 27 January 2022                                          Fastly
                                                                    Y. Wu
                                                               Cloudflare
-                                                            24 July 2021
+                                                            26 July 2021
 
 
                       Targeted HTTP Cache Control
@@ -54,7 +54,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 25 January 2022.
+   This Internet-Draft will expire on 27 January 2022.
 
 Copyright Notice
 
@@ -312,16 +312,16 @@ Table of Contents
    [I-D.ietf-httpbis-cache]
               Fielding, R. T., Nottingham, M., and J. Reschke, "HTTP
               Caching", Work in Progress, Internet-Draft, draft-ietf-
-              httpbis-cache-16, 27 May 2021,
+              httpbis-cache-17, 25 July 2021,
               <https://datatracker.ietf.org/doc/html/draft-ietf-httpbis-
-              cache-16>.
+              cache-17>.
 
    [I-D.ietf-httpbis-semantics]
               Fielding, R. T., Nottingham, M., and J. Reschke, "HTTP
               Semantics", Work in Progress, Internet-Draft, draft-ietf-
-              httpbis-semantics-16, 27 May 2021,
+              httpbis-semantics-17, 25 July 2021,
               <https://datatracker.ietf.org/doc/html/draft-ietf-httpbis-
-              semantics-16>.
+              semantics-17>.
 
    [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
               Requirement Levels", BCP 14, RFC 2119,
