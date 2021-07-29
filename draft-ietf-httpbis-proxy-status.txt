@@ -5,8 +5,8 @@
 HTTP                                                       M. Nottingham
 Internet-Draft                                                    Fastly
 Intended status: Standards Track                               P. Sikora
-Expires: 29 January 2022                                          Google
-                                                            28 July 2021
+Expires: 30 January 2022                                          Google
+                                                            29 July 2021
 
 
               The Proxy-Status HTTP Response Header Field
@@ -48,7 +48,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 29 January 2022.
+   This Internet-Draft will expire on 30 January 2022.
 
 Copyright Notice
 
@@ -979,8 +979,8 @@ Table of Contents
 
    Upon publication, please create the HTTP Proxy-Status Parameters
    registry and the HTTP Proxy Error Types registry at
-   https://iana.org/assignments/http-proxy-statuses
-   (https://iana.org/assignments/http-proxy-statuses) and populate them
+   https://iana.org/assignments/http-proxy-status
+   (https://iana.org/assignments/http-proxy-status) and populate them
    with the types defined in Section 2.1 and Section 2.3 respectively;
    see Section 2.2 and Section 2.4 for its associated procedures.
 
