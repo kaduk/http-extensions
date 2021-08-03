@@ -926,6 +926,8 @@ Table of Contents
 
    For example, when serving this signed request:
 
+   NOTE: '\' line wrapping per RFC 8792
+
    POST /foo?param=value&pet=dog HTTP/1.1
    Host: example.com
    Date: Tue, 20 Apr 2021 02:07:55 GMT
@@ -969,6 +971,8 @@ Table of Contents
      ;keyid="test-key-ecc-p256"
 
    The signed response message is:
+
+   NOTE: '\' line wrapping per RFC 8792
 
    HTTP/1.1 200 OK
    Date: Tue, 20 Apr 2021 02:07:56 GMT
@@ -1431,6 +1435,8 @@ Table of Contents
    of the covered content including all signature metadata parameters,
    using the serialization process defined in Section 2.3.1.
 
+   NOTE: '\' line wrapping per RFC 8792
+
    Signature-Input: sig1=("@method" "@target-uri" "host" "date" \
      "cache-control" "x-empty-header" "x-example");created=1618884475\
      ;keyid="test-key-rsa-pss"
@@ -1451,6 +1457,8 @@ Table of Contents
    "Signature" HTTP header field that does not have a corresponding
    member in the HTTP message's "Signature-Input" HTTP header field MUST
    be ignored.
+
+   NOTE: '\' line wrapping per RFC 8792
 
    Signature: sig1=:P0wLUszWQjoi54udOtydf9IWTfNhy+r53jGFj9XZuP4uKwxyJo\
      1RSHi+oEF1FuX6O29d+lbxwwBao1BAgadijW+7O/PyezlTnqAOVPWx9GlyntiCiHz\
@@ -1501,6 +1509,8 @@ Table of Contents
    These values are added to the HTTP request message by the proxy.  The
    different signature values are wrapped onto separate lines to
    increase human-readability of the result.
+
+   NOTE: '\' line wrapping per RFC 8792
 
    X-Forwarded-For: 192.0.2.123
    Signature-Input: sig1=("@method" "@path" "@authority" \
@@ -2022,6 +2032,8 @@ B.2.1.  Minimal Signature Header using rsa-pss-sha512
    This results in the following "Signature-Input" and "Signature"
    headers being added to the message:
 
+   NOTE: '\' line wrapping per RFC 8792
+
    Signature-Input: sig1=();created=1618884475\
      ;keyid="test-key-rsa-pss";alg="rsa-pss-sha512"
    Signature: sig1=:HWP69ZNiom9Obu1KIdqPPcu/C1a5ZUMBbqS/xwJECV8bhIQVmE\
@@ -2046,6 +2058,8 @@ B.2.2.  Selective Coverage using rsa-pss-sha512
 
    This results in the following "Signature-Input" and "Signature"
    headers being added to the message:
+
+   NOTE: '\' line wrapping per RFC 8792
 
    Signature-Input: sig1=("@authority" "content-type")\
      ;created=1618884475;keyid="test-key-rsa-pss"
@@ -2078,6 +2092,8 @@ B.2.3.  Full Coverage using rsa-pss-sha512
    This results in the following "Signature-Input" and "Signature"
    headers being added to the message:
 
+   NOTE: '\' line wrapping per RFC 8792
+
    Signature-Input: sig1=("date" "@method" "@path" "@query" \
      "@authority" "content-type" "digest" "content-length")\
      ;created=1618884475;keyid="test-key-rsa-pss"
@@ -2105,6 +2121,8 @@ B.2.4.  Signing a Response using ecdsa-p256-sha256
    This results in the following "Signature-Input" and "Signature"
    headers being added to the message:
 
+   NOTE: '\' line wrapping per RFC 8792
+
    Signature-Input: sig1=("content-type" "digest" "content-length")\
      ;created=1618884475;keyid="test-key-ecc-p256"
    Signature: sig1=:n8RKXkj0iseWDmC6PNSQ1GX2R9650v+lhbb6rTGoSrSSx18zmn\
@@ -2125,6 +2143,8 @@ B.2.5.  Signing a Request using hmac-sha256
 
    This results in the following "Signature-Input" and "Signature"
    headers being added to the message:
+
+   NOTE: '\' line wrapping per RFC 8792
 
    Signature-Input: sig1=("@authority" "date" "content-type")\
      ;created=1618884475;keyid="test-shared-secret"
