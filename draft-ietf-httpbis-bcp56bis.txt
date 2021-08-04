@@ -1071,7 +1071,7 @@ Table of Contents
    [I-D.ietf-httpbis-semantics] to identify clients.  As per [RFC7617],
    the Basic authentication scheme is not suitable for protecting
    sensitive or valuable information unless the channel is secure (e.g.,
-   using the "HTTPS" URI scheme).  Likewise, [RFC7617] requires the
+   using the "HTTPS" URI scheme).  Likewise, [RFC7616] requires the
    Digest authentication scheme to be used over a secure channel.
 
    With HTTPS, clients might also be authenticated using certificates
@@ -1471,6 +1471,11 @@ Table of Contents
               Port Numbers", BCP 165, RFC 7605, DOI 10.17487/RFC7605,
               August 2015,
               <https://datatracker.ietf.org/doc/html/rfc7605>.
+
+   [RFC7616]  Shekh-Yusef, R., Ed., Ahrens, D., and S. Bremer, "HTTP
+              Digest Access Authentication", RFC 7616,
+              DOI 10.17487/RFC7616, September 2015,
+              <https://datatracker.ietf.org/doc/html/rfc7616>.
 
    [RFC7617]  Reschke, J., "The 'Basic' HTTP Authentication Scheme",
               RFC 7617, DOI 10.17487/RFC7617, September 2015,
