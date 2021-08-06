@@ -5,10 +5,10 @@
 HTTP                                                     A. Backman, Ed.
 Internet-Draft                                                    Amazon
 Intended status: Standards Track                               J. Richer
-Expires: 5 February 2022                             Bespoke Engineering
+Expires: 7 February 2022                             Bespoke Engineering
                                                                M. Sporny
                                                           Digital Bazaar
-                                                           4 August 2021
+                                                           6 August 2021
 
 
                          Signing HTTP Messages
@@ -53,7 +53,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 5 February 2022.
+   This Internet-Draft will expire on 7 February 2022.
 
 Copyright Notice
 
@@ -1540,7 +1540,7 @@ Table of Contents
 
 5.  Requesting Signatures
 
-   While signer is free to attach a signature to a request or response
+   While a signer is free to attach a signature to a request or response
    without prompting, it is often desirable for a potential verifier to
    signal that it expects a signature from a potential signer using the
    "Accept-Signature" header.
@@ -1571,14 +1571,19 @@ Table of Contents
    member's name is an identifier that uniquely identifies the requested
    message signature within the context of the target HTTP message.  The
    member's value is the serialization of the desired covered content of
-   the target message, including any signature metadata parameters,
-   using the serialization process defined in Section 2.3.1.
+   the target message, including any allowed signature metadata
+   parameters, using the serialization process defined in Section 2.3.1.
 
    NOTE: '\' line wrapping per RFC 8792
 
    Accept-Signature: sig1=("@method" "@target-uri" "host" "date" \
      "cache-control" "x-empty-header" "x-example")\
      ;keyid="test-key-rsa-pss"
+
+   The requested signature MAY include parameters, such as a desired
+   algorithm or key identifier.  These parameters MUST NOT include
+   parameters that the signer is expected to generate, including the
+   "created" and "nonce" parameters.
 
 5.2.  Processing an Accept-Signature
 
@@ -1595,10 +1600,16 @@ Table of Contents
        2.  Parse the value of the member to obtain the list of covered
            content identifiers
 
-       3.  Select any additional parameters necessary for completing the
-           signature, such as the signing algorithm and key material
+       3.  Process the requested parameters, such as the signing
+           algorithm and key material.  If any requested parameters
+           cannot be fulfilled, or if the requested parameters conflict
+           with those deemed appropriate to the target message, the
+           process fails and returns an error.
 
-       4.  Create the "Signature-Input" and "Signature" header values
+       4.  Select any additional parameters necessary for completing the
+           signature
+
+       5.  Create the "Signature-Input" and "Signature" header values
            and associate them with the label
 
    3.  Optionally create any additional "Signature-Input" and
