@@ -2267,6 +2267,8 @@ Document History
 
       -  -06
 
+         o  Add "Accept-Signature" header and semantics.
+
          o  Define new specialty content identifiers, re-defined
             request-target identifier.
 
