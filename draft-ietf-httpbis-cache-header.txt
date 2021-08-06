@@ -4,8 +4,8 @@
 
 HTTP                                                       M. Nottingham
 Internet-Draft                                                    Fastly
-Intended status: Standards Track                           5 August 2021
-Expires: 6 February 2022
+Intended status: Standards Track                           6 August 2021
+Expires: 7 February 2022
 
 
               The Cache-Status HTTP Response Header Field
@@ -14,9 +14,9 @@ Expires: 6 February 2022
 Abstract
 
    To aid debugging, HTTP caches often append header fields to a
-   response explaining how they handled the request.  This specification
-   codifies that practice and updates it to align with HTTP's current
-   caching model.
+   response explaining how they handled the request in an ad hoc manner.
+   This specification defines a standard mechanism to do so that is
+   aligned with HTTP's caching model.
 
 Note to Readers
 
@@ -48,7 +48,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 6 February 2022.
+   This Internet-Draft will expire on 7 February 2022.
 
 Copyright Notice
 
